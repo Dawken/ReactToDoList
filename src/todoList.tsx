@@ -1,12 +1,18 @@
 import * as React from 'react'
+import CreateContainer from "./createContainer.tsx";
 
-export default function Main () {
+const TodoList = ({todos}) => {
+    console.log(todos)
   return (
         <main>
+            <div className="container">
             <div className="todo">
                 <div id="top">
                     <h1>To do</h1>
                 </div>
+                {todos.map((todo) => (
+                    <CreateContainer text={todo.text} key={todo.id}/>
+                ))}
             </div>
 
             <div className="during">
@@ -20,6 +26,8 @@ export default function Main () {
                     <h1>Done</h1>
                 </div>
             </div>
+        </div>
 </main>
   )
 }
+export default TodoList

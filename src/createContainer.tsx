@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {useState} from "react";
+import {useEffect, useRef, useState} from "react";
 
 
 interface type_alias {
@@ -23,40 +23,48 @@ type Props = {
 }
 
 export default function CreateContainer ({text,id,tasks,task,deleteTask,todos,setTodos,durings,setDurings,dones,setDones,taskStatus}:Props) {
-  const [options, setOptions] = useState<boolean>(false)
-    const deleteButton = () => {
-      deleteTask(tasks.filter((el) => el.id !== task.id))
-    }
+
+    const [options, setOptions] = useState<boolean>(false)
+    const containerReference = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        containerReference.current && setTimeout(() => containerReference.current?.classList.add("animation"),150)
+    }, [containerReference])
+
+   const deleteAnimation = () => {
+       setTimeout(() => containerReference.current?.classList.remove("animation"),100)
+       setTimeout(() => deleteTask(tasks.filter((el) => el.id !== task.id)), 350)
+   }
     const pushTodo = () => {
       setTodos([
           ...todos,
           {text: text, id: id}
       ])
-        deleteButton()
+        deleteAnimation()
     }
     const pushDuring = () => {
         setDurings([
             ...durings,
             {text: text, id: id}
         ])
-        deleteButton()
+        deleteAnimation()
     }
     const pushDone = () => {
         setDones([
             ...dones,
             {text: text, id:id}
         ])
-        deleteButton()
+        deleteAnimation()
     }
     return (
-        <div className="taskContainer animation">
+        <div className="taskContainer" ref={containerReference}>
           <div id="todofirst">{text}
             <button className="trash" onClick={ () => setOptions(prevState => !prevState)}>
                 <i className="gg-trash"></i>
             </button>
           </div>
           <div className={options ? 'options animation' : 'options'}>
-            <button id="delete" onClick={deleteButton}>Delete</button>
+            <button id="delete" onClick={deleteAnimation}>Delete</button>
             {taskStatus !== "todo" ? <button id="todo" onClick={pushTodo}>To do</button> : null}
             {taskStatus !== "during" ? <button id="during" onClick={pushDuring}>During</button> : null}
             {taskStatus !== "done" ? <button id="done" onClick={pushDone}>Done</button> : null}

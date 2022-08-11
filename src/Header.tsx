@@ -1,14 +1,29 @@
 import * as React from 'react'
-import TodoList from "./todoList.tsx";
+import TodoList from "./todoList";
+import {useEffect, useState} from "react";
+
 
 export default function Header () {
-    const [todoInput, setTodoInput] = React.useState<string>('')
 
-    const [todos, setTodos] = React.useState<Array<object>>([])
-    const[durings, setDurings] = React.useState<Array<object>>([])
-    const[dones, setDones] = React.useState<Array<object>>([])
 
-  const handleChange = (event) => {
+    const [todoInput, setTodoInput] = useState('')
+
+    const [todos, setTodos] = useState(JSON.parse(localStorage.getItem("todo") || '[]'))
+    useEffect(() => {
+        localStorage.setItem("todo", JSON.stringify(todos))
+    }, [todos])
+
+    const[durings, setDurings] = useState(JSON.parse(localStorage.getItem("during") || '[]'))
+    useEffect(() => {
+        localStorage.setItem("during", JSON.stringify(durings))
+    }, [durings])
+
+    const[dones, setDones] = useState(JSON.parse(localStorage.getItem("done") || '[]'))
+    useEffect(() => {
+        localStorage.setItem("done", JSON.stringify(dones))
+    }, [dones])
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTodoInput(event.target.value)
   }
   const submitTodo = () => {

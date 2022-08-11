@@ -1,9 +1,23 @@
 import * as React from 'react'
-import CreateContainer from "./createContainer.tsx";
+import CreateContainer from "./createContainer";
 
-const TodoList = ({todos,setTodos,durings,setDurings,dones, setDones}) => {
+interface type_alias {
+    text: string,
+    id:number
+}
 
-  return (
+type Props = {
+    todos: type_alias[],
+    durings: type_alias[],
+    setTodos: React.Dispatch<type_alias[]>,
+    setDurings: React.Dispatch<type_alias[]>,
+    dones: type_alias[],
+    setDones:React.Dispatch<type_alias[]>
+}
+
+const TodoList = ({todos,setTodos,durings,setDurings,dones,setDones}:Props) => {
+
+    return (
         <main>
             <div className="container">
             <div className="todo">
@@ -11,10 +25,10 @@ const TodoList = ({todos,setTodos,durings,setDurings,dones, setDones}) => {
                     <h1>To do</h1>
                 </div>
                 {todos?.map((todo) => (
-                    // eslint-disable-next-line react/jsx-key
                     <CreateContainer
                         text={todo.text}
                         id={todo.id}
+                        key={todo.id}
                         tasks={todos}
                         task={todo}
                         todos={todos}
@@ -23,7 +37,8 @@ const TodoList = ({todos,setTodos,durings,setDurings,dones, setDones}) => {
                         setDurings={setDurings}
                         dones={dones}
                         setDones={setDones}
-                        taskStatus = "todo"
+                        taskStatus="todo"
+                        setTodos={setTodos}
                     />
                 ))}
             </div>
@@ -33,10 +48,10 @@ const TodoList = ({todos,setTodos,durings,setDurings,dones, setDones}) => {
                     <h1>During</h1>
                 </div>
                 {durings?.map((during) => (
-                    // eslint-disable-next-line react/jsx-key
                     <CreateContainer
                         text={during.text}
                         id={during.id}
+                        key={during.id}
                         tasks={durings}
                         task={during}
                         durings={durings}
@@ -45,7 +60,8 @@ const TodoList = ({todos,setTodos,durings,setDurings,dones, setDones}) => {
                         deleteTask={setDurings}
                         dones={dones}
                         setDones={setDones}
-                        taskStatus = "during"
+                        taskStatus="during"
+                        setDurings={setDurings}
                     />
                 ))}
             </div>
@@ -55,10 +71,10 @@ const TodoList = ({todos,setTodos,durings,setDurings,dones, setDones}) => {
                     <h1>Done</h1>
                 </div>
                 {dones?.map((done) => (
-                    // eslint-disable-next-line react/jsx-key
                     <CreateContainer
                         text={done.text}
                         id={done.id}
+                        key={done.id}
                         tasks={dones}
                         task={done}
                         todos={todos}
@@ -66,7 +82,9 @@ const TodoList = ({todos,setTodos,durings,setDurings,dones, setDones}) => {
                         durings={durings}
                         deleteTask={setDones}
                         setDurings={setDurings}
-                        taskStatus = "done"
+                        taskStatus="done"
+                        dones={[]}
+                        setDones={setDones}
                     />
                 ))}
             </div>

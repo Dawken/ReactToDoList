@@ -1,11 +1,29 @@
 import * as React from 'react'
+import {useState} from "react";
 
-export default function CreateContainer ({text,id,tasks,task,deleteTask,todos,setTodos,durings,setDurings,dones,setDones,taskStatus}) {
-  const [options, setOptions] = React.useState<boolean>(false)
-  const handleClick = () => {
-    setOptions(prevState => !prevState)
-  }
 
+interface type_alias {
+    text: string,
+    id:number
+}
+
+type Props = {
+    text: string,
+    id: number,
+    tasks: type_alias[],
+    task: type_alias,
+    deleteTask:  React.Dispatch<type_alias[]>,
+    todos: type_alias[],
+    setTodos:  React.Dispatch<type_alias[]>,
+    durings: type_alias[],
+    setDurings:  React.Dispatch<type_alias[]>,
+    dones: type_alias[],
+    setDones:  React.Dispatch<type_alias[]>,
+    taskStatus: string
+}
+
+export default function CreateContainer ({text,id,tasks,task,deleteTask,todos,setTodos,durings,setDurings,dones,setDones,taskStatus}:Props) {
+  const [options, setOptions] = useState<boolean>(false)
     const deleteButton = () => {
       deleteTask(tasks.filter((el) => el.id !== task.id))
     }
@@ -33,8 +51,8 @@ export default function CreateContainer ({text,id,tasks,task,deleteTask,todos,se
     return (
         <div className="taskContainer animation">
           <div id="todofirst">{text}
-            <button className="trash" onClick={handleClick}>
-                <icon className="gg-trash"></icon>
+            <button className="trash" onClick={ () => setOptions(prevState => !prevState)}>
+                <i className="gg-trash"></i>
             </button>
           </div>
           <div className={options ? 'options animation' : 'options'}>

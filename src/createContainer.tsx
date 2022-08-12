@@ -1,13 +1,8 @@
 import * as React from 'react'
 import {useEffect, useRef, useState} from "react";
+import {type_alias} from "./customTypings";
 
-
-interface type_alias {
-    text: string,
-    id:number
-}
-
-type Props = {
+export type PropsCreateContainer = {
     text: string,
     id: number,
     tasks: type_alias[],
@@ -19,10 +14,10 @@ type Props = {
     setDurings:  React.Dispatch<type_alias[]>,
     dones: type_alias[],
     setDones:  React.Dispatch<type_alias[]>,
-    taskStatus: string
+    taskStatus: string,
 }
 
-export default function CreateContainer ({text,id,tasks,task,deleteTask,todos,setTodos,durings,setDurings,dones,setDones,taskStatus}:Props) {
+export default function CreateContainer ({text,id,tasks,task,deleteTask,todos,setTodos,durings,setDurings,dones,setDones,taskStatus}:PropsCreateContainer) {
 
     const [options, setOptions] = useState<boolean>(false)
     const containerReference = useRef<HTMLDivElement>(null)
@@ -35,27 +30,14 @@ export default function CreateContainer ({text,id,tasks,task,deleteTask,todos,se
        setTimeout(() => containerReference.current?.classList.remove("animation"),100)
        setTimeout(() => deleteTask(tasks.filter((el) => el.id !== task.id)), 350)
    }
-    const pushTodo = () => {
-      setTodos([
-          ...todos,
-          {text: text, id: id}
-      ])
-        deleteAnimation()
-    }
-    const pushDuring = () => {
-        setDurings([
-            ...durings,
+    const pushTask= (setProps:React.Dispatch<type_alias[]>, props:type_alias[]) => {
+        setProps([
+            ...props,
             {text: text, id: id}
         ])
         deleteAnimation()
     }
-    const pushDone = () => {
-        setDones([
-            ...dones,
-            {text: text, id:id}
-        ])
-        deleteAnimation()
-    }
+
     return (
         <div className="taskContainer" ref={containerReference}>
           <div id="todofirst">{text}
@@ -65,9 +47,9 @@ export default function CreateContainer ({text,id,tasks,task,deleteTask,todos,se
           </div>
           <div className={options ? 'options animation' : 'options'}>
             <button id="delete" onClick={deleteAnimation}>Delete</button>
-            {taskStatus !== "todo" ? <button id="todo" onClick={pushTodo}>To do</button> : null}
-            {taskStatus !== "during" ? <button id="during" onClick={pushDuring}>During</button> : null}
-            {taskStatus !== "done" ? <button id="done" onClick={pushDone}>Done</button> : null}
+            {taskStatus !== "todo" ? <button id="todo" onClick={() => pushTask(setTodos, todos)}>To do</button> : null}
+            {taskStatus !== "during" ? <button id="during" onClick={() => pushTask(setDurings, durings)}>During</button> : null}
+            {taskStatus !== "done" ? <button id="done" onClick={() => pushTask(setDones, dones)}>Done</button> : null}
           </div>
         </div>
   )

@@ -1,21 +1,17 @@
 import * as React from 'react'
 import CreateContainer from "./createContainer";
+import {type_alias} from "./customTypings";
 
-interface type_alias {
-    text: string,
-    id:number
-}
-
-type Props = {
+type PropsTodoList = {
     todos: type_alias[],
     durings: type_alias[],
     setTodos: React.Dispatch<type_alias[]>,
     setDurings: React.Dispatch<type_alias[]>,
     dones: type_alias[],
-    setDones:React.Dispatch<type_alias[]>
+    setDones:React.Dispatch<type_alias[]>,
 }
 
-const TodoList = ({todos,setTodos,durings,setDurings,dones,setDones}:Props) => {
+const TodoList = ({todos,setTodos,durings,setDurings,dones,setDones}:PropsTodoList) => {
 
     return (
         <main>
@@ -31,14 +27,14 @@ const TodoList = ({todos,setTodos,durings,setDurings,dones,setDones}:Props) => {
                         key={todo.id}
                         tasks={todos}
                         task={todo}
-                        todos={todos}
                         deleteTask={setTodos}
+                        todos={todos}
+                        setTodos={setTodos}
                         durings={durings}
                         setDurings={setDurings}
                         dones={dones}
                         setDones={setDones}
                         taskStatus="todo"
-                        setTodos={setTodos}
                     />
                 ))}
             </div>
@@ -54,9 +50,9 @@ const TodoList = ({todos,setTodos,durings,setDurings,dones,setDones}:Props) => {
                         key={during.id}
                         tasks={durings}
                         task={during}
-                        durings={durings}
                         todos={todos}
                         setTodos={setTodos}
+                        durings={durings}
                         deleteTask={setDurings}
                         dones={dones}
                         setDones={setDones}
@@ -83,7 +79,7 @@ const TodoList = ({todos,setTodos,durings,setDurings,dones,setDones}:Props) => {
                         deleteTask={setDones}
                         setDurings={setDurings}
                         taskStatus="done"
-                        dones={[]}
+                        dones={dones}
                         setDones={setDones}
                     />
                 ))}

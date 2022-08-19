@@ -1,6 +1,6 @@
 import * as React from 'react'
 import CreateContainer from "./createContainer";
-import {type_alias} from "./customTypings";
+import {type_alias} from "../customTypings";
 
 type PropsTodoList = {
     todos: type_alias[],

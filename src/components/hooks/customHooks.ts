@@ -1,4 +1,4 @@
-import {TaskStatus} from "./customTypings";
+import {TaskStatus} from "../customTypings";
 import {useEffect, useState} from "react";
 
 export const useCustom = (prop:TaskStatus) => {

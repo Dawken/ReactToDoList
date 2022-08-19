@@ -1,6 +1,6 @@
 import * as React from 'react'
 import {useEffect, useRef, useState} from "react";
-import {type_alias} from "./customTypings";
+import {type_alias} from "../customTypings";
 
 export type PropsCreateContainer = {
     text: string,

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import TodoList from "./todoList";
 import {useState} from "react";
-import {useCustom} from "./customHooks";
+import {useCustom} from "../hooks/customHooks";
 
 export default function Header () {
 

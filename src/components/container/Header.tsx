@@ -11,23 +11,56 @@ export default function Header () {
     const [dones, setDones] =useCustom("done" )
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      setTodoInput(event.target.value)
+        setTodoInput(event.target.value)
     }
     const submitTodo = () => {
-      setTodos([
-          ...todos,
-          {text: todoInput, id: Math.random() * 1000}
-      ])
-    setTodoInput('')
+        setTodos([
+            ...todos,
+            {text: todoInput, id: Math.random() * 1000}
+        ])
+        setTodoInput('')
+    }
+    const deleteTask = (id:number, taskStatus:string) => {
+        if(taskStatus === 'todo') {
+            setTodos(todos.filter((el) => el.id !== id))
+        }
+        if(taskStatus === 'during') {
+            setDurings(durings.filter((el) => el.id !== id))
+        }
+        if(taskStatus === 'done') {
+            setDones(dones.filter((el) => el.id !== id))
+        }
+    }
+    const flipTask = (taskStatus:string,text:string, id:number) => {
+        if(taskStatus === 'durings') {
+            setDurings([
+                ...durings,
+                {text: text, id: id}
+            ])
+        }
+        if(taskStatus === 'todos') {
+            setTodos([
+                ...todos,
+                {text: text, id: id}
+            ])
+        }
+        if(taskStatus === 'dones') {
+            setDones([
+                ...dones,
+                {text: text, id: id}
+            ])
+        }
+
     }
 
     return (
-      <div>
-        <div className="input">
-            <input type="text" id="task-input" onChange={handleChange} placeholder="What are we doin today?" value={todoInput}/>
-            <button id="submit" onClick={submitTodo}>Add task</button>
-        </div>
-      <TodoList todos={todos} setTodos={setTodos} durings={durings} setDurings={setDurings} dones={dones} setDones={setDones}/>
-    </div>
+
+        <main>
+            <div className="input">
+                <input type="text" id="task-input" onChange={handleChange} placeholder="What are we doin today?" value={todoInput}/>
+                <button id="submit" onClick={submitTodo}>Add task</button>
+            </div>
+            <TodoList todos={todos} durings={durings} dones={dones} deleteTask={deleteTask} flipTask={flipTask}/>
+        </main>
     )
 }

@@ -2,15 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="45b90587-fb3e-4165-839a-7dee5ff56939" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/css/optionsContainer.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/css/taskContainer.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/css/todoContainer.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/css/todoFirst.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Background.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Background.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/container/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/createContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/container/createContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/customHooks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hooks/customHooks.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/customTypings.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/customTypings.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/todoList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/container/todoList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/container/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/container/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/container/createContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/container/createContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/container/todoList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/container/todoList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/hooks/customHooks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hooks/customHooks.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/css/index.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +47,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\dawid\OneDrive\Pulpit\wszystkie projekty\reactToDoList\src\components\css" />
       <recent name="C:\Users\dawid\OneDrive\Pulpit\wszystkie projekty\reactToDoList\src\components" />
       <recent name="C:\Users\dawid\OneDrive\Pulpit\wszystkie projekty\reactToDoList\src\components\container" />
       <recent name="C:\Users\dawid\OneDrive\Pulpit\wszystkie projekty\reactToDoList\src\components\hooks" />
@@ -82,6 +87,17 @@
       <workItem from="1660213656875" duration="25578000" />
       <workItem from="1660323578713" duration="8301000" />
       <workItem from="1660741846164" duration="2110000" />
+      <workItem from="1660919668299" duration="200000" />
+      <workItem from="1660947197970" duration="2612000" />
+      <workItem from="1661007749954" duration="3439000" />
+      <workItem from="1661024926430" duration="6000" />
+      <workItem from="1661188550406" duration="3000" />
+      <workItem from="1661881485564" duration="5347000" />
+      <workItem from="1661893644258" duration="6821000" />
+      <workItem from="1661950441398" duration="10094000" />
+      <workItem from="1662032209959" duration="19760000" />
+      <workItem from="1662117643178" duration="14043000" />
+      <workItem from="1662228551891" duration="2176000" />
     </task>
     <servers />
   </component>

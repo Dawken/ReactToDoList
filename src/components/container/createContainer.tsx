@@ -1,16 +1,17 @@
 import * as React from 'react'
 import {useEffect, useRef, useState} from "react";
+import {useDispatch} from "react-redux";
+import {pushTasks, deleteTask} from "../redux/todoSlice";
+import {TaskStatus} from "../customTypings";
 
 export type PropsCreateContainer = {
     text: string,
-    id: number,
-    deleteTask: (id:number, taskStatus:string) => void
-    flipTask:(taskStatus:string,text:string, id:number) => void
-    taskStatus: string,
+    id: string,
+    taskStatus: TaskStatus,
 }
 
-export default function CreateContainer ({text,id,deleteTask,flipTask,taskStatus}:PropsCreateContainer) {
-
+export default function CreateContainer ({text,id,taskStatus}:PropsCreateContainer) {
+    const dispatch = useDispatch();
     const [options, setOptions] = useState<boolean>(false)
     const containerReference = useRef<HTMLDivElement>(null)
 
@@ -20,10 +21,10 @@ export default function CreateContainer ({text,id,deleteTask,flipTask,taskStatus
 
     const deleteAnimation = () => {
         setTimeout(() => containerReference.current?.classList.remove("animation"),100)
-        setTimeout(() => deleteTask(id, taskStatus), 350)
+        setTimeout(() => dispatch(deleteTask({ id,taskStatus })), 350)
     }
-    const pushTask= (taskStatus:string) => {
-        flipTask(taskStatus,text, id)
+    const pushTask= (push:TaskStatus) => {
+        dispatch(pushTasks({id,text, push}))
         deleteAnimation()
     }
 
@@ -36,9 +37,9 @@ export default function CreateContainer ({text,id,deleteTask,flipTask,taskStatus
             </div>
             <div className={options ? 'options animation' : 'options'}>
                 <button id="delete" onClick={deleteAnimation}>Delete</button>
-                {taskStatus !== "todo" ? <button id="todo" onClick={() => pushTask('todos')}>To do</button> : null}
-                {taskStatus !== "during" ? <button id="during" onClick={() => pushTask('durings')}>During</button> : null}
-                {taskStatus !== "done" ? <button id="done" onClick={() => pushTask('dones')}>Done</button> : null}
+                {taskStatus !== "todo" && <button id="todo"  onClick={() => pushTask('todo')}>To do</button>}
+                {taskStatus !== "during" && <button id="during" onClick={() => pushTask('during')}>During</button>}
+                {taskStatus !== "done" && <button id="done" onClick={() => pushTask('done')}>Done</button>}
             </div>
         </div>
     )

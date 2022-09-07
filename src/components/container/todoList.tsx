@@ -1,32 +1,23 @@
 import * as React from 'react'
 import CreateContainer from "./createContainer";
-import {type_alias} from "../customTypings";
-
-type PropsTodoList = {
-    todos: type_alias[],
-    durings: type_alias[],
-    dones: type_alias[],
-    deleteTask: (id:number, taskStatus:string) => void,
-    flipTask:(taskStatus:string,text:string, id:number) => void,
-}
-
-const TodoList = ({todos,durings,dones,deleteTask,flipTask}:PropsTodoList) => {
+import {useAppSelector} from "../redux/store";
 
 
+const TodoList = () => {
+
+    const todos = useAppSelector((state) => state.todos);
     return (
             <div className="container">
                 <div className="todo">
                     <div id="top">
                         <h1 id='topTodo'>To do</h1>
                     </div>
-                    {todos?.map((todo) => (
+                    {todos.todo?.map((todo) => (
                         <CreateContainer
                             text={todo.text}
                             id={todo.id}
                             key={todo.id}
                             taskStatus="todo"
-                            deleteTask={deleteTask}
-                            flipTask={flipTask}
                         />
                     ))}
                 </div>
@@ -35,14 +26,12 @@ const TodoList = ({todos,durings,dones,deleteTask,flipTask}:PropsTodoList) => {
                     <div id="top">
                         <h1 id='topDuring'>During</h1>
                     </div>
-                    {durings?.map((during) => (
+                    {todos.during?.map((during) => (
                         <CreateContainer
                             text={during.text}
                             id={during.id}
                             key={during.id}
                             taskStatus="during"
-                            deleteTask={deleteTask}
-                            flipTask={flipTask}
                         />
                     ))}
                 </div>
@@ -51,14 +40,12 @@ const TodoList = ({todos,durings,dones,deleteTask,flipTask}:PropsTodoList) => {
                     <div id="top">
                         <h1 id='topDone'>Done</h1>
                     </div>
-                    {dones?.map((done) => (
+                    {todos.done?.map((done) => (
                         <CreateContainer
                             text={done.text}
                             id={done.id}
                             key={done.id}
                             taskStatus="done"
-                            deleteTask={deleteTask}
-                            flipTask={flipTask}
                         />
                     ))}
                 </div>

@@ -1,66 +1,35 @@
 import * as React from 'react'
 import TodoList from "./todoList";
 import {useState} from "react";
-import {useCustom} from "../hooks/customHooks";
+import {addTodo} from '../redux/todoSlice';
+import {useAppDispatch} from "../redux/store";
 
 export default function Header () {
 
-    const [todoInput, setTodoInput] = useState('')
-    const [todos, setTodos] = useCustom("todo" )
-    const [durings, setDurings] =useCustom("during")
-    const [dones, setDones] =useCustom("done" )
+    const [value, setValue] = useState('');
+    const dispatch = useAppDispatch();
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setTodoInput(event.target.value)
-    }
-    const submitTodo = () => {
-        setTodos([
-            ...todos,
-            {text: todoInput, id: Math.random() * 1000}
-        ])
-        setTodoInput('')
-    }
-    const deleteTask = (id:number, taskStatus:string) => {
-        if(taskStatus === 'todo') {
-            setTodos(todos.filter((el) => el.id !== id))
+    const onSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        if (value) {
+            dispatch(
+                addTodo({
+                    title: value,
+                }),
+            );
+            setValue('')
         }
-        if(taskStatus === 'during') {
-            setDurings(durings.filter((el) => el.id !== id))
-        }
-        if(taskStatus === 'done') {
-            setDones(dones.filter((el) => el.id !== id))
-        }
-    }
-    const flipTask = (taskStatus:string,text:string, id:number) => {
-        if(taskStatus === 'durings') {
-            setDurings([
-                ...durings,
-                {text: text, id: id}
-            ])
-        }
-        if(taskStatus === 'todos') {
-            setTodos([
-                ...todos,
-                {text: text, id: id}
-            ])
-        }
-        if(taskStatus === 'dones') {
-            setDones([
-                ...dones,
-                {text: text, id: id}
-            ])
-        }
-
-    }
+    };
 
     return (
-
         <main>
-            <div className="input">
-                <input type="text" id="task-input" onChange={handleChange} placeholder="What are we doin today?" value={todoInput}/>
-                <button id="submit" onClick={submitTodo}>Add task</button>
+            <form onSubmit={onSubmit}>
+            <div className="input" >
+                <input type="text" id="task-input" onChange={(event) => setValue(event.target.value)} placeholder="What are we doin today?" value={value}/>
+                <button id="submit" >Add task</button>
             </div>
-            <TodoList todos={todos} durings={durings} dones={dones} deleteTask={deleteTask} flipTask={flipTask}/>
+        </form>
+            <TodoList/>
         </main>
     )
 }

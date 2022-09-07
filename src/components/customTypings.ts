@@ -1,6 +1,6 @@
 export interface type_alias {
     text: string,
-    id:number
+    id:string
 }
 
 export type TaskStatus = "todo" | "during" | "done"

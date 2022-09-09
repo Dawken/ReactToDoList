@@ -1,5 +1,5 @@
 import * as React from 'react'
-import CreateContainer from "./createContainer";
+import TaskContainer from "./createContainer";
 import {useAppSelector} from "../redux/store";
 
 
@@ -8,12 +8,12 @@ const TodoList = () => {
     const todos = useAppSelector((state) => state.todos);
     return (
             <div className="container">
-                <div className="todo">
-                    <div id="top">
+                <div className="tasksContainers">
+                    <div className="top">
                         <h1 id='topTodo'>To do</h1>
                     </div>
-                    {todos.todo?.map((todo) => (
-                        <CreateContainer
+                    {todos.todo.map((todo) => (
+                        <TaskContainer
                             text={todo.text}
                             id={todo.id}
                             key={todo.id}
@@ -22,12 +22,12 @@ const TodoList = () => {
                     ))}
                 </div>
 
-                <div className="during">
-                    <div id="top">
+                <div className="tasksContainers">
+                    <div className="top">
                         <h1 id='topDuring'>During</h1>
                     </div>
-                    {todos.during?.map((during) => (
-                        <CreateContainer
+                    {todos.during.map((during) => (
+                        <TaskContainer
                             text={during.text}
                             id={during.id}
                             key={during.id}
@@ -36,12 +36,12 @@ const TodoList = () => {
                     ))}
                 </div>
 
-                <div className="done">
-                    <div id="top">
+                <div className="tasksContainers">
+                    <div className="top">
                         <h1 id='topDone'>Done</h1>
                     </div>
-                    {todos.done?.map((done) => (
-                        <CreateContainer
+                    {todos.done.map((done) => (
+                        <TaskContainer
                             text={done.text}
                             id={done.id}
                             key={done.id}

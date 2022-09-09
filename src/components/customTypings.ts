@@ -1,4 +1,4 @@
-export interface type_alias {
+export type ContainerProps = {
     text: string,
     id:string
 }

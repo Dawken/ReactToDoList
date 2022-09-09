@@ -1,5 +1,5 @@
 import {combineReducers, createStore, Dispatch} from '@reduxjs/toolkit';
-import todoReducer, {State} from './todoSlice';
+import todoReducer from './todoSlice';
 import {TypedUseSelectorHook, useDispatch, useSelector} from "react-redux";
 
 
@@ -11,24 +11,25 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 
 const rootReducer = combineReducers({todos:todoReducer})
 
-function saveToLocalStorage(state:{todos: State}) {
+function saveToLocalStorage() {
     try {
-        const serialisedState = JSON.stringify(state);
-        localStorage.setItem("persistantState", serialisedState);
-    } catch (e) {
-        console.warn(e);
+        const serialisedState = JSON.stringify(store.getState());
+        localStorage.setItem("tasksState", serialisedState);
+    } catch (elements) {
+        console.warn(elements);
     }
+
 }
 
 function loadFromLocalStorage() {
     try {
-        const serialisedState = localStorage.getItem("persistantState");
+        const serialisedState = localStorage.getItem("tasksState");
         if (serialisedState === null) return undefined;
         return JSON.parse(serialisedState);
-    } catch (e) {
-        console.warn(e);
+    } catch (elements) {
+        console.warn(elements);
         return undefined;
     }
 }
 export const store = createStore(rootReducer, loadFromLocalStorage())
-store.subscribe(() => saveToLocalStorage(store.getState()));
+store.subscribe(() => saveToLocalStorage());

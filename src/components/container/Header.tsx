@@ -1,15 +1,15 @@
-import * as React from 'react'
+import React, {ChangeEvent} from 'react'
 import TodoList from "./todoList";
 import {useState} from "react";
 import {addTodo} from '../redux/todoSlice';
 import {useAppDispatch} from "../redux/store";
 
-export default function Header () {
+export default function InputContainer() {
 
     const [value, setValue] = useState('');
     const dispatch = useAppDispatch();
 
-    const onSubmit = (event: React.ChangeEvent<HTMLFormElement>) => {
+    const onSubmit = (event:ChangeEvent<HTMLFormElement>) => {
         event.preventDefault();
         if (value) {
             dispatch(
@@ -24,11 +24,17 @@ export default function Header () {
     return (
         <main>
             <form onSubmit={onSubmit}>
-            <div className="input" >
-                <input type="text" id="task-input" onChange={(event) => setValue(event.target.value)} placeholder="What are we doin today?" value={value}/>
-                <button id="submit" >Add task</button>
-            </div>
-        </form>
+                <div className="input" >
+                    <input
+                        type="text"
+                        id="task-input"
+                        onChange={(event) => setValue(event.target.value)}
+                        placeholder="What are we doin today?"
+                        value={value}
+                    />
+                    <button id="submit" >Add task</button>
+                </div>
+            </form>
             <TodoList/>
         </main>
     )

@@ -3,16 +3,13 @@ import {TaskStatus, ContainerProps} from "../customTypings";
 import {v4} from "uuid";
 
 export type State = {
-    todo:ContainerProps[], during:ContainerProps[], done:ContainerProps[], tasks: {text:string, id:string, date:string, taskStatus:TaskStatus, description:string}
+    todo:ContainerProps[],
+    during:ContainerProps[],
+    done:ContainerProps[],
+    tasks: {text:string, id:string, date:string, taskStatus:TaskStatus, description:string}
 }
 
-const text = ''
-const id = ''
-const taskStatus = "todo"
-const date = ''
-const description = ''
-
-const initialState:State = {todo:[], during:[], done:[], tasks:{text, id, date, taskStatus, description}}
+const initialState:State = {todo:[], during:[], done:[], tasks:{text:'', id:'', date:'', taskStatus:'todo', description:''}}
 
 export const todoSlice = createSlice({
     name: 'containers',
@@ -50,14 +47,11 @@ export const todoSlice = createSlice({
             state.tasks = task
         },
         textAreaInput:(state, action:PayloadAction<{description:string, taskStatus:TaskStatus, id:string}>) => {
-            const input = {
-                description: action.payload.description
-            }
-            const found = state[action.payload.taskStatus].find(element => element.id === action.payload.id)
-            let taskDescription = JSON.stringify(found?.description)
-            if(found) {
-                taskDescription = input.description
-                found.description = taskDescription
+            const properTask = state[action.payload.taskStatus].find(element => element.id === action.payload.id)
+            let taskDescription = JSON.stringify(properTask?.description)
+            if(properTask) {
+                taskDescription = action.payload.description
+                properTask.description = taskDescription
             }
         }
     },

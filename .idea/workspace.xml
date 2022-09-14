@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="45b90587-fb3e-4165-839a-7dee5ff56939" name="Changes" comment="" />
+    <list default="true" id="45b90587-fb3e-4165-839a-7dee5ff56939" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/redux/todoSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/redux/todoSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/subPages/taskData.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/subPages/taskData.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/subPages/taskData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/subPages/taskData.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -114,7 +119,7 @@
       <workItem from="1663031898738" duration="163000" />
       <workItem from="1663092818914" duration="14167000" />
       <workItem from="1663160641421" duration="960000" />
-      <workItem from="1663166962202" duration="724000" />
+      <workItem from="1663166962202" duration="9792000" />
     </task>
     <servers />
   </component>

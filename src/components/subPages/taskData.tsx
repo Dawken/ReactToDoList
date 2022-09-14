@@ -20,8 +20,6 @@ const TaskData = () => {
             );
         }
     };
-
-
     return (
         <section>
             <div className='taskDataContainer'>
@@ -34,8 +32,6 @@ const TaskData = () => {
                 </form>
             </div>
         </section>
-
-
     )
 }
 

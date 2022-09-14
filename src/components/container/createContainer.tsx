@@ -5,7 +5,7 @@ import {pushTasks, deleteTask, downloadTask} from "../redux/todoSlice";
 import {TaskStatus} from "../customTypings";
 import {Link} from "react-router-dom";
 
-export type PropsTaskContainer = {
+type PropsTaskContainer = {
     text: string,
     id: string,
     taskStatus: TaskStatus,

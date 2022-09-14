@@ -59,7 +59,6 @@ export const todoSlice = createSlice({
                 taskDescription = input.description
                 found.description = taskDescription
             }
-            // console.log(JSON.stringify(state, undefined, 2))
         }
     },
 });

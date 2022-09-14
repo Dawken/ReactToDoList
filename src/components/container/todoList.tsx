@@ -17,6 +17,8 @@ const TodoList = () => {
                             text={todo.text}
                             id={todo.id}
                             key={todo.id}
+                            date={todo.date}
+                            description={todo.description}
                             taskStatus="todo"
                         />
                     ))}
@@ -31,6 +33,8 @@ const TodoList = () => {
                             text={during.text}
                             id={during.id}
                             key={during.id}
+                            date={during.date}
+                            description={during.description}
                             taskStatus="during"
                         />
                     ))}
@@ -45,6 +49,8 @@ const TodoList = () => {
                             text={done.text}
                             id={done.id}
                             key={done.id}
+                            date={done.date}
+                            description={done.description}
                             taskStatus="done"
                         />
                     ))}

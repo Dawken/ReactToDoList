@@ -1,16 +1,19 @@
 import React from 'react'
 import {useEffect, useRef, useState} from "react";
 import {useDispatch} from "react-redux";
-import {pushTasks, deleteTask} from "../redux/todoSlice";
+import {pushTasks, deleteTask, downloadTask} from "../redux/todoSlice";
 import {TaskStatus} from "../customTypings";
+import {Link} from "react-router-dom";
 
-type PropsTaskContainer = {
+export type PropsTaskContainer = {
     text: string,
     id: string,
     taskStatus: TaskStatus,
+    date: string,
+    description: string
 }
 
-export default function TaskContainer({text,id,taskStatus}:PropsTaskContainer) {
+export default function TaskContainer({text,id,taskStatus,date,description}:PropsTaskContainer) {
     const dispatch = useDispatch();
     const [isOptionsVisible , SetIsOptionsVisible ] = useState(false)
     const containerReference = useRef<HTMLDivElement>(null)
@@ -24,13 +27,21 @@ export default function TaskContainer({text,id,taskStatus}:PropsTaskContainer) {
         setTimeout(() => dispatch(deleteTask({ id,taskStatus })), 350)
     }
     const pushTask= (task:TaskStatus) => {
-        dispatch(pushTasks({id,text, task}))
+        dispatch(pushTasks({id,text,task,description,date}))
         deleteAnimation()
     }
-
+    const downloadTasks = (task:TaskStatus) => {
+        dispatch(downloadTask({id,text,task,date,description}))
+    }
     return (
         <div className="taskContainer" ref={containerReference}>
-            <div id="todofirst">{text}
+            <div id="todofirst">
+                <Link to={id}>
+                    <button className='eye' onClick={() => downloadTasks(taskStatus)}>
+                        <i className="gg-eye-alt"></i>
+                    </button>
+                </Link>
+                {text}
                 <button className="trash" onClick={() => SetIsOptionsVisible(prevState => !prevState)}>
                     <i className="gg-trash"></i>
                 </button>

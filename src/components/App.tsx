@@ -1,8 +1,16 @@
 import React from 'react'
-import InputContainer from './container/Header'
+import TodoListContainer from './container/Header'
 import './Background'
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import TaskData from "./subPages/taskData";
 export default function App () {
   return (
-        <InputContainer />
+      <Router>
+        <Routes>
+            <Route path = '/' element={<TodoListContainer />} />
+            <Route path = '/:id' element={<TaskData />}/>
+        </Routes>
+      </Router>
+
   )
 }

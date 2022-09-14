@@ -4,7 +4,7 @@ import {useState} from "react";
 import {addTodo} from '../redux/todoSlice';
 import {useAppDispatch} from "../redux/store";
 
-export default function InputContainer() {
+export default function TodoListContainer() {
 
     const [value, setValue] = useState('');
     const dispatch = useAppDispatch();

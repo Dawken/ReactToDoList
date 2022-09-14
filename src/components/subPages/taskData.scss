@@ -1,0 +1,51 @@
+section {
+    display: grid;
+    place-items: center;
+}
+.taskDataContainer {
+    width: 100vh;
+    height: 70vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    margin-top: 12vh;
+    border-radius: 15px;
+    .taskName, .taskDate, .taskStatus {
+        font-size: 40px;
+        margin: 50px 30px;
+        font-family: 'Comfortaa', cursive;
+    }
+    form {
+        display: flex;
+        textarea {
+            margin: 30px 30px;
+            resize: none;
+            background-color: #050505;
+            border-style: solid;
+            border-width: 4px;
+            border-image: linear-gradient(to right, darkblue, darkorchid) 1;
+            width: 40vh;
+            height: 20vh;
+            font-size: 30px;
+            outline: none;
+        }
+        button {
+            appearance: none;
+            border: none;
+            outline: none;
+            color: white;
+            background-color: transparent;
+            font-size: 30px;
+            background: -webkit-linear-gradient(rgb(97, 10, 218), rgb(3, 8, 128));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            cursor: pointer;
+            font-family: 'Comfortaa', cursive;
+            font-weight: 600;
+            transition: 0.1s;
+        }
+        button:active {
+            transform: scale(1.1);
+            transition: 0.1s;
+        }
+    }
+
+}

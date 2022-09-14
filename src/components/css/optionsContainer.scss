@@ -1,0 +1,64 @@
+#delete {
+  border: none;
+  background-color: transparent;
+  font-size: 17px;
+  background: -webkit-linear-gradient(rgb(255, 0, 0), rgb(243, 3, 183));
+  font-weight: 600;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  cursor: pointer;
+  font-family: 'Comfortaa', cursive;
+}
+#delete::after {
+  content: '';
+  width: 27%;
+  height: 2px;
+  position: absolute;
+  border-radius: 4px;
+  background-color: red;
+  left: 0;
+  bottom: 0;
+  margin-left: 7px;
+  margin-bottom: 15px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .25s ease;
+}
+#delete:hover::after {
+  transform: scaleX(1);
+}
+
+#todo {
+  border: none;
+  background-color: transparent;
+  font-size: 17px;
+  background: -webkit-linear-gradient(rgb(3, 243, 243),rgb(47, 0, 255) );
+  font-weight: 600;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  cursor: pointer;
+  font-family: 'Comfortaa', cursive;
+}
+#during {
+  border: none;
+  background-color: transparent;
+  font-size: 17px;
+  background: -webkit-linear-gradient(rgb(251, 255, 0), rgb(243, 139, 3));
+  font-weight: 600;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  cursor: pointer;
+  font-family: 'Comfortaa', cursive;
+}
+
+#done {
+  border: none;
+  background-color: transparent;
+  font-size: 17px;
+  background: -webkit-linear-gradient(rgb(51, 255, 0), rgb(3, 243, 171));
+  font-weight: 600;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  cursor: pointer;
+  font-family: 'Comfortaa', cursive;
+}

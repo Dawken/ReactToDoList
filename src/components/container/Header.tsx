@@ -1,33 +1,41 @@
-import * as React from 'react'
+import React, {ChangeEvent} from 'react'
 import TodoList from "./todoList";
 import {useState} from "react";
-import {useCustom} from "../hooks/customHooks";
+import {addTodo} from '../redux/todoSlice';
+import {useAppDispatch} from "../redux/store";
 
-export default function Header () {
+export default function InputContainer() {
 
-    const [todoInput, setTodoInput] = useState('')
-    const [todos, setTodos] = useCustom("todo" )
-    const [durings, setDurings] =useCustom("during")
-    const [dones, setDones] =useCustom("done" )
+    const [value, setValue] = useState('');
+    const dispatch = useAppDispatch();
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      setTodoInput(event.target.value)
-    }
-    const submitTodo = () => {
-      setTodos([
-          ...todos,
-          {text: todoInput, id: Math.random() * 1000}
-      ])
-    setTodoInput('')
-    }
+    const onSubmit = (event:ChangeEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        if (value) {
+            dispatch(
+                addTodo({
+                    title: value,
+                }),
+            );
+            setValue('')
+        }
+    };
 
     return (
-      <div>
-        <div className="input">
-            <input type="text" id="task-input" onChange={handleChange} placeholder="What are we doin today?" value={todoInput}/>
-            <button id="submit" onClick={submitTodo}>Add task</button>
-        </div>
-      <TodoList todos={todos} setTodos={setTodos} durings={durings} setDurings={setDurings} dones={dones} setDones={setDones}/>
-    </div>
+        <main>
+            <form onSubmit={onSubmit}>
+                <div className="input" >
+                    <input
+                        type="text"
+                        id="task-input"
+                        onChange={(event) => setValue(event.target.value)}
+                        placeholder="What are we doin today?"
+                        value={value}
+                    />
+                    <button id="submit" >Add task</button>
+                </div>
+            </form>
+            <TodoList/>
+        </main>
     )
 }

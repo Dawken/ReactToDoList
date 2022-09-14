@@ -1,6 +1,6 @@
-export interface type_alias {
+export type ContainerProps = {
     text: string,
-    id:number
+    id:string
 }
 
 export type TaskStatus = "todo" | "during" | "done"

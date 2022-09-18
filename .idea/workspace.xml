@@ -2,10 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="45b90587-fb3e-4165-839a-7dee5ff56939" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/subPages/taskData404.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintrc.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-react-ts-app/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-react-ts-app/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-react-ts-app/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-react-ts-app/public/vite.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-react-ts-app/src/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-react-ts-app/src/App.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-react-ts-app/src/assets/react.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-react-ts-app/src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-react-ts-app/src/main.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-react-ts-app/src/vite-env.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-react-ts-app/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-react-ts-app/tsconfig.node.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-react-ts-app/vite.config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/container/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/container/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/container/createContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/container/createContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/container/todoList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/container/todoList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/customTypings.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/customTypings.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/redux/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/redux/store.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/redux/todoSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/redux/todoSlice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/subPages/taskData.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/subPages/taskData.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/subPages/taskData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/subPages/taskData.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reportWebVitals.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reportWebVitals.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +143,11 @@
       <workItem from="1663031898738" duration="163000" />
       <workItem from="1663092818914" duration="14167000" />
       <workItem from="1663160641421" duration="960000" />
-      <workItem from="1663166962202" duration="9792000" />
+      <workItem from="1663166962202" duration="17039000" />
+      <workItem from="1663248998851" duration="2142000" />
+      <workItem from="1663352394878" duration="2774000" />
+      <workItem from="1663426327498" duration="16269000" />
+      <workItem from="1663535114622" duration="704000" />
     </task>
     <servers />
   </component>

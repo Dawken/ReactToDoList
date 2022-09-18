@@ -1,60 +1,43 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {TaskStatus, ContainerProps} from "../customTypings";
-import {v4} from "uuid";
+import {createSlice, PayloadAction} from '@reduxjs/toolkit'
+import {TaskStatus, ContainerProps} from '../customTypings'
+import {v4} from 'uuid'
 
 export type State = {
-    todo:ContainerProps[],
-    during:ContainerProps[],
-    done:ContainerProps[],
-    tasks: {text:string, id:string, date:string, taskStatus:TaskStatus, description:string}
+    container:ContainerProps[],
 }
 
-const initialState:State = {todo:[], during:[], done:[], tasks:{text:'', id:'', date:'', taskStatus:'todo', description:''}}
-
+const initialState:State = {container:[]}
 export const todoSlice = createSlice({
-    name: 'containers',
-    initialState,
-    reducers: {
-        addTodo: (state,action:PayloadAction<{title:string}>) => {
-            const todo = {
-                id: v4(),
-                text: action.payload.title,
-                date: new Date().toLocaleString(),
-                description: ''
-            };
-            state.todo.push(todo);
-        },
-        deleteTask: (state,action:PayloadAction<{id:string,taskStatus:TaskStatus}>) => {
-           state[action.payload.taskStatus] = state[action.payload.taskStatus].filter((element) => element.id !== action.payload.id)
-        },
-        pushTasks:(state, action:PayloadAction<{id:string, text:string, date:string, description:string, task:TaskStatus}>) => {
-            const task = {
-                id: action.payload.id,
-                text: action.payload.text,
-                date: action.payload.date,
-                description: action.payload.description
-            }
-            state[action.payload.task].push(task)
-        },
-        downloadTask:(state, action:PayloadAction<{id:string, text:string, date:string, task:TaskStatus, description: string}>) => {
-            const task = {
-                id: action.payload.id,
-                text: action.payload.text,
-                date: action.payload.date,
-                taskStatus: action.payload.task,
-                description: action.payload.description
-            }
-            state.tasks = task
-        },
-        textAreaInput:(state, action:PayloadAction<{description:string, taskStatus:TaskStatus, id:string}>) => {
-            const properTask = state[action.payload.taskStatus].find(element => element.id === action.payload.id)
-            let taskDescription = JSON.stringify(properTask?.description)
-            if(properTask) {
-                taskDescription = action.payload.description
-                properTask.description = taskDescription
-            }
-        }
-    },
-});
-export const {addTodo,deleteTask,pushTasks,downloadTask,textAreaInput} = todoSlice.actions;
-export default todoSlice.reducer;
+
+	name: 'containers',
+	initialState,
+	reducers: {
+		addTodo: (state,action:PayloadAction<{title:string, taskStatus: TaskStatus}>) => {
+			const todo = {
+				id: v4(),
+				text: action.payload.title,
+				date: new Date().toLocaleString(),
+				description: '',
+				taskStatus: action.payload.taskStatus
+			}
+			state.container.push(todo)
+		},
+		deleteTask: (state,action:PayloadAction<{id:string}>) => {
+			state.container = state.container.filter((element) => element.id !== action.payload.id)
+		},
+		pushTasks:(state, action:PayloadAction<{id:string,task:string}>) => {
+			const properTask = state.container.find((element) => element.id === action.payload.id)
+			if(properTask) {
+				properTask.taskStatus = action.payload.task
+			}
+		},
+		textAreaInput:(state, action:PayloadAction<{description:string, id:string | undefined}>) => {
+			const properTask = state.container.find(element => element.id === action.payload.id)
+			if(properTask) {
+				properTask.description = action.payload.description
+			}
+		}
+	},
+})
+export const {addTodo,deleteTask,pushTasks,textAreaInput} = todoSlice.actions
+export default todoSlice.reducer

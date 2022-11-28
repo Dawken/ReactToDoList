@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
-import {TaskStatus, ContainerProps} from '../customTypings'
+import {TaskStatus, ContainerProps} from '../../customTypings'
 import {v4} from 'uuid'
 
 export type State = {

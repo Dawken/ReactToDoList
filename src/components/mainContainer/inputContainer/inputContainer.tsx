@@ -1,10 +1,10 @@
 import React, {ChangeEvent} from 'react'
-import TodoList from './todoList'
+import './inputContainer.scss'
 import {useState} from 'react'
-import {addTodo} from '../redux/todoSlice'
-import {useAppDispatch} from '../redux/store'
+import {addTodo} from '../../redux/todoSlice'
+import {useAppDispatch} from '../../redux/store'
 
-export default function TodoListContainer() {
+const TodoListContainer = () => {
 
 	const [value, setValue] = useState('')
 	const dispatch = useAppDispatch()
@@ -27,15 +27,16 @@ export default function TodoListContainer() {
 				<div className="input" >
 					<input
 						type="text"
-						id="task-input"
+						className="taskInput"
 						onChange={(event) => setValue(event.target.value)}
 						placeholder="What are we doin today?"
 						value={value}
 					/>
-					<button id="submit" >Add task</button>
+					<button className="submit" >Add task</button>
 				</div>
 			</form>
-			<TodoList/>
+
 		</main>
 	)
 }
+export default TodoListContainer

@@ -1,16 +1,17 @@
 import React from 'react'
+import './taskDataError.scss'
 import {Link} from 'react-router-dom'
 
-const TaskData404 = () => {
+const TaskDataError = () => {
 	return (
 		<section className='taskData'>
-			<div className='taskDataContainer'>
+			<div className='errorContainer'>
 				<Link to={'/'}>
 					<i className="gg-arrow-left"></i>
 				</Link>
-				<div className='error404'>Task does not exist!</div>
+				<div className='errorInformation'>Task does not exist!</div>
 			</div>
 		</section>
 	)
 }
-export default TaskData404
+export default TaskDataError

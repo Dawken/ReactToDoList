@@ -1,7 +1,7 @@
 .taskData {
     display: grid;
     place-items: center;
-}
+
 .taskDataContainer {
     width: 100vh;
     height: 70vh;
@@ -93,5 +93,5 @@
             transition: 0.1s;
         }
     }
-
+    }
 }

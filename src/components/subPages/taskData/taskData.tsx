@@ -1,9 +1,9 @@
 import React, {ChangeEvent, useState} from 'react'
-import {useAppDispatch, useAppSelector} from '../redux/store'
-import {textAreaInput} from '../redux/todoSlice'
+import './taskData.scss'
+import {useAppDispatch, useAppSelector} from '../../redux/store'
+import {textAreaInput} from '../../redux/todoSlice'
 import {Link, useParams} from 'react-router-dom'
-import taskData404 from './taskData404'
-import TaskData404 from './taskData404'
+import TaskDataError from '../../errorSubpage/taskDataError'
 
 const TaskData = () => {
 
@@ -28,7 +28,7 @@ const TaskData = () => {
 		}
 	}
 	if(!downloadTask) {
-		return <TaskData404 />
+		return <TaskDataError />
 	}
 	return (
 		<section className='taskData'>

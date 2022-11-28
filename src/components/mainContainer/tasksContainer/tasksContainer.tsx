@@ -1,16 +1,18 @@
 import * as React from 'react'
-import TaskContainer from './createContainer'
-import {useAppSelector} from '../redux/store'
+import TaskContainer from './taskContainer/taskContainer'
+import './tasksContainer.scss'
+import {useAppSelector} from '../../redux/store'
 
 
-const TodoList = () => {
+const TasksContainer = () => {
 
 	const todos = useAppSelector((state) => state.todos)
+
 	return (
 		<div className="container">
-			<div className="tasksContainers">
+			<div className="tasksContainer">
 				<div className="top">
-					<h1 id='topTodo'>To do</h1>
+					<h1 className='topTodo'>To do</h1>
 				</div>
 				{todos.container.map((todo) => (
 					todo.taskStatus === 'todo' &&
@@ -25,9 +27,9 @@ const TodoList = () => {
 				))}
 			</div>
 
-			<div className="tasksContainers">
+			<div className="tasksContainer">
 				<div className="top">
-					<h1 id='topDuring'>During</h1>
+					<h1 className='topDuring'>During</h1>
 				</div>
 				{todos.container.map((during) => (
 					during.taskStatus === 'during' &&
@@ -42,9 +44,9 @@ const TodoList = () => {
 				))}
 			</div>
 
-			<div className="tasksContainers">
+			<div className="tasksContainer">
 				<div className="top">
-					<h1 id='topDone'>Done</h1>
+					<h1 className='topDone'>Done</h1>
 				</div>
 				{todos.container.map((done) => (
 					done.taskStatus === 'done' &&
@@ -61,4 +63,4 @@ const TodoList = () => {
 		</div>
 	)
 }
-export default TodoList
+export default TasksContainer

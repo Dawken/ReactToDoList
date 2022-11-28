@@ -1,8 +1,9 @@
 import React from 'react'
+import './taskContainer.scss'
 import {useEffect, useRef, useState} from 'react'
 import {useDispatch} from 'react-redux'
-import {pushTasks, deleteTask} from '../redux/todoSlice'
-import {TaskStatus} from '../customTypings'
+import {pushTasks, deleteTask} from '../../../redux/todoSlice'
+import {TaskStatus} from '../../../../customTypings'
 import {Link} from 'react-router-dom'
 
 type PropsTaskContainer = {
@@ -13,7 +14,7 @@ type PropsTaskContainer = {
     description: string
 }
 
-export default function TaskContainer({text,id,taskStatus}:PropsTaskContainer) {
+const TaskContainer = ({text,id,taskStatus}:PropsTaskContainer) => {
 	const dispatch = useDispatch()
 	const [isOptionsVisible , SetIsOptionsVisible ] = useState(false)
 	const containerReference = useRef<HTMLDivElement>(null)
@@ -31,7 +32,7 @@ export default function TaskContainer({text,id,taskStatus}:PropsTaskContainer) {
 	}
 	return (
 		<div className="taskContainer" ref={containerReference}>
-			<div id="todofirst">
+			<div className="todofirst">
 				<Link to={id}>
 					<button className='eye'>
 						<i className="gg-eye-alt"></i>
@@ -39,7 +40,7 @@ export default function TaskContainer({text,id,taskStatus}:PropsTaskContainer) {
 				</Link>
 				{text}
 				<button className="trash" onClick={() => SetIsOptionsVisible(prevState => !prevState)}>
-					<i className="gg-trash"></i>
+					<i className="trashIcon"></i>
 				</button>
 			</div>
 			<div className={isOptionsVisible ? 'options animation' : 'options'}>
@@ -51,3 +52,4 @@ export default function TaskContainer({text,id,taskStatus}:PropsTaskContainer) {
 		</div>
 	)
 }
+export default TaskContainer

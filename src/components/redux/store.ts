@@ -11,7 +11,7 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 
 const rootReducer = combineReducers({todos:todoReducer})
 
-function saveToLocalStorage() {
+const saveToLocalStorage = () => {
 	try {
 		const serialisedState = JSON.stringify(store.getState())
 		localStorage.setItem('tasksState', serialisedState)
@@ -21,7 +21,7 @@ function saveToLocalStorage() {
 
 }
 
-function loadFromLocalStorage() {
+const loadFromLocalStorage = () => {
 	try {
 		const serialisedState = localStorage.getItem('tasksState')
 		if (serialisedState === null) return undefined

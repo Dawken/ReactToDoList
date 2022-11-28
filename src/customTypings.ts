@@ -6,4 +6,3 @@ export type ContainerProps = {
     taskStatus:string
 }
 export type TaskStatus = 'todo' | 'during' | 'done'
-

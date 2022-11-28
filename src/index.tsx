@@ -1,9 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './components/css/index.scss'
-import './components/subPages/taskData.scss'
-import App from './components/App'
-import reportWebVitals from './reportWebVitals'
+import App from './App'
 import {store} from './components/redux/store'
 import {Provider} from 'react-redux'
 
@@ -17,6 +14,4 @@ root.render(
 		</Provider>
 	</React.StrictMode>
 )
-
-reportWebVitals()
 

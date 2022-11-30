@@ -1,37 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="45b90587-fb3e-4165-839a-7dee5ff56939" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.eslintrc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLinters/eslint.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Background.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/errorSubpage/taskDataError.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/errorSubpage/taskDataError.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/mainContainer/inputContainer/inputContainer.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/mainContainer/inputContainer/inputContainer.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/mainContainer/mainContainer.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/mainContainer/tasksContainer/taskContainer/taskContainer.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/mainContainer/tasksContainer/taskContainer/taskContainer.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/mainContainer/tasksContainer/tasksContainer.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/mainContainer/tasksContainer/tasksContainer.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pageBackground.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/redux/store.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/redux/todoSlice.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/subPages/taskData/taskData.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/subPages/taskData/taskData.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/customTypings.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" />
-    </list>
+    <list default="true" id="45b90587-fb3e-4165-839a-7dee5ff56939" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,33 +16,31 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2CuSc1BHCf1FPyPVGCGhY1VPhTG" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/dawid/OneDrive/Pulpit/wszystkie projekty/reactToDoList/src/components",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Users\\dawid\\OneDrive\\Pulpit\\wszystkie projekty\\reactToDoList\\backend\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/dawid/OneDrive/Pulpit/wszystkie projekty/reactToDoList/src/components&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\dawid\\OneDrive\\Pulpit\\wszystkie projekty\\reactToDoList\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\dawid\OneDrive\Pulpit\wszystkie projekty\reactToDoList\src\components" />
@@ -164,17 +132,7 @@
       <workItem from="1665757458204" duration="137000" />
       <workItem from="1669463464495" duration="58000" />
       <workItem from="1669597931074" duration="4044000" />
-      <workItem from="1669651118736" duration="3507000" />
-      <workItem from="1669655001631" duration="55000" />
-      <workItem from="1669655077574" duration="1669000" />
-      <workItem from="1669657899789" duration="2636000" />
-      <workItem from="1669662859744" duration="76000" />
-      <workItem from="1669663161058" duration="11516000" />
-      <workItem from="1669728478372" duration="5578000" />
-      <workItem from="1669735484194" duration="8152000" />
-      <workItem from="1669748933873" duration="6644000" />
-      <workItem from="1669760614414" duration="1038000" />
-      <workItem from="1669819453020" duration="2528000" />
+      <workItem from="1669651118736" duration="3474000" />
     </task>
     <servers />
   </component>

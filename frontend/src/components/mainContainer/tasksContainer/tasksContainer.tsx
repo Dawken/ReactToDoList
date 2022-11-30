@@ -29,14 +29,14 @@ const TasksContainer = () => {
 				</div>
 				{userData.map((todo:UserData) => (
 					todo.taskStatus === 'todo' &&
-					<TaskContainer
-						text={todo.text}
-						id={todo._id}
-						key={todo._id}
-						date={todo.date}
-						description={todo.description}
-						taskStatus="todo"
-					/>
+						<TaskContainer
+							text={todo.text}
+							id={todo._id}
+							key={todo._id}
+							date={todo.date}
+							description={todo.description}
+							taskStatus="todo"
+						/>
 				))}
 			</div>
 

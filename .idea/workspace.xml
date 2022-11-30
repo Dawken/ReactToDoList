@@ -2,27 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="45b90587-fb3e-4165-839a-7dee5ff56939" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/errorSubpage/taskDataError.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/mainContainer/inputContainer/inputContainer.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/mainContainer/mainContainer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/mainContainer/tasksContainer/taskContainer/taskContainer.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/mainContainer/tasksContainer/tasksContainer.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/pageBackground.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Background.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Background.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/container/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/mainContainer/inputContainer/inputContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/container/createContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/mainContainer/tasksContainer/taskContainer/taskContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/container/todoList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/mainContainer/tasksContainer/tasksContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/css/index.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/customTypings.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/customTypings.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/redux/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/redux/store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/redux/todoSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/redux/todoSlice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/subPages/taskData.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/subPages/taskData/taskData.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/subPages/taskData.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/subPages/taskData/taskData.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/subPages/taskData404.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/errorSubpage/taskDataError.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reportWebVitals.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +23,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2CuSc1BHCf1FPyPVGCGhY1VPhTG" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -59,7 +40,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\dawid\\OneDrive\\Pulpit\\wszystkie projekty\\reactToDoList\\node_modules\\typescript\\lib&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\dawid\\OneDrive\\Pulpit\\wszystkie projekty\\reactToDoList\\frontend\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -68,11 +49,11 @@
       <recent name="C:\Users\dawid\OneDrive\Pulpit\wszystkie projekty\reactToDoList\src\components" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\dawid\OneDrive\Pulpit\wszystkie projekty\reactToDoList\frontend" />
       <recent name="C:\Users\dawid\OneDrive\Pulpit\wszystkie projekty\reactToDoList\src\components\errorSubpage" />
       <recent name="C:\Users\dawid\OneDrive\Pulpit\wszystkie projekty\reactToDoList\src\components\subPages\taskData" />
       <recent name="C:\Users\dawid\OneDrive\Pulpit\wszystkie projekty\reactToDoList\src\components" />
       <recent name="C:\Users\dawid\OneDrive\Pulpit\wszystkie projekty\reactToDoList\src\components\mainContainer\tasksContainer\taskContainer" />
-      <recent name="C:\Users\dawid\OneDrive\Pulpit\wszystkie projekty\reactToDoList\src\components\mainContainer\tasksContainer" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -155,6 +136,7 @@
       <workItem from="1669463464495" duration="58000" />
       <workItem from="1669597931074" duration="4044000" />
       <workItem from="1669651118736" duration="2636000" />
+      <workItem from="1669848906436" duration="358000" />
     </task>
     <servers />
   </component>

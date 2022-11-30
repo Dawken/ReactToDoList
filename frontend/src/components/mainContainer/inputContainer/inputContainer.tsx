@@ -1,26 +1,17 @@
-import React, {ChangeEvent} from 'react'
+import React, {ChangeEvent, useState} from 'react'
 import './inputContainer.scss'
-import {useState} from 'react'
-import {addTodo} from '../../redux/todoSlice'
-import {useAppDispatch} from '../../redux/store'
+import axios from 'axios'
 
 const TodoListContainer = () => {
 
-	const [value, setValue] = useState('')
-	const dispatch = useAppDispatch()
+	const [task, setTask] = useState('')
 
 	const onSubmit = (event:ChangeEvent<HTMLFormElement>) => {
 		event.preventDefault()
-		if(value) {
-			dispatch(
-				addTodo({
-					title: value,
-					taskStatus: 'todo'
-				}),
-			)
-			setValue('')
-		}
+		axios.post('/api/task', {text: task})
+		setTask('')
 	}
+
 	return (
 		<main>
 			<form onSubmit={onSubmit}>
@@ -28,11 +19,11 @@ const TodoListContainer = () => {
 					<input
 						type="text"
 						className="taskInput"
-						onChange={(event) => setValue(event.target.value)}
 						placeholder="What are we doin today?"
-						value={value}
+						onChange={(event) => setTask(event.target.value)}
+						value={task}
 					/>
-					<button className="submit" >Add task</button>
+					<button className="submit">Add task</button>
 				</div>
 			</form>
 

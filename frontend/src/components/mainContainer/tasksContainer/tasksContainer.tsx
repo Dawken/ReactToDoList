@@ -1,25 +1,38 @@
 import * as React from 'react'
 import TaskContainer from './taskContainer/taskContainer'
 import './tasksContainer.scss'
-import {useAppSelector} from '../../redux/store'
+import axios from 'axios'
+import {useEffect, useState} from 'react'
 
-
+type UserData = {
+	_id: string,
+	text: string,
+	date: string,
+	description: string,
+	taskStatus: string,
+}
 const TasksContainer = () => {
 
-	const todos = useAppSelector((state) => state.todos)
-
+	const [userData, setUserData] = useState([])
+	useEffect(() => {
+		const fetchData = async () => {
+			const data = await axios.get('/getAll')
+			setUserData(data.data)
+		}
+		fetchData()
+	},[userData])
 	return (
 		<div className="container">
 			<div className="tasksContainer">
 				<div className="top">
 					<h1 className='topTodo'>To do</h1>
 				</div>
-				{todos.container.map((todo) => (
+				{userData.map((todo:UserData) => (
 					todo.taskStatus === 'todo' &&
 					<TaskContainer
 						text={todo.text}
-						id={todo.id}
-						key={todo.id}
+						id={todo._id}
+						key={todo._id}
 						date={todo.date}
 						description={todo.description}
 						taskStatus="todo"
@@ -31,12 +44,12 @@ const TasksContainer = () => {
 				<div className="top">
 					<h1 className='topDuring'>During</h1>
 				</div>
-				{todos.container.map((during) => (
+				{userData.map((during:UserData) => (
 					during.taskStatus === 'during' &&
 					<TaskContainer
 						text={during.text}
-						id={during.id}
-						key={during.id}
+						id={during._id}
+						key={during._id}
 						date={during.date}
 						description={during.description}
 						taskStatus="during"
@@ -48,12 +61,12 @@ const TasksContainer = () => {
 				<div className="top">
 					<h1 className='topDone'>Done</h1>
 				</div>
-				{todos.container.map((done) => (
+				{userData.map((done:UserData) => (
 					done.taskStatus === 'done' &&
 					<TaskContainer
 						text={done.text}
-						id={done.id}
-						key={done.id}
+						id={done._id}
+						key={done._id}
 						date={done.date}
 						description={done.description}
 						taskStatus="done"

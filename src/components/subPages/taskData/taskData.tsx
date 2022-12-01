@@ -1,46 +1,54 @@
-import React, {ChangeEvent, useState} from 'react'
+import React, {ChangeEvent, useEffect, useState} from 'react'
 import './taskData.scss'
-import {useAppDispatch, useAppSelector} from '../../redux/store'
-import {textAreaInput} from '../../redux/todoSlice'
 import {Link, useParams} from 'react-router-dom'
+import axios from 'axios'
 import TaskDataError from '../../errorSubpage/taskDataError'
 
+type UserData = {
+	_id?: string,
+	text?: string,
+	date?: string,
+	description?: string,
+	taskStatus?: string,
+}
 const TaskData = () => {
 
 	const {id} = useParams()
 
-	const todos = useAppSelector((state) => state.todos)
-	const downloadTask = todos.container.find((element) => element.id === id)
+	const [taskData, setTaskData] = useState<UserData>({})
 
-	const [value, setValue] = useState(downloadTask?.description)
-	const dispatch = useAppDispatch()
-
-
-	const onSubmit = (event:ChangeEvent<HTMLFormElement>) => {
-		event.preventDefault()
-		if (value) {
-			dispatch(
-				textAreaInput({
-					description: value,
-					id: downloadTask?.id
-				}),
-			)
+	useEffect(() => {
+		const fetchData = async() => {
+			const downloadTask = await axios.get(`/api/tasks/${id}`)
+			setTaskData(downloadTask.data)
 		}
+		fetchData()
+	},[])
+
+	const onSubmit = async(event:ChangeEvent<HTMLFormElement>) => {
+		event.preventDefault()
+		await axios.patch(`/api/tasks/${id}`, {description: taskData?.description})
 	}
-	if(!downloadTask) {
-		return <TaskDataError />
-	}
+
 	return (
 		<section className='taskData'>
 			<div className='taskDataContainer'>
 				<Link to={'/'}>
 					<i className="gg-arrow-left"></i>
 				</Link>
-				<div className='taskName'>{`Task name: ${downloadTask?.text}`}</div>
-				<div className='taskDate'>{`Task date: ${downloadTask?.date}`}</div>
-				<div className='taskStatus'>{`Task Status: ${downloadTask?.taskStatus}`}</div>
+				<div className='taskName'>{`Task name: ${taskData?.text}`}</div>
+				<div className='taskDate'>{`Task date: ${taskData?.date}`}</div>
+				<div className='taskStatus'>{`Task Status: ${taskData?.taskStatus}`}</div>
 				<form onSubmit={onSubmit}>
-					<textarea className='description' onChange={(event) => setValue(event.target.value)} value={value} placeholder='Description'/>
+					<textarea
+						className='description'
+						onChange={(event) => setTaskData({
+							...taskData,
+							description:event.target.value
+						})}
+						value={taskData.description}
+						placeholder='Description'
+					/>
 					<button className='save'>Save</button>
 				</form>
 			</div>

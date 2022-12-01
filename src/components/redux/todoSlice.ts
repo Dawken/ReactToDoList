@@ -1,38 +1,43 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {TaskStatus, ContainerProps} from "../customTypings";
-import {v4} from "uuid";
-
+import {createSlice, PayloadAction} from '@reduxjs/toolkit'
+import {TaskStatus, ContainerProps} from '../../customTypings'
+import {v4} from 'uuid'
 
 export type State = {
-    todo:ContainerProps[], during:ContainerProps[], done:ContainerProps[],
+    container:ContainerProps[],
 }
 
-const initialState:State = {todo:[], during:[], done:[]}
-
+const initialState:State = {container:[]}
 export const todoSlice = createSlice({
-    name: 'containers',
-    initialState,
-    reducers: {
-        addTodo: (state,action:PayloadAction<{title:string}>) => {
-            const todo = {
-                id: v4(),
-                text: action.payload.title,
-            };
-            state.todo.push(todo);
-        },
 
-        deleteTask: (state,action:PayloadAction<{id:string,taskStatus:TaskStatus}>) => {
-           state[action.payload.taskStatus] = state[action.payload.taskStatus].filter((element) => element.id !== action.payload.id)
-        },
-
-        pushTasks:(state, action:PayloadAction<{id:string,text:string,task:TaskStatus}>) => {
-            const task = {
-                id: action.payload.id,
-                text: action.payload.text
-            }
-            state[action.payload.task].push(task)
-        },
-    },
-});
-export const {addTodo,deleteTask,pushTasks} = todoSlice.actions;
-export default todoSlice.reducer;
+	name: 'containers',
+	initialState,
+	reducers: {
+		addTodo: (state,action:PayloadAction<{title:string, taskStatus: TaskStatus}>) => {
+			const todo = {
+				id: v4(),
+				text: action.payload.title,
+				date: new Date().toLocaleString(),
+				description: '',
+				taskStatus: action.payload.taskStatus
+			}
+			state.container.push(todo)
+		},
+		deleteTask: (state,action:PayloadAction<{id:string}>) => {
+			state.container = state.container.filter((element) => element.id !== action.payload.id)
+		},
+		pushTasks:(state, action:PayloadAction<{id:string,task:string}>) => {
+			const properTask = state.container.find((element) => element.id === action.payload.id)
+			if(properTask) {
+				properTask.taskStatus = action.payload.task
+			}
+		},
+		textAreaInput:(state, action:PayloadAction<{description:string, id:string | undefined}>) => {
+			const properTask = state.container.find(element => element.id === action.payload.id)
+			if(properTask) {
+				properTask.description = action.payload.description
+			}
+		}
+	},
+})
+export const {addTodo,deleteTask,pushTasks,textAreaInput} = todoSlice.actions
+export default todoSlice.reducer

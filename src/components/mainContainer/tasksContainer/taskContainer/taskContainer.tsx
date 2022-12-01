@@ -1,8 +1,6 @@
 import React from 'react'
 import './taskContainer.scss'
 import {useEffect, useRef, useState} from 'react'
-import {useDispatch} from 'react-redux'
-import {pushTasks} from '../../../redux/todoSlice'
 import {TaskStatus} from '../../../../customTypings'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
@@ -16,7 +14,7 @@ type PropsTaskContainer = {
 }
 
 const TaskContainer = ({text,id,taskStatus}:PropsTaskContainer) => {
-	const dispatch = useDispatch()
+
 	const [isOptionsVisible , SetIsOptionsVisible ] = useState(false)
 	const containerReference = useRef<HTMLDivElement>(null)
 
@@ -31,7 +29,7 @@ const TaskContainer = ({text,id,taskStatus}:PropsTaskContainer) => {
 		})
 	}
 	const pushTask= (task:TaskStatus) => {
-		dispatch(pushTasks({id,task}))
+		axios.patch(`/api/tasks/${id}`, {taskStatus: task})
 	}
 	return (
 		<div className="taskContainer" ref={containerReference}>

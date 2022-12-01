@@ -8,7 +8,7 @@ const TodoListContainer = () => {
 
 	const onSubmit = (event:ChangeEvent<HTMLFormElement>) => {
 		event.preventDefault()
-		axios.post('/api/task', {text: task})
+		axios.post('/api/tasks', {text: task})
 		setTask('')
 	}
 

@@ -16,7 +16,7 @@ const TasksContainer = () => {
 	const [userData, setUserData] = useState([])
 	useEffect(() => {
 		const fetchData = async () => {
-			const data = await axios.get('/getAll')
+			const data = await axios.get('/api/tasks')
 			setUserData(data.data)
 		}
 		fetchData()

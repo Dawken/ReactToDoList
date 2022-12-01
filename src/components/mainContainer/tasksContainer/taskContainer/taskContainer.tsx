@@ -2,9 +2,10 @@ import React from 'react'
 import './taskContainer.scss'
 import {useEffect, useRef, useState} from 'react'
 import {useDispatch} from 'react-redux'
-import {pushTasks, deleteTask} from '../../../redux/todoSlice'
+import {pushTasks} from '../../../redux/todoSlice'
 import {TaskStatus} from '../../../../customTypings'
 import {Link} from 'react-router-dom'
+import axios from 'axios'
 
 type PropsTaskContainer = {
     text: string,
@@ -25,7 +26,9 @@ const TaskContainer = ({text,id,taskStatus}:PropsTaskContainer) => {
 
 	const deleteAnimation = () => {
 		setTimeout(() => containerReference.current?.classList.remove('animation'),100)
-		setTimeout(() => dispatch(deleteTask({id})), 350)
+		setTimeout(() => {
+			axios.delete(`/api/tasks/${id}`)
+		})
 	}
 	const pushTask= (task:TaskStatus) => {
 		dispatch(pushTasks({id,task}))

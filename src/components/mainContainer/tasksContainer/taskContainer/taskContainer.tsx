@@ -4,6 +4,7 @@ import {useEffect, useRef, useState} from 'react'
 import {TaskStatus} from '../../../../customTypings'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
+import {useQueryClient} from 'react-query'
 
 type PropsTaskContainer = {
     text: string,
@@ -15,6 +16,7 @@ type PropsTaskContainer = {
 
 const TaskContainer = ({text,id,taskStatus}:PropsTaskContainer) => {
 
+	const queryClient = useQueryClient()
 	const [isOptionsVisible , SetIsOptionsVisible ] = useState(false)
 	const containerReference = useRef<HTMLDivElement>(null)
 
@@ -24,9 +26,8 @@ const TaskContainer = ({text,id,taskStatus}:PropsTaskContainer) => {
 
 	const deleteAnimation = () => {
 		setTimeout(() => containerReference.current?.classList.remove('animation'),100)
-		setTimeout(() => {
-			axios.delete(`/api/tasks/${id}`)
-		})
+		axios.delete(`/api/tasks/${id}`)
+		queryClient.invalidateQueries('tasks')
 	}
 	const pushTask= (task:TaskStatus) => {
 		axios.patch(`/api/tasks/${id}`, {taskStatus: task})

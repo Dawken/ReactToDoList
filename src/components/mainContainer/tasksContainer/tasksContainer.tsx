@@ -2,7 +2,9 @@ import * as React from 'react'
 import TaskContainer from './taskContainer/taskContainer'
 import './tasksContainer.scss'
 import axios from 'axios'
-import {useEffect, useState} from 'react'
+import {useQuery} from 'react-query'
+import LoadingAnimation from '../../animations/loadingAnimation'
+import TaskDataError from '../../errorSubpage/taskDataError'
 
 type UserData = {
 	_id: string,
@@ -13,21 +15,20 @@ type UserData = {
 }
 const TasksContainer = () => {
 
-	const [userData, setUserData] = useState([])
-	useEffect(() => {
-		const fetchData = async () => {
-			const data = await axios.get('/api/tasks')
-			setUserData(data.data)
-		}
-		fetchData()
-	},[userData])
+	const {isLoading, data} = useQuery('tasks',  () => {
+		return axios.get('/api/tasks')
+	})
+
+	if(isLoading) return <LoadingAnimation />
+
+	if(!data) return <TaskDataError />
 	return (
 		<div className="container">
 			<div className="tasksContainer">
 				<div className="top">
 					<h1 className='topTodo'>To do</h1>
 				</div>
-				{userData.map((todo:UserData) => (
+				{data?.data.map((todo:UserData) => (
 					todo.taskStatus === 'todo' &&
 					<TaskContainer
 						text={todo.text}
@@ -44,7 +45,7 @@ const TasksContainer = () => {
 				<div className="top">
 					<h1 className='topDuring'>During</h1>
 				</div>
-				{userData.map((during:UserData) => (
+				{data?.data.map((during:UserData) => (
 					during.taskStatus === 'during' &&
 					<TaskContainer
 						text={during.text}
@@ -61,7 +62,7 @@ const TasksContainer = () => {
 				<div className="top">
 					<h1 className='topDone'>Done</h1>
 				</div>
-				{userData.map((done:UserData) => (
+				{data?.data.map((done:UserData) => (
 					done.taskStatus === 'done' &&
 					<TaskContainer
 						text={done.text}

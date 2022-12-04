@@ -1,56 +1,49 @@
-import React, {ChangeEvent, useEffect, useState} from 'react'
+import React, {ChangeEvent, useState} from 'react'
 import './taskData.scss'
 import {Link, useParams} from 'react-router-dom'
 import axios from 'axios'
 import TaskDataError from '../../errorSubpage/taskDataError'
+import {useQuery, useQueryClient} from 'react-query'
+import LoadingAnimation from '../../animations/loadingAnimation'
 
-type UserData = {
-	_id?: string,
-	text?: string,
-	date?: string,
-	description?: string,
-	taskStatus?: string,
-}
 const TaskData = () => {
 
 	const {id} = useParams()
+	const queryClient = useQueryClient()
 
-	const [taskData, setTaskData] = useState<UserData>({})
+	const {isLoading, data} = useQuery(['task', `${id}`],  () => {
+		return axios.get(`/api/tasks/${id}`)
+	})
 
-	useEffect(() => {
-		const fetchData = async() => {
-			const downloadTask = await axios.get(`/api/tasks/${id}`)
-			setTaskData(downloadTask.data)
-		}
-		fetchData()
-	},[])
+	const [description, setDescription] = useState(data?.data.description)
 
-	const onSubmit = async(event:ChangeEvent<HTMLFormElement>) => {
+	const onSubmit = (event:ChangeEvent<HTMLFormElement>) => {
 		event.preventDefault()
-		await axios.patch(`/api/tasks/${id}`, {description: taskData?.description})
+		axios.patch(`/api/tasks/${id}`, {description: description})
+		queryClient.invalidateQueries(['task', `${id}`])
 	}
+	if(isLoading) return <LoadingAnimation />
 
+	if(!data) return <TaskDataError />
 	return (
 		<section className='taskData'>
 			<div className='taskDataContainer'>
 				<Link to={'/'}>
 					<i className="gg-arrow-left"></i>
 				</Link>
-				<div className='taskName'>{`Task name: ${taskData?.text}`}</div>
-				<div className='taskDate'>{`Task date: ${taskData?.date}`}</div>
-				<div className='taskStatus'>{`Task Status: ${taskData?.taskStatus}`}</div>
+				<div className='taskName'>{`Task name: ${data?.data.text}`}</div>
+				<div className='taskDate'>{`Task date: ${data?.data.date}`}</div>
+				<div className='taskStatus'>{`Task Status: ${data?.data.taskStatus}`}</div>
 				<form onSubmit={onSubmit}>
 					<textarea
 						className='description'
-						onChange={(event) => setTaskData({
-							...taskData,
-							description:event.target.value
-						})}
-						value={taskData.description}
+						onChange={(event) => setDescription(event.target.value)}
+						value={description === undefined ? data?.data.description : description}
 						placeholder='Description'
 					/>
 					<button className='save'>Save</button>
 				</form>
+
 			</div>
 		</section>
 	)

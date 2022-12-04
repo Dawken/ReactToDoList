@@ -31,6 +31,7 @@ const TaskContainer = ({text,id,taskStatus}:PropsTaskContainer) => {
 	}
 	const pushTask= (task:TaskStatus) => {
 		axios.patch(`/api/tasks/${id}`, {taskStatus: task})
+		queryClient.invalidateQueries('tasks')
 	}
 	return (
 		<div className="taskContainer" ref={containerReference}>

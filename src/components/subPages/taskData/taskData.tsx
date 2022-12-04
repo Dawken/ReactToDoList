@@ -22,6 +22,7 @@ const TaskData = () => {
 		axios.patch(`/api/tasks/${id}`, {description: description})
 		queryClient.invalidateQueries(['task', `${id}`])
 	}
+
 	if(isLoading) return <LoadingAnimation />
 
 	if(!data) return <TaskDataError />

@@ -3,7 +3,7 @@ import './loadingAnimations.scss'
 
 const LoadingAnimation = () => {
 	return (
-		<div className='container arc'></div>
+		<div className='loadingContainer'></div>
 	)
 }
 export default LoadingAnimation

@@ -7,7 +7,7 @@ const TaskDataError = () => {
 		<section className='taskData'>
 			<div className='errorContainer'>
 				<Link to={'/'}>
-					<i className="gg-arrow-left"></i>
+					<div className="arrowLeft"></div>
 				</Link>
 				<div className='errorInformation'>Task does not exist!</div>
 			</div>

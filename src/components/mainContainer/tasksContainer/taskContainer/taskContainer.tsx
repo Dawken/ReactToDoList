@@ -38,7 +38,7 @@ const TaskContainer = ({text,id,taskStatus}:PropsTaskContainer) => {
 			<div className="todofirst">
 				<Link to={id}>
 					<button className='eye'>
-						<i className="gg-eye-alt"></i>
+						<div className="EyeButton"></div>
 					</button>
 				</Link>
 				{text}

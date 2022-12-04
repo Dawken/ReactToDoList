@@ -20,17 +20,16 @@
         display: block;
         margin: 10px;
     }
-        .gg-arrow-left {
+        .arrowLeft {
             box-sizing: border-box;
             position: relative;
             display: block;
-            transform: scale(var(--ggs,1));
             width: 32px;
             height: 32px
         }
 
-        .gg-arrow-left::after,
-        .gg-arrow-left::before {
+        .arrowLeft::after,
+        .arrowLeft::before {
             content: "";
             display: block;
             box-sizing: border-box;
@@ -38,7 +37,7 @@
             left: 3px
         }
 
-        .gg-arrow-left::after {
+        .arrowLeft::after {
             width: 8px;
             height: 8px;
             border-bottom: 2px solid;
@@ -47,7 +46,7 @@
             bottom: 7px
         }
 
-        .gg-arrow-left::before {
+        .arrowLeft::before {
             width: 16px;
             height: 2px;
             bottom: 10px;

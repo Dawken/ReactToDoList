@@ -30,7 +30,7 @@ const TaskData = () => {
 		<section className='taskData'>
 			<div className='taskDataContainer'>
 				<Link to={'/'}>
-					<i className="gg-arrow-left"></i>
+					<div className="arrowLeft"></div>
 				</Link>
 				<div className='taskName'>{`Task name: ${data?.data.text}`}</div>
 				<div className='taskDate'>{`Task date: ${data?.data.date}`}</div>

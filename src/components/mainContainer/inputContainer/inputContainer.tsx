@@ -2,6 +2,8 @@ import React, {ChangeEvent, useState} from 'react'
 import './inputContainer.scss'
 import {useMutation, useQueryClient} from 'react-query'
 import requestTaskApi from '../../axiosConfig'
+import {ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const TodoListContainer = () => {
 
@@ -9,12 +11,16 @@ const TodoListContainer = () => {
 
 	const [task, setTask] = useState('')
 
-	const {isLoading, mutate, error} = useMutation(() => {
+	const {isLoading, mutate} = useMutation(() => {
 		return requestTaskApi.post('/api/tasks', {text: task})
 	}, {
 		onSuccess: () => {
 			queryClient.invalidateQueries('tasks')
+			toast.success('Task was added correctly!')
 		},
+		onError: () => {
+			toast.error('Error! Can\'t add task!')
+		}
 	})
 
 	const onSubmit = (event:ChangeEvent<HTMLFormElement>) => {
@@ -22,11 +28,20 @@ const TodoListContainer = () => {
 		mutate()
 		setTask('')
 	}
-	if(error) {
-		alert('Error! Please try again later')
-	}
 	return (
 		<main>
+			<ToastContainer
+				position="top-left"
+				autoClose={5000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+				theme="dark"
+			/>
 			<form onSubmit={onSubmit}>
 				<div className="input" >
 					<input

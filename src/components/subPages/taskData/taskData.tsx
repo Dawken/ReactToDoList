@@ -5,6 +5,7 @@ import axios from 'axios'
 import TaskDataError from '../../errorSubpage/taskDataError'
 import {useQuery, useQueryClient} from 'react-query'
 import LoadingAnimation from '../../animations/loadingAnimation'
+import requestTaskApi from '../../axiosConfig'
 
 const TaskData = () => {
 
@@ -12,7 +13,7 @@ const TaskData = () => {
 	const queryClient = useQueryClient()
 
 	const {isLoading, data} = useQuery(['task', `${id}`],  () => {
-		return axios.get(`/api/tasks/${id}`)
+		return requestTaskApi.get(`/api/tasks/${id}`)
 	})
 
 	const [description, setDescription] = useState(data?.data.description)

@@ -1,10 +1,10 @@
 import * as React from 'react'
 import TaskContainer from './taskContainer/taskContainer'
 import './tasksContainer.scss'
-import axios from 'axios'
 import {useQuery} from 'react-query'
 import LoadingAnimation from '../../animations/loadingAnimation'
 import TaskDataError from '../../errorSubpage/taskDataError'
+import requestTaskApi from '../../axiosConfig'
 
 type UserData = {
 	_id: string,
@@ -15,9 +15,7 @@ type UserData = {
 }
 const TasksContainer = () => {
 
-	const {isLoading, data} = useQuery('tasks',  () => {
-		return axios.get('/api/tasks')
-	})
+	const {isLoading, data} = useQuery('tasks',  () => requestTaskApi.get('/api/tasks'))
 
 	if(isLoading) return <LoadingAnimation />
 

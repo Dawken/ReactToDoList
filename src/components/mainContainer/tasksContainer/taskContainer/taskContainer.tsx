@@ -4,7 +4,8 @@ import {useEffect, useRef, useState} from 'react'
 import {TaskStatus} from '../../../../customTypings'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
-import {useQueryClient} from 'react-query'
+import {useMutation, useQueryClient} from 'react-query'
+import requestTaskApi from '../../../axiosConfig'
 
 type PropsTaskContainer = {
     text: string,
@@ -20,18 +21,28 @@ const TaskContainer = ({text,id,taskStatus}:PropsTaskContainer) => {
 	const [isOptionsVisible , SetIsOptionsVisible ] = useState(false)
 	const containerReference = useRef<HTMLDivElement>(null)
 
+	const {mutate, error} = useMutation(() => {
+		return requestTaskApi.delete(`/api/tasks/${id}`)
+	}, {
+		onSuccess: () => {
+			queryClient.invalidateQueries('tasks')
+		},
+	})
+
 	useEffect(() => {
 		containerReference.current && setTimeout(() => containerReference.current?.classList.add('animation'),150)
 	}, [containerReference])
 
 	const deleteAnimation = () => {
 		setTimeout(() => containerReference.current?.classList.remove('animation'),100)
-		axios.delete(`/api/tasks/${id}`)
-		queryClient.invalidateQueries('tasks')
+		setTimeout(() => mutate(), 200)
 	}
 	const pushTask= (task:TaskStatus) => {
 		axios.patch(`/api/tasks/${id}`, {taskStatus: task})
 		queryClient.invalidateQueries('tasks')
+	}
+	if(error) {
+		alert('Error! Can\'t push task!')
 	}
 	return (
 		<div className="taskContainer" ref={containerReference}>

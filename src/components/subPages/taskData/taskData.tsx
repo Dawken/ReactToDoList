@@ -4,21 +4,24 @@ import {Link, useParams} from 'react-router-dom'
 import TaskDataError from '../../errorSubpage/taskDataError'
 import {useMutation, useQuery, useQueryClient} from 'react-query'
 import LoadingAnimation from '../../animations/loadingAnimation'
+import {toast} from 'react-toastify'
 import requestTaskApi from '../../axiosConfig'
-import {toast, ToastContainer} from 'react-toastify'
 
 const TaskData = () => {
 
 	const {id} = useParams()
 	const queryClient = useQueryClient()
 
-	const {isLoading, data} = useQuery(['task', `${id}`],  () => {
-		return requestTaskApi.get(`/api/tasks/${id}`)
-	})
+	const {isLoading, data} = useQuery(['task', `${id}`],  () =>
+		requestTaskApi.get(`/api/tasks/${id}`),
+	{
+		refetchOnWindowFocus: false
+	}
+	)
 
 	const [description, setDescription] = useState(data?.data.description)
 
-	const {mutate} = useMutation(() => {
+	const {isLoading: patchDescription, mutate} = useMutation(() => {
 		return requestTaskApi.patch(`/api/tasks/${id}`, {description: description})
 	}, {
 		onSuccess: () => {
@@ -39,18 +42,6 @@ const TaskData = () => {
 	if(!data) return <TaskDataError />
 	return (
 		<section className='taskData'>
-			<ToastContainer
-				position="top-left"
-				autoClose={5000}
-				hideProgressBar={false}
-				newestOnTop={false}
-				closeOnClick
-				rtl={false}
-				pauseOnFocusLoss
-				draggable
-				pauseOnHover
-				theme="dark"
-			/>
 			<div className='taskDataContainer'>
 				<Link to={'/'}>
 					<div className="arrowLeft"></div>
@@ -64,8 +55,10 @@ const TaskData = () => {
 						onChange={(event) => setDescription(event.target.value)}
 						value={description === undefined ? data.data.description : description}
 						placeholder='Description'
+						required={true}
+						disabled={patchDescription}
 					/>
-					<button className='save'>Save</button>
+					<button className='save' disabled={patchDescription}>Save</button>
 				</form>
 
 			</div>

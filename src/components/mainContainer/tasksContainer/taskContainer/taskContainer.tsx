@@ -4,8 +4,8 @@ import {useEffect, useRef, useState} from 'react'
 import {TaskStatus} from '../../../../customTypings'
 import {Link} from 'react-router-dom'
 import {useMutation, useQueryClient} from 'react-query'
+import {toast} from 'react-toastify'
 import requestTaskApi from '../../../axiosConfig'
-import {toast, ToastContainer} from 'react-toastify'
 
 type PropsTaskContainer = {
     text: string,
@@ -55,39 +55,25 @@ const TaskContainer = ({text,id,taskStatus}:PropsTaskContainer) => {
 	}
 
 	return (
-		<>
-			<ToastContainer
-				position="top-left"
-				autoClose={5000}
-				hideProgressBar={false}
-				newestOnTop={false}
-				closeOnClick
-				rtl={false}
-				pauseOnFocusLoss
-				draggable
-				pauseOnHover
-				theme="dark"
-			/>
-			<div className="taskContainer" ref={containerReference}>
-				<div className="todofirst">
-					<Link to={id}>
-						<button className='eye'>
-							<div className="EyeButton"></div>
-						</button>
-					</Link>
-					{text}
-					<button className="trash" onClick={() => SetIsOptionsVisible(prevState => !prevState)}>
-						<i className="trashIcon"></i>
+		<div className="taskContainer" ref={containerReference}>
+			<div className="todofirst">
+				<Link to={id}>
+					<button className='eye'>
+						<div className="EyeButton"></div>
 					</button>
-				</div>
-				<div className={isOptionsVisible ? 'options animation' : 'options'}>
-					<button id="delete" onClick={deleteAnimation}>Delete</button>
-					{taskStatus !== 'todo' && <button id="todo"  onClick={() => patchTaskStatus('todo')}>To do</button>}
-					{taskStatus !== 'during' && <button id="during" onClick={() => patchTaskStatus('during')}>During</button>}
-					{taskStatus !== 'done' && <button id="done" onClick={() => patchTaskStatus('done')}>Done</button>}
-				</div>
+				</Link>
+				{text}
+				<button className="trash" onClick={() => SetIsOptionsVisible(prevState => !prevState)}>
+					<i className="trashIcon"></i>
+				</button>
 			</div>
-		</>
+			<div className={isOptionsVisible ? 'options animation' : 'options'}>
+				<button id="delete" onClick={deleteAnimation}>Delete</button>
+				{taskStatus !== 'todo' && <button id="todo"  onClick={() => patchTaskStatus('todo')}>To do</button>}
+				{taskStatus !== 'during' && <button id="during" onClick={() => patchTaskStatus('during')}>During</button>}
+				{taskStatus !== 'done' && <button id="done" onClick={() => patchTaskStatus('done')}>Done</button>}
+			</div>
+		</div>
 	)
 }
 export default TaskContainer

@@ -2,8 +2,7 @@ import React, {ChangeEvent, useState} from 'react'
 import './inputContainer.scss'
 import {useMutation, useQueryClient} from 'react-query'
 import requestTaskApi from '../../axiosConfig'
-import {ToastContainer, toast} from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import {toast} from 'react-toastify'
 
 const TodoListContainer = () => {
 
@@ -30,18 +29,6 @@ const TodoListContainer = () => {
 	}
 	return (
 		<main>
-			<ToastContainer
-				position="top-left"
-				autoClose={5000}
-				hideProgressBar={false}
-				newestOnTop={false}
-				closeOnClick
-				rtl={false}
-				pauseOnFocusLoss
-				draggable
-				pauseOnHover
-				theme="dark"
-			/>
 			<form onSubmit={onSubmit}>
 				<div className="input" >
 					<input
@@ -53,7 +40,7 @@ const TodoListContainer = () => {
 						required={true}
 						disabled={isLoading}
 					/>
-					<button className="submit">Add task</button>
+					<button className="submit" disabled={isLoading}>Add task</button>
 				</div>
 			</form>
 

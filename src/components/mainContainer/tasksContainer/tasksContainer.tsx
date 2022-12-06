@@ -15,7 +15,12 @@ type UserData = {
 }
 const TasksContainer = () => {
 
-	const {isLoading, data} = useQuery('tasks',  () => requestTaskApi.get('/api/tasks'))
+	const {isLoading, data} = useQuery('tasks',  () =>
+		requestTaskApi.get('/api/tasks'),
+	{
+		refetchOnWindowFocus: false
+	}
+	)
 
 	if(isLoading) return <LoadingAnimation />
 

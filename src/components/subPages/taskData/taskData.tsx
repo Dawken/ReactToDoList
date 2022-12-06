@@ -24,14 +24,21 @@ const TaskData = () => {
 	const {isLoading: patchDescription, mutate} = useMutation(() => {
 		return requestTaskApi.patch(`/api/tasks/${id}`, {description: description})
 	}, {
-		onSuccess: () => {
-			queryClient.invalidateQueries(['task', `${id}`])
-			toast.success('Description has been updated!')
+		onMutate: () => {
+			toast.promise(
+				new Promise(resolve => setTimeout(resolve, 500)),
+				{
+					pending: 'Updating description...',
+					success: 'Description has been updated 👌',
+					error: 'Error, couldn\'t update description 🤯',
+				}
+			)
 		},
-		onError: () => {
-			toast.error('Error! Can\'t update description!')
+		onSuccess: () => {
+			queryClient.invalidateQueries('tasks')
 		}
 	})
+
 	const onSubmit = (event:ChangeEvent<HTMLFormElement>) => {
 		event.preventDefault()
 		mutate()
@@ -46,9 +53,9 @@ const TaskData = () => {
 				<Link to={'/'}>
 					<div className="arrowLeft"></div>
 				</Link>
-				<div className='taskName'>{`Task name: ${data.data.text}`}</div>
+				<div className='taskDate'>{`Task name: ${data.data.text}`}</div>
 				<div className='taskDate'>{`Task date: ${data.data.date}`}</div>
-				<div className='taskStatus'>{`Task Status: ${data.data.taskStatus}`}</div>
+				<div className='taskDate'>{`Task Status: ${data.data.taskStatus}`}</div>
 				<form onSubmit={onSubmit}>
 					<textarea
 						className='description'

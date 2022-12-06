@@ -1,7 +1,7 @@
 import React from 'react'
 import './taskContainer.scss'
 import {useEffect, useRef, useState} from 'react'
-import {TaskStatus} from '../../../../customTypings'
+import {TaskStatus} from '../../../../types/taskStatus'
 import {Link} from 'react-router-dom'
 import {useMutation, useQueryClient} from 'react-query'
 import {toast} from 'react-toastify'

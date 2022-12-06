@@ -54,10 +54,9 @@
             background: currentColor
         }
 
-    .taskName, .taskDate, .taskStatus {
+    .taskDate{
         font-size: 40px;
         margin: 50px 30px;
-        font-family: 'Comfortaa', cursive;
     }
     form {
         display: flex;
@@ -85,7 +84,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             cursor: pointer;
-            font-family: 'Comfortaa', cursive;
             font-weight: 600;
             transition: 0.1s;
         }

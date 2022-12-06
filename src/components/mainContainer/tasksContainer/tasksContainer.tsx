@@ -6,7 +6,7 @@ import LoadingAnimation from '../../animations/loadingAnimation'
 import TaskDataError from '../../errorSubpage/taskDataError'
 import requestTaskApi from '../../axiosConfig'
 
-type UserData = {
+type PropsUserData = {
 	_id: string,
 	text: string,
 	date: string,
@@ -17,9 +17,6 @@ const TasksContainer = () => {
 
 	const {isLoading, data} = useQuery('tasks',  () =>
 		requestTaskApi.get('/api/tasks'),
-	{
-		refetchOnWindowFocus: false
-	}
 	)
 
 	if(isLoading) return <LoadingAnimation />
@@ -31,7 +28,7 @@ const TasksContainer = () => {
 				<div className="top">
 					<h1 className='topTodo'>To do</h1>
 				</div>
-				{data?.data.map((todo:UserData) => (
+				{data?.data.map((todo:PropsUserData) => (
 					todo.taskStatus === 'todo' &&
 					<TaskContainer
 						text={todo.text}
@@ -48,7 +45,7 @@ const TasksContainer = () => {
 				<div className="top">
 					<h1 className='topDuring'>During</h1>
 				</div>
-				{data?.data.map((during:UserData) => (
+				{data?.data.map((during:PropsUserData) => (
 					during.taskStatus === 'during' &&
 					<TaskContainer
 						text={during.text}
@@ -65,7 +62,7 @@ const TasksContainer = () => {
 				<div className="top">
 					<h1 className='topDone'>Done</h1>
 				</div>
-				{data?.data.map((done:UserData) => (
+				{data?.data.map((done:PropsUserData) => (
 					done.taskStatus === 'done' &&
 					<TaskContainer
 						text={done.text}

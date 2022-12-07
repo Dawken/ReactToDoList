@@ -6,7 +6,7 @@ import {TaskStatus} from '../../../../types/taskStatus'
 
 const useTaskContainer = () => {
 	const queryClient = useQueryClient()
-	const [isOptionsVisible, SetIsOptionsVisible] = useState(false)
+	const [isOptionsVisible, setIsOptionsVisible] = useState(false)
 	const containerReference = useRef<HTMLDivElement>(null)
 
 	const {mutate} = useMutation((id:string)=> {
@@ -41,9 +41,12 @@ const useTaskContainer = () => {
 		setTimeout(() => containerReference.current?.classList.remove('animation'), 100)
 		setTimeout(() => mutate(id), 200)
 	}
+	const changeOptionsVisible = () => {
+		setIsOptionsVisible(prevState => !prevState)
+	}
 	return {
 		isOptionsVisible,
-		SetIsOptionsVisible,
+		changeOptionsVisible,
 		containerReference,
 		patchTaskStatus,
 		deleteAnimation

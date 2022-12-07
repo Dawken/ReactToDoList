@@ -16,11 +16,12 @@ const TaskContainer = ({text,id,taskStatus}:PropsTaskContainer) => {
 
 	const {
 		isOptionsVisible,
-		SetIsOptionsVisible,
+		changeOptionsVisible,
 		containerReference,
 		patchTaskStatus,
 		deleteAnimation
 	} = useTaskContainer()
+
 	return (
 		<div className="taskContainer" ref={containerReference}>
 			<div className="todofirst">
@@ -30,7 +31,7 @@ const TaskContainer = ({text,id,taskStatus}:PropsTaskContainer) => {
 					</button>
 				</Link>
 				{text}
-				<button className="trash" onClick={() => SetIsOptionsVisible(prevState => !prevState)}>
+				<button className="trash" onClick={changeOptionsVisible}>
 					<i className="trashIcon"></i>
 				</button>
 			</div>

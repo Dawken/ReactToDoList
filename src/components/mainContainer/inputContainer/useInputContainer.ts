@@ -26,10 +26,13 @@ const useInputContainer = () => {
 		mutate()
 		setTask('')
 	}
+	const inputChange = (event:ChangeEvent<HTMLInputElement>) => {
+		setTask(event.target.value)
+	}
 	return {
 		task,
-		setTask,
 		isLoading,
+		inputChange,
 		onSubmit
 	}
 }

@@ -5,8 +5,8 @@ import useInputContainer from './useInputContainer'
 const TodoListContainer = () => {
 	const {
 		task,
-		setTask,
 		isLoading,
+		inputChange,
 		onSubmit
 	} = useInputContainer()
 	return (
@@ -17,7 +17,7 @@ const TodoListContainer = () => {
 						type="text"
 						className="taskInput"
 						placeholder={isLoading ? 'Saving your changes' : 'What are we doin today?'}
-						onChange={(event) => setTask(event.target.value)}
+						onChange={inputChange}
 						value={task}
 						required={true}
 						disabled={isLoading}

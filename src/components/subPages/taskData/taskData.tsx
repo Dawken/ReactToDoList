@@ -1,48 +1,20 @@
-import React, {ChangeEvent, useState} from 'react'
+import React from 'react'
 import './taskData.scss'
-import {Link, useParams} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import TaskDataError from '../../errorSubpage/taskDataError'
-import {useMutation, useQuery, useQueryClient} from 'react-query'
 import LoadingAnimation from '../../animations/loadingAnimation'
-import {toast} from 'react-toastify'
-import requestTaskApi from '../../axiosConfig'
+import useTaskData from './useTaskData'
 
 const TaskData = () => {
 
-	const {id} = useParams()
-	const queryClient = useQueryClient()
-
-	const {isLoading, data} = useQuery(['task', `${id}`],  () =>
-		requestTaskApi.get(`/api/tasks/${id}`),
-	{
-		refetchOnWindowFocus: false
-	}
-	)
-
-	const [description, setDescription] = useState(data?.data.description)
-
-	const {isLoading: patchDescription, mutate} = useMutation(() => {
-		return requestTaskApi.patch(`/api/tasks/${id}`, {description: description})
-	}, {
-		onMutate: () => {
-			toast.promise(
-				new Promise(resolve => setTimeout(resolve, 500)),
-				{
-					pending: 'Updating description...',
-					success: 'Description has been updated 👌',
-					error: 'Error, couldn\'t update description 🤯',
-				}
-			)
-		},
-		onSuccess: () => {
-			queryClient.invalidateQueries('tasks')
-		}
-	})
-
-	const onSubmit = (event:ChangeEvent<HTMLFormElement>) => {
-		event.preventDefault()
-		mutate()
-	}
+	const {
+		isLoading,
+		data,
+		description,
+		setDescription,
+		patchDescription,
+		onSubmit
+	} = useTaskData()
 
 	if(isLoading) return <LoadingAnimation />
 

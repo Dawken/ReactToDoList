@@ -1,32 +1,14 @@
-import React, {ChangeEvent, useState} from 'react'
+import React from 'react'
 import './inputContainer.scss'
-import {useMutation, useQueryClient} from 'react-query'
-import requestTaskApi from '../../axiosConfig'
-import {toast} from 'react-toastify'
+import useInputContainer from './useInputContainer'
 
 const TodoListContainer = () => {
-
-	const queryClient = useQueryClient()
-
-	const [task, setTask] = useState('')
-
-	const {isLoading, mutate} = useMutation(() => {
-		return requestTaskApi.post('/api/tasks', {text: task})
-	}, {
-		onSuccess: () => {
-			queryClient.invalidateQueries('tasks')
-			toast.success('Task was added correctly!')
-		},
-		onError: () => {
-			toast.error('Error! Can\'t add task!')
-		}
-	})
-
-	const onSubmit = (event:ChangeEvent<HTMLFormElement>) => {
-		event.preventDefault()
-		mutate()
-		setTask('')
-	}
+	const {
+		task,
+		isLoading,
+		inputChange,
+		onSubmit
+	} = useInputContainer()
 	return (
 		<main>
 			<form onSubmit={onSubmit}>
@@ -35,7 +17,7 @@ const TodoListContainer = () => {
 						type="text"
 						className="taskInput"
 						placeholder={isLoading ? 'Saving your changes' : 'What are we doin today?'}
-						onChange={(event) => setTask(event.target.value)}
+						onChange={inputChange}
 						value={task}
 						required={true}
 						disabled={isLoading}
@@ -43,7 +25,6 @@ const TodoListContainer = () => {
 					<button className="submit" disabled={isLoading}>Add task</button>
 				</div>
 			</form>
-
 		</main>
 	)
 }

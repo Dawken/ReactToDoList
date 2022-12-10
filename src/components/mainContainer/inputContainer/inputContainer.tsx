@@ -1,6 +1,7 @@
 import React from 'react'
 import './inputContainer.scss'
 import useInputContainer from './useInputContainer'
+import {Link} from 'react-router-dom'
 
 const TodoListContainer = () => {
 	const {
@@ -11,6 +12,9 @@ const TodoListContainer = () => {
 	} = useInputContainer()
 	return (
 		<main>
+			<Link to={'/register'}>
+				<div className='register'>Register</div>
+			</Link>
 			<form onSubmit={onSubmit}>
 				<div className="input" >
 					<input

@@ -8,6 +8,7 @@ import MainContainer from './components/mainContainer/mainContainer'
 import {QueryClient, QueryClientProvider} from 'react-query'
 import {ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import Form from './components/subPages/form/form'
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -26,6 +27,7 @@ export default function App () {
 					<Route path = '*' element={<TaskDataError />} />
 					<Route path = '/' element={<MainContainer />} />
 					<Route path = '/:id' element={<TaskData />}/>
+					<Route path = '/register' element={<Form />} />
 				</Routes>
 				<ToastContainer
 					position="top-left"

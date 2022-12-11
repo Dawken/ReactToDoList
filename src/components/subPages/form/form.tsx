@@ -50,7 +50,7 @@ const Form = () => {
 					onChange={handleChange}
 					error={(formData.name.length < 3 && formData.name.length > 0) || formData.name.length > 10}
 					focused={formData.name.length > 0}
-					helperText={formData.name.length < 3 && 'User name must be at least 3 symbols long.'}
+					helperText='User name must be at least 3 symbols long.'
 					required
 				/>
 				<TextField
@@ -106,7 +106,6 @@ const Form = () => {
 					<MenuItem value='Female'>Female</MenuItem>
 					<MenuItem value='Other'>Other</MenuItem>
 				</TextField>
-
 				<TextField
 					sx={style}
 					type='date'

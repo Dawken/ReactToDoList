@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {useMutation} from 'react-query'
 import requestTaskApi from '../../axiosConfig'
+import {toast} from 'react-toastify'
 
 type types = {
 	login: string,
@@ -53,7 +54,13 @@ const useForm = () => {
 			password:password,
 			gender:gender,
 			birthDate:birthDate
-		})
+		})},{
+		onSuccess: () => {
+			toast.success('Register success!')
+		},
+		onError: () => {
+			toast.error('Register failed')
+		}
 	})
 
 	const submitForm = () => {

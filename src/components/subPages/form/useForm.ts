@@ -10,7 +10,7 @@ type types = {
 	repeatPassword: string,
 	gender: string,
 	birthDate:string,
-	ageNumber: number,
+	userAdult: boolean
 }
 
 const useForm = () => {
@@ -22,40 +22,55 @@ const useForm = () => {
 		repeatPassword: '',
 		gender: '',
 		birthDate: '',
-		ageNumber: 0,
+		userAdult: false
 	})
-	const age = Math.floor((new Date().valueOf() - new Date(formData.birthDate).getTime()) / 3.15576e+10)
+	const formValid = {
+		login: formData.login.length > 2 && formData.login.length < 17,
+		name: formData.name.length > 2,
+		lastName: formData.lastName.length > 2,
+		password: formData.password === formData.repeatPassword,
+		gender: 'Male' || 'Female' || 'Other',
+		userAdult: formData.userAdult
+	}
 	const handleChange = (event:React.ChangeEvent<HTMLInputElement>) => {
 		const {name, value} = event.target
+		const birth = formData.birthDate
+		const date18YearsAgo = new Date()
+		date18YearsAgo.setFullYear(date18YearsAgo.getFullYear()-18)
+		const isUserAdult = new Date(birth) <= date18YearsAgo
 		setFormData(prevState => ({
 			...prevState,
 			[name]:value,
-			ageNumber: age
+			userAdult: isUserAdult
 		}))
-		console.log(formData.ageNumber)
 	}
-
 	const {mutate} = useMutation(() => {
 		const {login, name, lastName, password, gender, birthDate} = formData
-		return requestTaskApi.post('/api/register', {text: {
+		return requestTaskApi.post('/api/register', {
 			login:login,
 			name:name,
 			lastName:lastName,
 			password:password,
 			gender:gender,
 			birthDate:birthDate
-		}})
+		})
 	})
 
 	const submitForm = () => {
-		mutate()
-	}
+		console.log(formValid)
+		if(Object.values(formValid).every(value => value)){
+			mutate()
+			console.log('Register success!')
+		} else {
+			console.log('Register failed')
+		}
 
-	console.log(formData)
+	}
 	return {
 		formData,
 		handleChange,
-		submitForm
+		submitForm,
+		formValid
 	}
 }
 export default useForm

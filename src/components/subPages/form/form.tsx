@@ -21,7 +21,7 @@ const Form = () => {
 	const {
 		formData,
 		handleChange,
-		submitForm
+		submitForm,
 	} = useForm()
 
 	return (
@@ -50,7 +50,7 @@ const Form = () => {
 					onChange={handleChange}
 					error={(formData.name.length < 3 && formData.name.length > 0) || formData.name.length > 10}
 					focused={formData.name.length > 0}
-					helperText='User name must be at least 3 symbols long.'
+					helperText={formData.name.length < 3 && 'User name must be at least 3 symbols long.'}
 					required
 				/>
 				<TextField
@@ -58,10 +58,10 @@ const Form = () => {
 					label='Last name'
 					variant="outlined"
 					value={formData.lastName}
-					color={formData.lastName.length > 5 ? 'success' : undefined}
+					color={formData.lastName.length > 2 ? 'success' : undefined}
 					name='lastName'
 					onChange={handleChange}
-					error={formData.lastName.length < 6 && formData.lastName.length > 0}
+					error={formData.lastName.length < 3 && formData.lastName.length > 0}
 					focused={formData.lastName.length > 0}
 					required
 				/>
@@ -76,7 +76,7 @@ const Form = () => {
 					color={formData.password.length > 7 ? 'success' : undefined}
 					error={formData.password.length < 8 && formData.password.length > 0}
 					focused={formData.password.length > 0}
-					helperText='Password must be at least 8 symbols.'
+					helperText={formData.password.length < 8  && 'Password must be at least 8 symbols.'}
 					required
 				/>
 				<TextField
@@ -98,6 +98,8 @@ const Form = () => {
 					label='Select gender'
 					select
 					value={formData.gender}
+					color={formData.gender !== '' ? 'success' : undefined}
+					focused={formData.gender !== ''}
 					name='gender'
 					onChange={handleChange}>
 					<MenuItem value='Male'>Male</MenuItem>
@@ -110,11 +112,11 @@ const Form = () => {
 					type='date'
 					variant="outlined"
 					name='birthDate'
-					color={formData.ageNumber > 17 ? 'success' : undefined}
+					color={formData.userAdult ? 'success' : undefined}
 					value={formData.birthDate}
-					error={formData.ageNumber < 18}
-					focused={true}
-					helperText={formData.ageNumber < 18 && 'You have to be atleast 18 years old'}
+					error={!formData.userAdult}
+					focused={formData.birthDate !== ''}
+					helperText={!formData.userAdult && 'You have to be atleast 18 years old'}
 					onChange={handleChange}
 				/>
 			</form>

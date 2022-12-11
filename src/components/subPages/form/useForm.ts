@@ -29,10 +29,23 @@ const useForm = () => {
 		login: formData.login.length > 2 && formData.login.length < 17,
 		name: formData.name.length > 2,
 		lastName: formData.lastName.length > 2,
-		password: formData.password === formData.repeatPassword,
+		password: /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/.test(formData.password)
+		, //Check if password has at least 1 Capital letter, 1 special symbol, 1 number and is 8 symbols long
+		repeatPassword: formData.password === formData.repeatPassword &&
+			/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/.test(formData.password),
 		gender: 'Male' || 'Female' || 'Other',
-		userAdult: formData.userAdult
+		userAdult: formData.userAdult,
+		birthDate: formData.birthDate !== ''
 	}
+	const [yikes, setYikes] = useState(  {
+		login: true,
+		name: true,
+		lastName: true,
+		password: true,
+		repeatPassword: true,
+		gender: 'Male' || 'Female' || 'Other',
+		birthDate: true
+	})
 	const handleChange = (event:React.ChangeEvent<HTMLInputElement>) => {
 		const {name, value} = event.target
 		const birth = formData.birthDate
@@ -53,7 +66,7 @@ const useForm = () => {
 			lastName:lastName,
 			password:password,
 			gender:gender,
-			birthDate:birthDate
+			birthDate: birthDate
 		})},{
 		onSuccess: () => {
 			toast.success('Register success!')
@@ -62,14 +75,14 @@ const useForm = () => {
 			toast.error('Register failed')
 		}
 	})
-
+	console.log(formValid)
 	const submitForm = () => {
-		console.log(formValid)
 		if(Object.values(formValid).every(value => value)){
 			mutate()
 			console.log('Register success!')
 		} else {
 			console.log('Register failed')
+			setYikes(formValid)
 		}
 
 	}
@@ -77,7 +90,8 @@ const useForm = () => {
 		formData,
 		handleChange,
 		submitForm,
-		formValid
+		formValid,
+		yikes
 	}
 }
 export default useForm

@@ -4,16 +4,8 @@ import './form.scss'
 import useForm from './useForm'
 
 const style = {
-	'& label.Mui-focused': {
-	},
-	'& .MuiOutlinedInput-root': {
-		color: 'white',
-		'&.Mui-focused fieldset': { /// border focused color
-		},
-		'&.MuiFormLabel-root': {
-			color: 'white'
-		}
-	}
+	width: 300,
+	marginTop: '30px'
 }
 
 const Form = () => {
@@ -22,8 +14,9 @@ const Form = () => {
 		formData,
 		handleChange,
 		submitForm,
+		formValid,
+		yikes
 	} = useForm()
-
 	return (
 		<main>
 			<form noValidate autoComplete='off'>
@@ -35,9 +28,9 @@ const Form = () => {
 					color={formData.login.length > 2 ? 'success' : undefined}
 					name='login'
 					onChange={handleChange}
-					error={(formData.login.length < 3 && formData.login.length > 0 ) || formData.login.length > 16}
+					error={formData.login === '' ? !yikes.login : !formValid.login}
 					focused={formData.login.length > 0}
-					helperText='Login must be at least 3 symbols long.'
+					helperText={formData.login.length > 16 ? 'Login cannot be longer than 16 symbols' : 'Login must be at least 3 symbols long.' }
 					required
 				/>
 				<TextField
@@ -48,9 +41,9 @@ const Form = () => {
 					color={formData.name.length > 2 ? 'success' : undefined}
 					name='name'
 					onChange={handleChange}
-					error={(formData.name.length < 3 && formData.name.length > 0) || formData.name.length > 10}
+					error={formData.name === '' ? !yikes.name : !formValid.name}
 					focused={formData.name.length > 0}
-					helperText='User name must be at least 3 symbols long.'
+					helperText={formData.name.length < 3 && 'User name must be at least 3 symbols long.'}
 					required
 				/>
 				<TextField
@@ -61,7 +54,8 @@ const Form = () => {
 					color={formData.lastName.length > 2 ? 'success' : undefined}
 					name='lastName'
 					onChange={handleChange}
-					error={formData.lastName.length < 3 && formData.lastName.length > 0}
+					error={formData.lastName === '' ? !yikes.lastName : !formValid.lastName}
+					helperText={formData.name.length < 3 && 'User name must be at least 3 symbols long.'}
 					focused={formData.lastName.length > 0}
 					required
 				/>
@@ -73,10 +67,13 @@ const Form = () => {
 					name='password'
 					type="password"
 					onChange={handleChange}
-					color={formData.password.length > 7 ? 'success' : undefined}
-					error={formData.password.length < 8 && formData.password.length > 0}
+					color={/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/.test(formData.password)
+						? 'success' : undefined}
+					error={formData.password === '' ? !yikes.password : !formValid.password}
 					focused={formData.password.length > 0}
-					helperText={formData.password.length < 8  && 'Password must be at least 8 symbols.'}
+					helperText={(formData.password.length > 0 &&
+						(!/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/.test(formData.password)))
+							&& 'Password need to has at least 1 Capital letter, 1 special symbol, 1 number and be 8 symbols long'}
 					required
 				/>
 				<TextField
@@ -88,7 +85,7 @@ const Form = () => {
 					type="password"
 					onChange={handleChange}
 					color={formData.repeatPassword === formData.password ? 'success' : undefined}
-					error={formData.repeatPassword !== formData.password}
+					error={formData.repeatPassword === '' ? !yikes.repeatPassword : !formValid.repeatPassword}
 					focused={formData.password.length > 0}
 					helperText={formData.repeatPassword !== formData.password && 'Password does not match.'}
 					required
@@ -113,9 +110,9 @@ const Form = () => {
 					name='birthDate'
 					color={formData.userAdult ? 'success' : undefined}
 					value={formData.birthDate}
-					error={!formData.userAdult}
+					error={formData.birthDate === '' ? !yikes.birthDate : !formData.birthDate}
 					focused={formData.birthDate !== ''}
-					helperText={!formData.userAdult && 'You have to be atleast 18 years old'}
+					helperText={!formData.userAdult && formData.birthDate !== '' && 'You have to be at least 18 years old'}
 					onChange={handleChange}
 				/>
 			</form>

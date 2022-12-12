@@ -2,7 +2,7 @@ import React from 'react'
 import InputContainer from './inputContainer/inputContainer'
 import TasksContainer from './tasksContainer/tasksContainer'
 
-const MainContainer = () => {
+const FirstPageView = () => {
 	return (
 		<>
 			< InputContainer />
@@ -11,4 +11,4 @@ const MainContainer = () => {
 	)
 
 }
-export default MainContainer
+export default FirstPageView

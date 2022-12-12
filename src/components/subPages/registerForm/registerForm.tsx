@@ -1,22 +1,22 @@
 import React from 'react'
 import {MenuItem, TextField} from '@mui/material'
-import './form.scss'
-import useForm from './useForm'
+import './registerForm.scss'
+import useRegisterForm from './useRegisterForm'
 
 const style = {
 	width: 300,
-	marginTop: '30px'
+	marginTop: '40px'
 }
 
-const Form = () => {
+const RegisterForm = () => {
 
 	const {
 		formData,
 		handleChange,
 		submitForm,
 		formValid,
-		yikes
-	} = useForm()
+		isLabelEmpty
+	} = useRegisterForm()
 	return (
 		<main>
 			<form noValidate autoComplete='off'>
@@ -28,7 +28,7 @@ const Form = () => {
 					color={formData.login.length > 2 ? 'success' : undefined}
 					name='login'
 					onChange={handleChange}
-					error={formData.login === '' ? !yikes.login : !formValid.login}
+					error={formData.login === '' ? !isLabelEmpty.login : !formValid.login}
 					focused={formData.login.length > 0}
 					helperText={formData.login.length > 16 ? 'Login cannot be longer than 16 symbols' : 'Login must be at least 3 symbols long.' }
 					required
@@ -41,7 +41,7 @@ const Form = () => {
 					color={formData.name.length > 2 ? 'success' : undefined}
 					name='name'
 					onChange={handleChange}
-					error={formData.name === '' ? !yikes.name : !formValid.name}
+					error={formData.name === '' ? !isLabelEmpty.name : !formValid.name}
 					focused={formData.name.length > 0}
 					helperText={formData.name.length < 3 && 'User name must be at least 3 symbols long.'}
 					required
@@ -54,7 +54,7 @@ const Form = () => {
 					color={formData.lastName.length > 2 ? 'success' : undefined}
 					name='lastName'
 					onChange={handleChange}
-					error={formData.lastName === '' ? !yikes.lastName : !formValid.lastName}
+					error={formData.lastName === '' ? !isLabelEmpty.lastName : !formValid.lastName}
 					helperText={formData.name.length < 3 && 'User name must be at least 3 symbols long.'}
 					focused={formData.lastName.length > 0}
 					required
@@ -69,7 +69,7 @@ const Form = () => {
 					onChange={handleChange}
 					color={/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/.test(formData.password)
 						? 'success' : undefined}
-					error={formData.password === '' ? !yikes.password : !formValid.password}
+					error={formData.password === '' ? !isLabelEmpty.password : !formValid.password}
 					focused={formData.password.length > 0}
 					helperText={(formData.password.length > 0 &&
 						(!/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/.test(formData.password)))
@@ -85,7 +85,7 @@ const Form = () => {
 					type="password"
 					onChange={handleChange}
 					color={formData.repeatPassword === formData.password ? 'success' : undefined}
-					error={formData.repeatPassword === '' ? !yikes.repeatPassword : !formValid.repeatPassword}
+					error={formData.repeatPassword === '' ? !isLabelEmpty.repeatPassword : !formValid.repeatPassword}
 					focused={formData.password.length > 0}
 					helperText={formData.repeatPassword !== formData.password && 'Password does not match.'}
 					required
@@ -110,7 +110,7 @@ const Form = () => {
 					name='birthDate'
 					color={formData.userAdult ? 'success' : undefined}
 					value={formData.birthDate}
-					error={formData.birthDate === '' ? !yikes.birthDate : !formData.birthDate}
+					error={formData.birthDate === '' ? !isLabelEmpty.birthDate : !formData.birthDate}
 					focused={formData.birthDate !== ''}
 					helperText={!formData.userAdult && formData.birthDate !== '' && 'You have to be at least 18 years old'}
 					onChange={handleChange}
@@ -120,4 +120,4 @@ const Form = () => {
 		</main>
 	)
 }
-export default Form
+export default RegisterForm

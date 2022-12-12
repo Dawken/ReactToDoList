@@ -14,7 +14,7 @@ type types = {
 	userAdult: boolean
 }
 
-const useForm = () => {
+const useRegisterForm = () => {
 	const [formData, setFormData] = useState<types>({
 		login: '',
 		name: '',
@@ -37,7 +37,7 @@ const useForm = () => {
 		userAdult: formData.userAdult,
 		birthDate: formData.birthDate !== ''
 	}
-	const [yikes, setYikes] = useState(  {
+	const [isLabelEmpty, setIsLabelEmpty] = useState(  {
 		login: true,
 		name: true,
 		lastName: true,
@@ -75,14 +75,13 @@ const useForm = () => {
 			toast.error('Register failed')
 		}
 	})
-	console.log(formValid)
 	const submitForm = () => {
 		if(Object.values(formValid).every(value => value)){
 			mutate()
 			console.log('Register success!')
 		} else {
 			console.log('Register failed')
-			setYikes(formValid)
+			setIsLabelEmpty(formValid)
 		}
 
 	}
@@ -91,7 +90,7 @@ const useForm = () => {
 		handleChange,
 		submitForm,
 		formValid,
-		yikes
+		isLabelEmpty
 	}
 }
-export default useForm
+export default useRegisterForm

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './Background'
 import './components/pageBackground.scss'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import RegisterForm from './components/subPages/registerForm/registerForm'
 import {ThemeProvider, createTheme} from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
+import requestTaskApi from './components/axiosConfig'
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -26,6 +27,18 @@ const darkTheme = createTheme({
 })
 
 export default function App () {
+
+	useEffect(() => {
+		requestTaskApi.post('/api/login', {
+			'login':'yikes23886',
+			'name':'cgj',
+			'lastName':'pizka',
+			'password': 'Yikes59!',
+			'gender': 'Female',
+			'birthDate': '2002-12-10'
+		})
+	}, [])
+
 	return (
 		<ThemeProvider theme={darkTheme}>
 			<CssBaseline />

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import './Background'
 import './components/pageBackground.scss'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
@@ -11,7 +11,8 @@ import 'react-toastify/dist/ReactToastify.css'
 import RegisterForm from './components/subPages/registerForm/registerForm'
 import {ThemeProvider, createTheme} from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
-import requestTaskApi from './components/axiosConfig'
+import LoginForm from './components/subPages/loginForm/loginForm'
+import PrivateRoutes from './components/utils/privateRoutes'
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -20,6 +21,7 @@ const queryClient = new QueryClient({
 		},
 	},
 })
+
 const darkTheme = createTheme({
 	palette: {
 		mode: 'dark',
@@ -28,16 +30,6 @@ const darkTheme = createTheme({
 
 export default function App () {
 
-	useEffect(() => {
-		requestTaskApi.post('/api/login', {
-			'login':'yikes23886',
-			'name':'cgj',
-			'lastName':'pizka',
-			'password': 'Yikes59!',
-			'gender': 'Female',
-			'birthDate': '2002-12-10'
-		})
-	}, [])
 
 	return (
 		<ThemeProvider theme={darkTheme}>
@@ -45,10 +37,13 @@ export default function App () {
 			<QueryClientProvider client={queryClient}>
 				<BrowserRouter>
 					<Routes>
+						<Route element={<PrivateRoutes />} >
+							<Route path = '/' element={<FirstPageView />} />
+							<Route path = '/:id' element={<TaskData />} />
+						</Route>
 						<Route path = '*' element={<TaskDataError />} />
-						<Route path = '/' element={<FirstPageView />} />
-						<Route path = '/:id' element={<TaskData />}/>
 						<Route path = '/register' element={<RegisterForm />} />
+						<Route path = '/login' element={<LoginForm />} />
 					</Routes>
 					<ToastContainer
 						position="top-left"

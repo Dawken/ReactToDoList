@@ -3,7 +3,7 @@ import {useMutation} from 'react-query'
 import requestTaskApi from '../../axiosConfig'
 import {toast} from 'react-toastify'
 
-type types = {
+type Register = {
 	login: string,
 	name: string,
 	lastName: string,
@@ -15,7 +15,8 @@ type types = {
 }
 
 const useRegisterForm = () => {
-	const [formData, setFormData] = useState<types>({
+
+	const [formData, setFormData] = useState<Register>({
 		login: '',
 		name: '',
 		lastName: '',
@@ -25,6 +26,7 @@ const useRegisterForm = () => {
 		birthDate: '',
 		userAdult: false
 	})
+
 	const formValid = {
 		login: formData.login.length > 2 && formData.login.length < 17,
 		name: formData.name.length > 2,
@@ -37,6 +39,7 @@ const useRegisterForm = () => {
 		userAdult: formData.userAdult,
 		birthDate: formData.birthDate !== ''
 	}
+
 	const [isLabelEmpty, setIsLabelEmpty] = useState(  {
 		login: true,
 		name: true,
@@ -46,6 +49,7 @@ const useRegisterForm = () => {
 		gender: 'Male' || 'Female' || 'Other',
 		birthDate: true
 	})
+
 	const handleChange = (event:React.ChangeEvent<HTMLInputElement>) => {
 		const {name, value} = event.target
 		const birth = formData.birthDate
@@ -58,6 +62,7 @@ const useRegisterForm = () => {
 			userAdult: isUserAdult
 		}))
 	}
+
 	const {mutate} = useMutation(() => {
 		const {login, name, lastName, password, gender, birthDate} = formData
 		return requestTaskApi.post('/api/register', {
@@ -75,6 +80,7 @@ const useRegisterForm = () => {
 			toast.error('Register failed')
 		}
 	})
+
 	const submitForm = () => {
 		if(Object.values(formValid).every(value => value)){
 			mutate()
@@ -83,8 +89,8 @@ const useRegisterForm = () => {
 			console.log('Register failed')
 			setIsLabelEmpty(formValid)
 		}
-
 	}
+
 	return {
 		formData,
 		handleChange,

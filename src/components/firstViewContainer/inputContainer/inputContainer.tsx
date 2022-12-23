@@ -10,10 +10,14 @@ const TodoListContainer = () => {
 		inputChange,
 		onSubmit
 	} = useInputContainer()
+
 	return (
 		<main>
 			<Link to={'/register'}>
 				<div className='register'>Register</div>
+			</Link>
+			<Link to={'/login'}>
+				<div className='login'>Login</div>
 			</Link>
 			<form onSubmit={onSubmit}>
 				<div className="input" >

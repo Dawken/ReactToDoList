@@ -24,7 +24,7 @@ const TaskContainer = ({text,id,taskStatus}:PropsTaskContainer) => {
 
 	return (
 		<div className="taskContainer" ref={containerReference}>
-			<div className="todofirst">
+			<div className="taskBody">
 				<Link to={id}>
 					<button className='eye'>
 						<div className="EyeButton"></div>

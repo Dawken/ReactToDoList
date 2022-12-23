@@ -17,6 +17,7 @@ const RegisterForm = () => {
 		formValid,
 		isLabelEmpty
 	} = useRegisterForm()
+
 	return (
 		<main>
 			<form noValidate autoComplete='off'>

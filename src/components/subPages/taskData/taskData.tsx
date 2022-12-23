@@ -5,6 +5,7 @@ import TaskDataError from '../../errorSubpage/taskDataError'
 import LoadingAnimation from '../../animations/loadingAnimation'
 import useTaskData from './useTaskData'
 
+
 const TaskData = () => {
 
 	const {
@@ -19,6 +20,7 @@ const TaskData = () => {
 	if(isLoading) return <LoadingAnimation />
 
 	if(!data) return <TaskDataError />
+
 	return (
 		<section className='taskData'>
 			<div className='taskDataContainer'>

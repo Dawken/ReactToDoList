@@ -36,6 +36,7 @@ const TasksContainer = () => {
 	if(isLoading) return <LoadingAnimation />
 
 	if(!data) return <TaskDataError />
+
 	return (
 		<div className="container">
 			<div className="tasksContainer">

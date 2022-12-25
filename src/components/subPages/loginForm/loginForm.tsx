@@ -2,6 +2,7 @@ import React from 'react'
 import {TextField} from '@mui/material'
 import useLoginForm from './useLoginForm'
 import './loginForm.scss'
+import {Link} from 'react-router-dom'
 
 
 const style = {
@@ -41,6 +42,7 @@ const LoginForm = () => {
 				/>
 			</form>
 			<div><button onClick={login}>Login</button></div>
+			<Link to={'/register'} style={{textDecoration:'none', color: 'white'}}><div className='createAccount'>Dont have account? Register now</div></Link>
 		</div>
 	)
 }

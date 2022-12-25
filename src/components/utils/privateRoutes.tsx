@@ -1,10 +1,14 @@
 import React from 'react'
 import {Navigate, Outlet} from 'react-router-dom'
+import {useAppSelector} from '../../redux/store'
 
 const PrivateRoutes = () => {
-	const auth = {'token': true}
+
+	const responseCode = useAppSelector(state => state.auth.clientResponse)
+	const auth = responseCode !== 401
+
 	return (
-		auth.token ? <Outlet /> : <Navigate to='login' />
+		auth ? <Outlet /> : <Navigate to='/login' />
 	)
 }
 export default PrivateRoutes

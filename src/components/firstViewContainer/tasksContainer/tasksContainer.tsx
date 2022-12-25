@@ -5,10 +5,6 @@ import {useQuery} from 'react-query'
 import LoadingAnimation from '../../animations/loadingAnimation'
 import TaskDataError from '../../errorSubpage/taskDataError'
 import requestTaskApi from '../../axiosConfig'
-import {useAppSelector} from '../../../redux/store'
-import {useNavigate} from 'react-router-dom'
-import {useEffect} from 'react'
-
 
 type PropsUserData = {
 	_id: string,
@@ -20,19 +16,10 @@ type PropsUserData = {
 
 const TasksContainer = () => {
 
-	const responseCode = useAppSelector(state => state.auth.clientResponse)
-
-	const navigate = useNavigate()
-
 	const {isLoading, data} = useQuery('tasks',  () =>
 		requestTaskApi.get('/api/tasks'),
 	)
 
-	useEffect(() => {
-		if(responseCode === 401) {
-			navigate('/login')
-		}
-	})
 	if(isLoading) return <LoadingAnimation />
 
 	if(!data) return <TaskDataError />

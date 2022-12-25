@@ -5,7 +5,9 @@ import {toast} from 'react-toastify'
 import {TaskStatus} from '../../../../types/taskStatus'
 
 const useTaskContainer = () => {
+
 	const queryClient = useQueryClient()
+
 	const [isOptionsVisible, setIsOptionsVisible] = useState(false)
 	const containerReference = useRef<HTMLDivElement>(null)
 

@@ -2,7 +2,7 @@ main {
   text-align: center;
   display: block;
 
-  form {
+  .registerForm {
     margin-top: 50px;
     display: inline-grid;
     .css-qwsgij-MuiFormControl-root-MuiTextField-root {
@@ -14,17 +14,25 @@ main {
     .css-bpeome-MuiSvgIcon-root-MuiSelect-icon {
       color:white ;
     }
-    .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root { /// Font color
+    .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root { // Font color
       color: white ;
     }
-    .css-1d3z3hw-MuiOutlinedInput-notchedOutline {  /////Border focused
+    .css-1d3z3hw-MuiOutlinedInput-notchedOutline {  // Border focused
       border-color: white ;
     }
-    .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root { /// high font color
+    .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root { // high font color
       color: white ;
     }
+    .registerLabel {
+      margin-top: 40px
+    }
+    .login {
+      text-decoration: none;
+      color: white;
+      margin-top: 40px
+    }
   }
-  button {
+  .registerButton {
     margin-top: 40px;
     height: 50px;
     width: 220px;
@@ -38,5 +46,5 @@ main {
   button:active {
     transform: scale(1.05);
   }
-
 }
+

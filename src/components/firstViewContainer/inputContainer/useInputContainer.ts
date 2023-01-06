@@ -1,7 +1,7 @@
 import {useMutation, useQueryClient} from 'react-query'
 import {ChangeEvent, useState} from 'react'
 import {toast} from 'react-toastify'
-import requestTaskApi from '../../axiosConfig'
+import requestTaskApi from '../../config/axiosConfig'
 
 
 const useInputContainer = () => {

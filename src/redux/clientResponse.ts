@@ -1,17 +1,17 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 
 export type StatusCode = {
-	clientResponse: number,
+	isLoggedIn: boolean,
 }
 
-const initialState:StatusCode = {clientResponse: 0}
+const initialState:StatusCode = {isLoggedIn: true}
 
 export const clientResponse = createSlice({
 	name: 'clientResponse',
 	initialState,
 	reducers: {
-		getClientResponse: (state, action:PayloadAction<{number: number}>) => {
-			state.clientResponse = action.payload.number
+		getClientResponse: (state, action:PayloadAction<{isLogged: boolean}>) => {
+			state.isLoggedIn = action.payload.isLogged
 		}
 	}
 })

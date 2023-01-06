@@ -28,8 +28,7 @@ const darkTheme = createTheme({
 	},
 })
 
-export default function App () {
-
+const App = () => {
 
 	return (
 		<ThemeProvider theme={darkTheme}>
@@ -62,3 +61,4 @@ export default function App () {
 		</ThemeProvider>
 	)
 }
+export default App

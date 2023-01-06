@@ -4,6 +4,7 @@ import useInputContainer from './useInputContainer'
 import {Link} from 'react-router-dom'
 
 const TodoListContainer = () => {
+
 	const {
 		task,
 		isLoading,
@@ -13,14 +14,16 @@ const TodoListContainer = () => {
 
 	return (
 		<main>
-			<Link to={'/register'}>
-				<div className='register'>Register</div>
-			</Link>
-			<Link to={'/login'}>
-				<div className='login'>Login</div>
-			</Link>
+			<div className='userAccount'>
+				<Link to={'/register'}>
+					<div className='account'>Register</div>
+				</Link>
+				<Link to={'/login'}>
+					<div className='account'>Login</div>
+				</Link>
+			</div>
 			<form onSubmit={onSubmit}>
-				<div className="input" >
+				<div className="taskInputContainer" >
 					<input
 						type="text"
 						className="taskInput"

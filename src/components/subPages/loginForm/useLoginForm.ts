@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {useMutation} from 'react-query'
-import requestTaskApi from '../../axiosConfig'
+import requestTaskApi from '../../config/axiosConfig'
 import {toast} from 'react-toastify'
 import {useNavigate} from 'react-router-dom'
 import {store} from '../../../redux/store'
@@ -23,7 +23,7 @@ const useLoginForm = () => {
 			[name]: value
 		}))
 	}
-	const {mutate} = useMutation(() => {
+	const {mutate: login} = useMutation(() => {
 		const {login, password} = loginForm
 		return requestTaskApi.post('/api/login', {
 			login:login,
@@ -31,16 +31,14 @@ const useLoginForm = () => {
 		})},{
 		onSuccess: () => {
 			toast.success('Login success!')
-			store.dispatch(getClientResponse({number: 200}))
+			store.dispatch(getClientResponse({isLogged:true}))
 			navigate('/')
 		},
 		onError: () => {
+			store.dispatch(getClientResponse({isLogged:false}))
 			toast.error('Login failed')
 		}
 	})
-	const login = () => {
-		mutate()
-	}
 	return {
 		handleChange,
 		loginForm,

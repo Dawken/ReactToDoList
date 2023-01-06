@@ -10,36 +10,41 @@ import {Link} from 'react-router-dom'
 const RegisterForm = () => {
 
 	const {
-		onSubmitHandler,
+		register,
 		methods
 	} = useRegisterForm()
 
 	return (
 		<main>
 			<FormProvider {...methods}>
-				<form onSubmit={methods.handleSubmit(onSubmitHandler)}>
+				<form onSubmit={methods.handleSubmit((formv) => register(formv))} className='registerForm'>
 					<FormInput
 						name='login'
+						className='registerLabel'
 						label='login'
 						helperText='Login must be at least 3 symbols long'
 					/>
 					<FormInput
 						name='name'
+						className='registerLabel'
 						label='name'
 						helperText='Name must be at least 3 symbols long'
 					/>
 					<FormInput
 						name='lastName'
+						className='registerLabel'
 						label='last name'
 						helperText='Last name must be at least 3 symbols long'
 					/>
 					<FormInput
 						name='password'
+						className='registerLabel'
 						label='password'
 						type='password'
 					/>
 					<FormInput
 						name='repeatPassword'
+						className='registerLabel'
 						label='repeat Password'
 						type='password'
 					/>
@@ -49,7 +54,7 @@ const RegisterForm = () => {
 						render={({field}) => (
 							<Select
 								{...field}
-								style={{width: '300px', marginTop: '40px'}}
+								className='registerLabel'
 								value={field.value || ''}
 							>
 								<MenuItem value='Male'>Male</MenuItem>
@@ -58,8 +63,8 @@ const RegisterForm = () => {
 							</Select>
 						)}
 					/>
-					<div><button>Register</button></div>
-					<Link to={'/login'} style={{textDecoration:'none', color: 'white', marginTop: '40px'}}>
+					<div><button className='registerButton'>Register</button></div>
+					<Link to={'/login'} className='login'>
 						<div className='createAccount'>Do you already have an account? Login now</div>
 					</Link>
 				</form>

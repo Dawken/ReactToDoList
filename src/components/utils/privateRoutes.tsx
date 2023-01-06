@@ -4,11 +4,10 @@ import {useAppSelector} from '../../redux/store'
 
 const PrivateRoutes = () => {
 
-	const responseCode = useAppSelector(state => state.auth.clientResponse)
-	const auth = responseCode !== 401
+	const isLogged = useAppSelector(state => state.auth.isLoggedIn)
 
 	return (
-		auth ? <Outlet /> : <Navigate to='/login' />
+		isLogged ? <Outlet /> : <Navigate to='/login' />
 	)
 }
 export default PrivateRoutes

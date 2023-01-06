@@ -5,11 +5,6 @@ import './loginForm.scss'
 import {Link} from 'react-router-dom'
 
 
-const style = {
-	width: 300,
-	marginTop: '40px'
-}
-
 const LoginForm = () => {
 
 	const {
@@ -22,7 +17,6 @@ const LoginForm = () => {
 		<div className='loginForm'>
 			<form noValidate autoComplete='off'>
 				<TextField
-					sx={style}
 					label='login'
 					variant='outlined'
 					value={loginForm.login}
@@ -31,7 +25,6 @@ const LoginForm = () => {
 					required
 				/>
 				<TextField
-					sx={style}
 					label='Password'
 					variant='outlined'
 					value={loginForm.password}
@@ -41,8 +34,8 @@ const LoginForm = () => {
 					required
 				/>
 			</form>
-			<div><button onClick={login}>Login</button></div>
-			<Link to={'/register'} style={{textDecoration:'none', color: 'white'}}><div className='createAccount'>Dont have account? Register now</div></Link>
+			<div><button onClick={() => login()}>Login</button></div>
+			<Link to={'/register'} className='createAccount'><div>Dont have account? Register now</div></Link>
 		</div>
 	)
 }

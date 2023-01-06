@@ -1,7 +1,7 @@
 import {useMutation} from 'react-query'
-import requestTaskApi from '../../axiosConfig'
+import requestTaskApi from '../../config/axiosConfig'
 import {toast} from 'react-toastify'
-import {SubmitHandler, useForm} from 'react-hook-form'
+import {useForm} from 'react-hook-form'
 import {object, string, TypeOf} from 'zod'
 import {zodResolver} from '@hookform/resolvers/zod'
 
@@ -36,7 +36,7 @@ type RegisterInput = TypeOf<typeof registerSchema>
 
 const useRegisterForm = () => {
 
-	const {mutate} = useMutation((values:RegisterInput) => {
+	const {mutate: register} = useMutation((values:RegisterInput) => {
 		const {login, name, lastName, password, gender} = values
 		return requestTaskApi.post('/api/register', {
 			login:login,
@@ -53,14 +53,12 @@ const useRegisterForm = () => {
 		}
 	})
 
-	const onSubmitHandler: SubmitHandler<RegisterInput> = (values) => {
-		mutate(values)
-	}
 	const methods = useForm<RegisterInput>({
 		resolver: zodResolver(registerSchema),
 	})
+
 	return {
-		onSubmitHandler,
+		register,
 		methods
 	}
 }

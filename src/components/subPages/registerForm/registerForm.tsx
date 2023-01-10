@@ -72,4 +72,5 @@ const RegisterForm = () => {
 		</main>
 	)
 }
+
 export default RegisterForm

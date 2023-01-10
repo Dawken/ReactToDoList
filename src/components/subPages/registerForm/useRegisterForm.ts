@@ -62,4 +62,5 @@ const useRegisterForm = () => {
 		methods
 	}
 }
+
 export default useRegisterForm

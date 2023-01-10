@@ -44,4 +44,5 @@ const TaskContainer = ({text,id,taskStatus}:PropsTaskContainer) => {
 		</div>
 	)
 }
+
 export default TaskContainer

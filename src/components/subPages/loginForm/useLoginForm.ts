@@ -23,6 +23,7 @@ const useLoginForm = () => {
 			[name]: value
 		}))
 	}
+
 	const {mutate: login} = useMutation(() => {
 		const {login, password} = loginForm
 		return requestTaskApi.post('/api/login', {
@@ -39,10 +40,12 @@ const useLoginForm = () => {
 			toast.error('Login failed')
 		}
 	})
+
 	return {
 		handleChange,
 		loginForm,
 		login
 	}
 }
+
 export default useLoginForm

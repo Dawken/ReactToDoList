@@ -32,5 +32,6 @@ const FormInput: FC<FormInputProps> = ({ name, ...otherProps }) => {
 		/>
 	)
 }
+
 export default FormInput
 

@@ -27,9 +27,11 @@ const useInputContainer = () => {
 		mutate()
 		setTask('')
 	}
+
 	const inputChange = (event:ChangeEvent<HTMLInputElement>) => {
 		setTask(event.target.value)
 	}
+
 	return {
 		task,
 		isLoading,
@@ -37,4 +39,5 @@ const useInputContainer = () => {
 		onSubmit
 	}
 }
+
 export default useInputContainer

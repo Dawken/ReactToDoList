@@ -1,11 +1,14 @@
 import {useParams} from 'react-router-dom'
 import {useMutation, useQuery, useQueryClient} from 'react-query'
-import requestTaskApi from '../../axiosConfig'
+import requestTaskApi from '../../config/axiosConfig'
 import {ChangeEvent, useState} from 'react'
 import {toast} from 'react-toastify'
 
+
 const useTaskData = () => {
+
 	const {id} = useParams()
+
 	const queryClient = useQueryClient()
 
 	const {isLoading, data} = useQuery(['task', `${id}`], () =>
@@ -30,6 +33,7 @@ const useTaskData = () => {
 		event.preventDefault()
 		mutate()
 	}
+
 	return {
 		isLoading,
 		data,
@@ -39,4 +43,5 @@ const useTaskData = () => {
 		onSubmit
 	}
 }
+
 export default useTaskData

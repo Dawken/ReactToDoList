@@ -4,7 +4,7 @@ import './tasksContainer.scss'
 import {useQuery} from 'react-query'
 import LoadingAnimation from '../../animations/loadingAnimation'
 import TaskDataError from '../../errorSubpage/taskDataError'
-import requestTaskApi from '../../axiosConfig'
+import requestTaskApi from '../../config/axiosConfig'
 
 type PropsUserData = {
 	_id: string,
@@ -13,6 +13,7 @@ type PropsUserData = {
 	description: string,
 	taskStatus: string,
 }
+
 const TasksContainer = () => {
 
 	const {isLoading, data} = useQuery('tasks',  () =>
@@ -22,6 +23,7 @@ const TasksContainer = () => {
 	if(isLoading) return <LoadingAnimation />
 
 	if(!data) return <TaskDataError />
+
 	return (
 		<div className="container">
 			<div className="tasksContainer">
@@ -77,4 +79,5 @@ const TasksContainer = () => {
 		</div>
 	)
 }
+
 export default TasksContainer

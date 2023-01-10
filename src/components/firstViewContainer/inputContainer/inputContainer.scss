@@ -1,7 +1,15 @@
-.input {
-  margin-top: 200px;
-  margin-left: 760px;
-
+.userAccount {
+  .account {
+    float: right;
+    padding: 30px;
+    margin-right: 20px;
+    appearance: none;
+    border: none;
+    outline: none;
+    color: white;
+  }
+}
+.taskInputContainer {
   .taskInput {
     flex: 1 1 0%;
     padding: 1rem;
@@ -12,7 +20,10 @@
     outline: none;
     border: none;
     color: white;
+    margin-top: 150px;
+    text-align: center;
   }
+
   .submit {
     appearance: none;
     border: none;
@@ -27,8 +38,14 @@
     font-weight: 600;
     transition: 0.1s;
   }
+
   .submit:active {
     transform: scale(1.1);
     transition: 0.1s;
+  }
+}
+@media(min-width: 542px) {
+  .taskInput {
+    margin-left: 20%;
   }
 }

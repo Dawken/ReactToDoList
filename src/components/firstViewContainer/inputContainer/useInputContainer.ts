@@ -1,10 +1,11 @@
 import {useMutation, useQueryClient} from 'react-query'
 import {ChangeEvent, useState} from 'react'
-import requestTaskApi from '../../axiosConfig'
 import {toast} from 'react-toastify'
+import requestTaskApi from '../../config/axiosConfig'
 
 
 const useInputContainer = () => {
+
 	const queryClient = useQueryClient()
 
 	const [task, setTask] = useState('')
@@ -26,9 +27,11 @@ const useInputContainer = () => {
 		mutate()
 		setTask('')
 	}
+
 	const inputChange = (event:ChangeEvent<HTMLInputElement>) => {
 		setTask(event.target.value)
 	}
+
 	return {
 		task,
 		isLoading,
@@ -36,4 +39,5 @@ const useInputContainer = () => {
 		onSubmit
 	}
 }
+
 export default useInputContainer

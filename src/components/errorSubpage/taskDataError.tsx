@@ -14,4 +14,5 @@ const TaskDataError = () => {
 		</section>
 	)
 }
+
 export default TaskDataError

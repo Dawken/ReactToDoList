@@ -5,9 +5,9 @@
   display: block;
   opacity: 0;
 
-  .todofirst {
+  .taskBody {
     font-size: 20px;
-    margin-top: 5px;
+    margin-top: 25px;
     padding: 25px 0;
     color: white;
     width: 285px;
@@ -17,7 +17,7 @@
     word-break: break-all;
     display: inline-flex;
     position: relative;
-    z-index: 999;
+    z-index: 2;
   }
   .eye {
     border: none;
@@ -137,6 +137,7 @@
     text-align: center;
     width: 202px;
     height: 48px;
+    margin-bottom: 15px;
 
     #delete {
       border: none;
@@ -214,5 +215,6 @@
   opacity: 1;
   transform: translate(0%);
   width: 202px;
-  height: 38px;
+  height: 54px;
+
 }

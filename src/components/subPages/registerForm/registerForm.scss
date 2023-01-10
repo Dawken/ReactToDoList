@@ -1,0 +1,50 @@
+main {
+  text-align: center;
+  display: block;
+
+  .registerForm {
+    margin-top: 50px;
+    display: inline-grid;
+    .css-qwsgij-MuiFormControl-root-MuiTextField-root {
+      margin-top: 40px;
+    }
+    .css-hfutr2-MuiSvgIcon-root-MuiSelect-icon {
+      color:white ;
+    }
+    .css-bpeome-MuiSvgIcon-root-MuiSelect-icon {
+      color:white ;
+    }
+    .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root { // Font color
+      color: white ;
+    }
+    .css-1d3z3hw-MuiOutlinedInput-notchedOutline {  // Border focused
+      border-color: white ;
+    }
+    .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root { // high font color
+      color: white ;
+    }
+    .registerLabel {
+      margin-top: 40px
+    }
+    .login {
+      text-decoration: none;
+      color: white;
+      margin-top: 40px
+    }
+  }
+  .registerButton {
+    margin-top: 40px;
+    height: 50px;
+    width: 220px;
+    border-radius: 10px;
+    transition: 0.2s;
+    background-color: transparent;
+    border-color: black;
+    color: white;
+    font-size: 18px;
+  }
+  button:active {
+    transform: scale(1.05);
+  }
+}
+

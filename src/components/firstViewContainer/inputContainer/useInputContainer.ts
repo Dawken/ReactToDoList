@@ -2,6 +2,8 @@ import {useMutation, useQueryClient} from 'react-query'
 import {ChangeEvent, useState} from 'react'
 import {toast} from 'react-toastify'
 import requestTaskApi from '../../config/axiosConfig'
+import {store} from '../../../redux/store'
+import {getClientResponse} from '../../../redux/clientResponse'
 
 
 const useInputContainer = () => {
@@ -21,6 +23,17 @@ const useInputContainer = () => {
 			toast.error('Error! Can\'t add task!')
 		}
 	})
+	const {mutate: logout} = useMutation(() => {
+		return requestTaskApi.post('/api/logout')},{
+		onSuccess: () => {
+			toast.success('Logout success!')
+			store.dispatch(getClientResponse({isLogged:false}))
+		},
+		onError: () => {
+			toast.error('Logout failed')
+		}
+
+	})
 
 	const onSubmit = (event: ChangeEvent<HTMLFormElement>) => {
 		event.preventDefault()
@@ -36,7 +49,8 @@ const useInputContainer = () => {
 		task,
 		isLoading,
 		inputChange,
-		onSubmit
+		onSubmit,
+		logout
 	}
 }
 

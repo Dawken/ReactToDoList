@@ -18,3 +18,5 @@ To run this project, install it locally using npm
 `npm install`
 
 `npm start`
+
+`create .env file in the root of the project. Copy env from .env.examples`

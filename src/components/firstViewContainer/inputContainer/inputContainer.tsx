@@ -1,6 +1,7 @@
 import React from 'react'
 import './inputContainer.scss'
 import useInputContainer from './useInputContainer'
+import LogoutContainer from '../../shared/logout/logoutContainer'
 
 const TodoListContainer = () => {
 
@@ -9,12 +10,11 @@ const TodoListContainer = () => {
 		isLoading,
 		inputChange,
 		onSubmit,
-		logout
 	} = useInputContainer()
 
 	return (
 		<main>
-			<div className="logout"><button onClick={() =>logout()}>Logout</button></div>
+			<LogoutContainer />
 			<form onSubmit={onSubmit}>
 				<div className="taskInputContainer" >
 					<input

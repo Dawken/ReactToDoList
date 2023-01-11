@@ -44,7 +44,6 @@ const TaskData = () => {
 						/>
 						<button className='save' disabled={patchDescription}>Save</button>
 					</form>
-
 				</div>
 			</section>
 		</>

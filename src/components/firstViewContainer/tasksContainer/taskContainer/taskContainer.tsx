@@ -27,7 +27,7 @@ const TaskContainer = ({text,id,taskStatus}:PropsTaskContainer) => {
 			<div className="taskBody">
 				<Link to={id}>
 					<button className='eye'>
-						<div className="EyeButton"></div>
+						<div className="eyeButton"></div>
 					</button>
 				</Link>
 				{text}

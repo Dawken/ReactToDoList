@@ -27,19 +27,19 @@ const TaskContainer = ({text,id,taskStatus}:PropsTaskContainer) => {
 			<div className="taskBody">
 				<Link to={id}>
 					<button className='eye'>
-						<div className="EyeButton"></div>
+						<div className="eyeButton"></div>
 					</button>
 				</Link>
 				{text}
-				<button className="trash" onClick={changeOptionsVisible}>
-					<i className="trashIcon"></i>
+				<button className="statusContainer" onClick={changeOptionsVisible}>
+					<div className="status"></div>
 				</button>
 			</div>
 			<div className={isOptionsVisible ? 'options animation' : 'options'}>
-				<button id="delete" onClick={() => deleteAnimation(id)}>Delete</button>
-				{taskStatus !== 'todo' && <button id="todo"  onClick={() => patchTaskStatus({task: 'todo', id:id})}>To do</button>}
-				{taskStatus !== 'during' && <button id="during" onClick={() => patchTaskStatus({task:'during', id:id})}>During</button>}
-				{taskStatus !== 'done' && <button id="done" onClick={() => patchTaskStatus({task:'done', id:id})}>Done</button>}
+				<button className="delete" onClick={() => deleteAnimation(id)}>Delete</button>
+				{taskStatus !== 'todo' && <button className="todo"  onClick={() => patchTaskStatus({task: 'todo', id:id})}>To do</button>}
+				{taskStatus !== 'during' && <button className="during" onClick={() => patchTaskStatus({task:'during', id:id})}>During</button>}
+				{taskStatus !== 'done' && <button className="done" onClick={() => patchTaskStatus({task:'done', id:id})}>Done</button>}
 			</div>
 		</div>
 	)

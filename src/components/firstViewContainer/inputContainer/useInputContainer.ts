@@ -36,7 +36,7 @@ const useInputContainer = () => {
 		task,
 		isLoading,
 		inputChange,
-		onSubmit
+		onSubmit,
 	}
 }
 

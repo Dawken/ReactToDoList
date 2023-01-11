@@ -1,7 +1,7 @@
 import React from 'react'
 import './inputContainer.scss'
 import useInputContainer from './useInputContainer'
-import {Link} from 'react-router-dom'
+import LogoutContainer from '../../shared/logout/logoutContainer'
 
 const TodoListContainer = () => {
 
@@ -9,19 +9,12 @@ const TodoListContainer = () => {
 		task,
 		isLoading,
 		inputChange,
-		onSubmit
+		onSubmit,
 	} = useInputContainer()
 
 	return (
 		<main>
-			<div className='userAccount'>
-				<Link to={'/register'}>
-					<div className='account'>Register</div>
-				</Link>
-				<Link to={'/login'}>
-					<div className='account'>Login</div>
-				</Link>
-			</div>
+			<LogoutContainer />
 			<form onSubmit={onSubmit}>
 				<div className="taskInputContainer" >
 					<input

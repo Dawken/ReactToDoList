@@ -4,18 +4,20 @@ import {toast} from 'react-toastify'
 import {useForm} from 'react-hook-form'
 import {object, string, TypeOf} from 'zod'
 import {zodResolver} from '@hookform/resolvers/zod'
+import axios from 'axios'
+
 
 const registerSchema = object({
 	login: string()
-		.nonempty('Name is required')
-		.min(3)
-		.max(16, 'Name must be less than 100 characters'),
+		.nonempty('Login is required')
+		.min(3, 'Login have to be at least 3 characters long')
+		.max(16, 'Login cannot be longer than 16 characters'),
 	name: string()
 		.nonempty('Name is required')
-		.min(3),
+		.min(3, 'Name have to be at least 3 characters long'),
 	lastName: string()
-		.nonempty('Name is required')
-		.min(3),
+		.nonempty('Last name is required')
+		.min(3, 'Last name have to be at least 3 characters long'),
 	password: string()
 		.nonempty('Password is required')
 		// Check password includes at least 1 capital letter, 1 special symbol and has at least 8 symbols
@@ -33,7 +35,6 @@ const registerSchema = object({
 
 type RegisterInput = TypeOf<typeof registerSchema>
 
-
 const useRegisterForm = () => {
 
 	const {mutate: register} = useMutation((values:RegisterInput) => {
@@ -48,8 +49,14 @@ const useRegisterForm = () => {
 		onSuccess: () => {
 			toast.success('Register success!')
 		},
-		onError: () => {
-			toast.error('Register failed')
+		onError: (error) => {
+			if(axios.isAxiosError(error)) {
+				if(error.response?.data.errorCode === 'user-already-exist') {
+					toast.error('User already exist!')
+				} else {
+					toast.error('Register failed')
+				}
+			}
 		}
 	})
 

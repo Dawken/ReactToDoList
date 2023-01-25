@@ -1,5 +1,4 @@
 import React from 'react'
-import './Background'
 import './components/pageBackground.scss'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import TaskData from './components/subPages/taskData/taskData'

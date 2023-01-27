@@ -13,4 +13,4 @@ services:
     environment:
       - REACT_APP_TASK_BACKEND_HOST=${REACT_APP_TASK_BACKEND_HOST}
     ports:
-      - ${TODOLIST_LOCAL_PORT}:${TODOLIST_LOCAL_PORT}
+      - ${PORT}:${PORT}

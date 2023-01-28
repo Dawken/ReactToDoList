@@ -1,17 +1,15 @@
-import {TextField, TextFieldProps} from '@mui/material'
-import React, {FC} from 'react'
-import {Controller, useFormContext, get} from 'react-hook-form'
+import { TextField, TextFieldProps } from '@mui/material'
+import React, { FC } from 'react'
+import { Controller, useFormContext, get } from 'react-hook-form'
 
 type FormInputProps = {
-	name: string
-} & TextFieldProps
-
+	name: string;
+} & TextFieldProps;
 
 const FormInput: FC<FormInputProps> = ({ name, ...otherProps }) => {
-
 	const {
 		control,
-		formState: {errors},
+		formState: { errors },
 	} = useFormContext()
 
 	const error = get(errors, name)
@@ -20,7 +18,7 @@ const FormInput: FC<FormInputProps> = ({ name, ...otherProps }) => {
 		<Controller
 			control={control}
 			name={name}
-			render={({field}) => (
+			render={({ field }) => (
 				<TextField
 					{...otherProps}
 					{...field}
@@ -34,4 +32,3 @@ const FormInput: FC<FormInputProps> = ({ name, ...otherProps }) => {
 }
 
 export default FormInput
-

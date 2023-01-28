@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  app:
+    container_name: todolist
+    image: todolist
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./src:/app/src
+    env_file: .env
+    environment:
+      - REACT_APP_TASK_BACKEND_HOST=${REACT_APP_TASK_BACKEND_HOST}
+    ports:
+      - ${PORT}:${PORT}

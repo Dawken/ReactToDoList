@@ -1,28 +1,21 @@
-
 body {
-    background: #090d00;
+    background-image: url(../assets/background.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     overflow-x: hidden;
-    width: 100%;
-    font-family: 'Comfortaa', cursive;
 }
-
-/* BACKGROUND */
-
-#bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+::-webkit-scrollbar {
+    width: 15px;
+    height: 20px;
 }
-
-#bg canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+                    to bottom,
+                    #032cc2,
+                    #7202bb
+    );
+    border-radius: 50px;
 }
-
-
+::-webkit-scrollbar-track {
+    background: #000000;
+}

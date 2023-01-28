@@ -1,29 +1,33 @@
 import React from 'react'
-import {useMutation} from 'react-query'
+import { useMutation } from 'react-query'
 import requestTaskApi from '../../config/axiosConfig'
 import './logoutContainer.scss'
-import {toast} from 'react-toastify'
-import {store} from '../../../redux/store'
-import {getClientResponse} from '../../../redux/clientResponse'
-
+import { toast } from 'react-toastify'
+import { store } from '../../../redux/store'
+import { getClientResponse } from '../../../redux/clientResponse'
 
 const LogoutContainer = () => {
-
-	const {mutate: logout} = useMutation(() => {
-		return requestTaskApi.post('/api/logout')},{
-		onSuccess: () => {
-			toast.success('Logout success!')
-			store.dispatch(getClientResponse({isLogged:false}))
+	const { mutate: logout } = useMutation(
+		() => {
+			return requestTaskApi.post('/api/logout')
 		},
-		onError: () => {
-			toast.error('Logout failed')
+		{
+			onSuccess: () => {
+				toast.success('Logout success!')
+				store.dispatch(getClientResponse({ isLogged: false }))
+			},
+			onError: () => {
+				toast.error('Logout failed')
+			},
 		}
+	)
 
-	})
 	return (
 		<div className='logoutContainer'>
 			<div className='logoutIcon'></div>
-			<button className='logout' onClick={() => logout()}>Logout</button>
+			<button className='logout' onClick={() => logout()}>
+				Logout
+			</button>
 		</div>
 	)
 }

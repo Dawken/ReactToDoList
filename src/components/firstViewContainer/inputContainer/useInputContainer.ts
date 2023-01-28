@@ -1,26 +1,26 @@
-import {useMutation, useQueryClient} from 'react-query'
-import {ChangeEvent, useState} from 'react'
-import {toast} from 'react-toastify'
+import { useMutation, useQueryClient } from 'react-query'
+import { ChangeEvent, useState } from 'react'
+import { toast } from 'react-toastify'
 import requestTaskApi from '../../config/axiosConfig'
 
-
 const useInputContainer = () => {
-
 	const queryClient = useQueryClient()
-
 	const [task, setTask] = useState('')
 
-	const {isLoading, mutate} = useMutation(() => {
-		return requestTaskApi.post('/api/tasks', {text: task})
-	}, {
-		onSuccess: () => {
-			queryClient.invalidateQueries('tasks')
-			toast.success('Task was added correctly!')
+	const { isLoading, mutate } = useMutation(
+		() => {
+			return requestTaskApi.post('/api/tasks', { text: task })
 		},
-		onError: () => {
-			toast.error('Error! Can\'t add task!')
+		{
+			onSuccess: () => {
+				queryClient.invalidateQueries('tasks')
+				toast.success('Task was added correctly!')
+			},
+			onError: () => {
+				toast.error('Error! Can\'t add task!')
+			},
 		}
-	})
+	)
 
 	const onSubmit = (event: ChangeEvent<HTMLFormElement>) => {
 		event.preventDefault()
@@ -28,7 +28,7 @@ const useInputContainer = () => {
 		setTask('')
 	}
 
-	const inputChange = (event:ChangeEvent<HTMLInputElement>) => {
+	const inputChange = (event: ChangeEvent<HTMLInputElement>) => {
 		setTask(event.target.value)
 	}
 

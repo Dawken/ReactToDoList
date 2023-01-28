@@ -1,17 +1,11 @@
 import React from 'react'
-import {TextField} from '@mui/material'
+import { TextField } from '@mui/material'
 import useLoginForm from './useLoginForm'
 import './loginForm.scss'
-import {Link} from 'react-router-dom'
-
+import { Link } from 'react-router-dom'
 
 const LoginForm = () => {
-
-	const {
-		handleChange,
-		loginForm,
-		login
-	} = useLoginForm()
+	const { handleChange, loginForm, login } = useLoginForm()
 
 	return (
 		<div className='loginForm'>
@@ -29,13 +23,17 @@ const LoginForm = () => {
 					variant='outlined'
 					value={loginForm.password}
 					name='password'
-					type="password"
+					type='password'
 					onChange={handleChange}
 					required
 				/>
 			</form>
-			<div><button onClick={() => login()}>Login</button></div>
-			<Link to={'/register'} className='createAccount'><div>Dont have account? Register now</div></Link>
+			<div>
+				<button onClick={() => login()}>Login</button>
+			</div>
+			<Link to={'/register'} className='createAccount'>
+				<div>Dont have account? Register now</div>
+			</Link>
 		</div>
 	)
 }

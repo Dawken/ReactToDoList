@@ -17,7 +17,7 @@ To run this project
 
 Docker:
 
-`docker-compose --env-file ./docker.env up`
+`docker-compose --env-file ./docker.env up -d`
 
 How to run project locally:
 

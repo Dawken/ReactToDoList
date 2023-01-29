@@ -1,10 +1,11 @@
 import { useMutation } from 'react-query'
-import requestTaskApi from '../../config/axiosConfig'
+import requestTaskApi from '../../../config/axiosConfig'
 import { toast } from 'react-toastify'
 import { useForm } from 'react-hook-form'
 import { object, string, TypeOf } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const registerSchema = object({
 	login: string()
@@ -39,6 +40,7 @@ const registerSchema = object({
 type RegisterInput = TypeOf<typeof registerSchema>;
 
 const useRegisterForm = () => {
+	const navigate = useNavigate()
 	const { mutate: register } = useMutation(
 		(values: RegisterInput) => {
 			const { login, name, lastName, password, gender } = values
@@ -52,7 +54,8 @@ const useRegisterForm = () => {
 		},
 		{
 			onSuccess: () => {
-				toast.success('Register success!')
+				toast.success('Register succeed!')
+				navigate('/login')
 			},
 			onError: (error) => {
 				if (axios.isAxiosError(error)) {

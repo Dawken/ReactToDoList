@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
-import requestTaskApi from '../../config/axiosConfig'
+import requestTaskApi from '../../../config/axiosConfig'
 import { ChangeEvent, useState } from 'react'
 import { toast } from 'react-toastify'
 

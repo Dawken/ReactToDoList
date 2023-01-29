@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from 'react-query'
 import { useEffect, useRef, useState } from 'react'
-import requestTaskApi from '../../../config/axiosConfig'
+import requestTaskApi from '../../../../config/axiosConfig'
 import { toast } from 'react-toastify'
 import { TaskStatus } from '../../../../types/taskStatus'
 

@@ -43,7 +43,7 @@ const RegisterForm = () => {
 					<FormInput
 						name='repeatPassword'
 						className='registerLabel'
-						label='repeat Password'
+						label='repeat password'
 						type='password'
 					/>
 					<Controller

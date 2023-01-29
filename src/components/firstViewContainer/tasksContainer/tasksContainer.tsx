@@ -4,7 +4,7 @@ import './tasksContainer.scss'
 import { useQuery } from 'react-query'
 import LoadingAnimation from '../../animations/loadingAnimation'
 import TaskDataError from '../../errorSubpage/taskDataError'
-import requestTaskApi from '../../config/axiosConfig'
+import requestTaskApi from '../../../config/axiosConfig'
 
 type PropsUserData = {
 	_id: string;

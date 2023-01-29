@@ -9,11 +9,7 @@ body {
     height: 20px;
 }
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(
-                    to bottom,
-                    #032cc2,
-                    #7202bb
-    );
+    background: linear-gradient(to bottom, #032cc2, #7202bb);
     border-radius: 50px;
 }
 ::-webkit-scrollbar-track {

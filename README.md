@@ -15,6 +15,14 @@ Backend: https://github.com/Dawken/ReactToDoListBackend
 ### **Setup**
 To run this project
 
-`create .env file in the root of the project. Copy env from .env.examples`
+Docker:
 
 `docker-compose up`
+
+How to run project locally:
+
+`npm install`
+
+`create .env file in the root of the project. Copy env from .env.examples`
+
+`npm start`

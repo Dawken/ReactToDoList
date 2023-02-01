@@ -1,13 +1,15 @@
 .taskData {
-    display: grid;
-    place-items: center;
-
+    text-align: center;
+    margin: auto;
+    font-family: 'Raleway', sans-serif;
 .taskDataContainer {
-    width: 100vh;
     background-color: rgba(0, 0, 0, 0.9);
-    margin-top: 12vh;
+    margin: 2vh 0 2vh 0;
     border-radius: 15px;
     color: white;
+    display: inline-block;
+    max-width: 100%;
+    max-height: 900px;
     .back {
         appearance: none;
         border: none;
@@ -52,33 +54,102 @@
             bottom: 10px;
             background: currentColor
         }
-
-    .taskDate{
+    .taskDate {
         font-size: 40px;
-        margin: 50px 30px;
-        word-break: break-all;
+        margin: 10%;
+        word-break: break-word;
+    }
+    .taskInfo{
+        font-size: 40px;
+        justify-content: center;
+        word-break: break-word;
+        .taskStatus{
+            width: 150px;
+            margin-left: 30px;
+            color: white;
+        }
+
+        .taskInput {
+            margin-left: 5px;
+            padding: 1rem;
+            border-radius: 1rem;
+            width: 300px;
+            font-size: 25px;
+            background-color: rgb(0, 0, 0);
+            outline: none;
+            color: white;
+            border-color: white;
+        }
+    }
+
+    .penButton {
+        border: none;
+        background-color: transparent;
+        padding: 20px;
+        color: white;
+        cursor: pointer;
+        .penIcon {
+        box-sizing: border-box;
+        position: relative;
+        margin-top: -15px;
+        display: block;
+        transform: rotate(-45deg) scale(var(--ggs,1));
+        width: 14px;
+        height: 4px;
+        border-right: 2px solid transparent;
+        box-shadow:
+                0 0 0 2px,
+                inset -2px 0 0;
+        border-top-right-radius: 1px;
+        border-bottom-right-radius: 1px;
+        margin-right: -2px
+        }
+        .penIcon::after,
+        .penIcon::before {
+        content: "";
+        display: block;
+        box-sizing: border-box;
+        position: absolute
+      }
+        .penIcon::before {
+        background: currentColor;
+        border-left: 0;
+        right: -6px;
+        width: 3px;
+        height: 4px;
+        border-radius: 1px;
+        top: 0
+      }
+        .penIcon::after {
+        width: 8px;
+        height: 7px;
+        border-top: 4px solid transparent;
+        border-bottom: 4px solid transparent;
+        border-right: 7px solid;
+        left: -11px;
+        top: -2px
+      }
     }
     form {
-        display: flex;
+        display: inline-grid;
         .description {
-            margin: 30px 30px;
+            margin: 10px 30px;
             resize: none;
             background-color: #050505;
-            border-style: solid;
-            border-width: 4px;
-            border-image: linear-gradient(to right, darkblue, darkorchid) 1;
-            width: 40vh;
-            height: 20vh;
+            border-color: #021a96;
+            border-radius: 10px;
+            border-width: 3px;
+            height: 25vh;
             font-size: 30px;
             outline: none;
             color: white;
+            font-family: 'Raleway', sans-serif;
         }
         .save {
             appearance: none;
             border: none;
             outline: none;
             color: white;
-            background-color: transparent;
             font-size: 30px;
             background: -webkit-linear-gradient(rgb(97, 10, 218), rgb(3, 8, 128));
             -webkit-background-clip: text;
@@ -86,6 +157,7 @@
             cursor: pointer;
             font-weight: 600;
             transition: 0.1s;
+            margin-bottom: 10px;
         }
         button:active {
             transform: scale(1.1);

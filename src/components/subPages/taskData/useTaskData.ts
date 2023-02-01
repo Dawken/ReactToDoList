@@ -3,47 +3,77 @@ import { useMutation, useQuery, useQueryClient } from 'react-query'
 import requestTaskApi from '../../../config/axiosConfig'
 import { ChangeEvent, useState } from 'react'
 import { toast } from 'react-toastify'
+import { SelectChangeEvent } from '@mui/material'
+import axios from 'axios'
 
 const useTaskData = () => {
 	const { id } = useParams()
-
 	const queryClient = useQueryClient()
 
-	const { isLoading, data } = useQuery(['task', `${id}`], () =>
-		requestTaskApi.get(`/api/tasks/${id}`)
+	const [isEdited, setIsEdited] = useState(false)
+	const [taskData, setTaskData] = useState({
+		description: '',
+		taskStatus: '',
+		text: '',
+	})
+
+	const { isLoading, data } = useQuery(
+		['task', `${id}`],
+		() => requestTaskApi.get(`/api/tasks/${id}`),
+		{
+			onSuccess: (data) => {
+				setTaskData(data.data)
+			},
+		}
 	)
 
-	const [description, setDescription] = useState(data?.data.description)
-
-	const { isLoading: patchDescription, mutate } = useMutation(
+	const { isLoading: patchDescription, mutate: patchData } = useMutation(
 		() => {
 			return requestTaskApi.patch(`/api/tasks/${id}`, {
-				description: description,
+				description: taskData?.description,
+				text: taskData.text,
+				taskStatus: taskData.taskStatus,
 			})
 		},
 		{
 			onSuccess: () => {
 				queryClient.invalidateQueries('task')
-				toast.success('Description has been updated!')
+				toast.success('Task data has been updated!')
 			},
-			onError: () => {
-				toast.error('Error! Can\'t update description!')
+			onError: (error) => {
+				if (axios.isAxiosError(error)) {
+					if (error.response?.data.errorCode === 'nothing-changed') {
+						toast.error('Nothing changed!')
+					}
+				} else {
+					toast.error('Error! Can\'t update taskData!')
+				}
 			},
 		}
 	)
+	const taskStatusChange = (event: SelectChangeEvent) => {
+		setTaskData((prevState) => ({
+			...prevState,
+			taskStatus: event.target.value,
+		}))
+	}
 
 	const onSubmit = (event: ChangeEvent<HTMLFormElement>) => {
 		event.preventDefault()
-		mutate()
+		patchData()
+		if (isEdited) setIsEdited((prevState) => !prevState)
 	}
 
 	return {
 		isLoading,
 		data,
-		description,
-		setDescription,
+		taskData,
+		setTaskData,
 		patchDescription,
+		taskStatusChange,
 		onSubmit,
+		isEdited,
+		setIsEdited,
 	}
 }
 

@@ -5,15 +5,19 @@ import TaskDataError from '../../errorSubpage/taskDataError'
 import LoadingAnimation from '../../animations/loadingAnimation'
 import useTaskData from './useTaskData'
 import LogoutContainer from '../../shared/logout/logoutContainer'
+import { FormControl, MenuItem, Select } from '@mui/material'
 
 const TaskData = () => {
 	const {
 		isLoading,
 		data,
-		description,
-		setDescription,
+		taskData,
+		setTaskData,
 		patchDescription,
+		taskStatusChange,
 		onSubmit,
+		isEdited,
+		setIsEdited,
 	} = useTaskData()
 
 	if (isLoading) return <LoadingAnimation />
@@ -28,18 +32,65 @@ const TaskData = () => {
 					<Link to={'/'}>
 						<div className='arrowLeft'></div>
 					</Link>
-					<div className='taskDate'>{`Task name: ${data.data.text}`}</div>
-					<div className='taskDate'>{`Task date: ${data.data.date}`}</div>
-					<div className='taskDate'>{`Task Status: ${data.data.taskStatus}`}</div>
+					<button
+						className='penButton'
+						onClick={() => setIsEdited((prevState) => !prevState)}
+					>
+						<div className='penIcon'></div>
+					</button>
+					<div className='taskInfo'>
+						{'Task name: '}
+						{isEdited ? (
+							<input
+								className='taskInput'
+								value={taskData.text}
+								onChange={(event) =>
+									setTaskData((prevState) => ({
+										...prevState,
+										text: event.target.value,
+									}))
+								}
+							/>
+						) : (
+							data.data.text
+						)}
+					</div>
+					<div className='taskDate'>{`Creation time: ${data.data.date}`}</div>
+					<div className='taskInfo'>
+						{'Task status: '}
+						{isEdited ? (
+							<FormControl>
+								<Select
+									className='taskStatus'
+									value={taskData.taskStatus}
+									onChange={taskStatusChange}
+								>
+									{data.data.taskStatus !== 'todo' && (
+										<MenuItem value='todo'>todo</MenuItem>
+									)}
+									{data.data.taskStatus !== 'during' && (
+										<MenuItem value='during'>during</MenuItem>
+									)}
+									{data.data.taskStatus !== 'done' && (
+										<MenuItem value='done'>done</MenuItem>
+									)}
+								</Select>
+							</FormControl>
+						) : (
+							data.data.taskStatus
+						)}
+					</div>
 					<form onSubmit={onSubmit}>
 						<textarea
 							className='description'
-							onChange={(event) => setDescription(event.target.value)}
-							value={
-								description === undefined ? data.data.description : description
+							onChange={(event) =>
+								setTaskData((prevState) => ({
+									...prevState,
+									description: event.target.value,
+								}))
 							}
+							value={taskData.description}
 							placeholder='Description'
-							required={true}
 							disabled={patchDescription}
 						/>
 						<button className='save' disabled={patchDescription}>

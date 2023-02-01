@@ -13,7 +13,7 @@ const LogoutContainer = () => {
 		},
 		{
 			onSuccess: () => {
-				toast.success('Logout success!')
+				toast.success('Your session expired')
 				store.dispatch(getClientResponse({ isLogged: false }))
 			},
 			onError: () => {

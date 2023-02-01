@@ -7,7 +7,7 @@
 
   .taskBody {
     font-size: 20px;
-    margin-top: 25px;
+    margin-top: 15px;
     padding: 25px 0;
     color: white;
     width: 285px;
@@ -139,9 +139,8 @@
 
     .todo {
       border: none;
-      background-color: transparent;
       font-size: 17px;
-      background: -webkit-linear-gradient(rgb(3, 243, 243), rgb(47, 0, 255));
+      background: -webkit-linear-gradient(rgb(111, 0, 255), rgb(220, 0, 255));
       font-weight: 600;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -151,9 +150,8 @@
 
     .during {
       border: none;
-      background-color: transparent;
       font-size: 17px;
-      background: -webkit-linear-gradient(rgb(251, 255, 0), rgb(243, 139, 3));
+      background: -webkit-linear-gradient(rgb(0, 255, 247), rgb(0, 255, 15));
       font-weight: 600;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -163,9 +161,8 @@
 
     .done {
       border: none;
-      background-color: transparent;
       font-size: 17px;
-      background: -webkit-linear-gradient(rgb(51, 255, 0), rgb(3, 243, 171));
+      background: -webkit-linear-gradient(rgb(3, 243, 243), rgb(47, 0, 255));
       font-weight: 600;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;

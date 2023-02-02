@@ -5,7 +5,7 @@ import TaskDataError from '../../errorSubpage/taskDataError'
 import LoadingAnimation from '../../animations/loadingAnimation'
 import useTaskData from './useTaskData'
 import LogoutContainer from '../../shared/logout/logoutContainer'
-import { FormControl, MenuItem, Select } from '@mui/material'
+import { FormControl, MenuItem, Select, TextField } from '@mui/material'
 
 const TaskData = () => {
 	const {
@@ -14,10 +14,9 @@ const TaskData = () => {
 		taskData,
 		setTaskData,
 		patchDescription,
+		deleteTask,
 		taskStatusChange,
 		onSubmit,
-		isEdited,
-		setIsEdited,
 	} = useTaskData()
 
 	if (isLoading) return <LoadingAnimation />
@@ -27,58 +26,46 @@ const TaskData = () => {
 	return (
 		<>
 			<LogoutContainer />
-			<section className='taskData'>
+			<div className='taskData'>
 				<div className='taskDataContainer'>
 					<Link to={'/'}>
 						<div className='arrowLeft'></div>
 					</Link>
-					<button
-						className='penButton'
-						onClick={() => setIsEdited((prevState) => !prevState)}
-					>
-						<div className='penIcon'></div>
-					</button>
 					<div className='taskInfo'>
-						{'Task name: '}
-						{isEdited ? (
-							<input
-								className='taskInput'
-								value={taskData.text}
-								onChange={(event) =>
-									setTaskData((prevState) => ({
-										...prevState,
-										text: event.target.value,
-									}))
-								}
-							/>
-						) : (
-							data.data.text
-						)}
+						{'Task name '}
+						<TextField
+							className='mui'
+							variant='outlined'
+							value={taskData.text}
+							onChange={(event) =>
+								setTaskData((prevState) => ({
+									...prevState,
+									text: event.target.value,
+								}))
+							}
+						/>
 					</div>
-					<div className='taskDate'>{`Creation time: ${data.data.date}`}</div>
+					<div className='taskDate'>
+						{'Creation time '}
+						<TextField
+							variant='outlined'
+							value={taskData.date}
+							disabled={true}
+						/>
+					</div>
 					<div className='taskInfo'>
-						{'Task status: '}
-						{isEdited ? (
-							<FormControl>
-								<Select
-									className='taskStatus'
-									value={taskData.taskStatus}
-									onChange={taskStatusChange}
-								>
-									{data.data.taskStatus !== 'todo' && (
-										<MenuItem value='todo'>todo</MenuItem>
-									)}
-									{data.data.taskStatus !== 'during' && (
-										<MenuItem value='during'>during</MenuItem>
-									)}
-									{data.data.taskStatus !== 'done' && (
-										<MenuItem value='done'>done</MenuItem>
-									)}
-								</Select>
-							</FormControl>
-						) : (
-							data.data.taskStatus
-						)}
+						{'Task status '}
+						<FormControl>
+							<Select
+								className='taskStatus'
+								value={taskData.taskStatus}
+								onChange={taskStatusChange}
+							>
+								<MenuItem value='todo'>todo</MenuItem>
+								<MenuItem value='during'>during</MenuItem>
+								<MenuItem value='done'>done</MenuItem>
+							</Select>
+						</FormControl>
 					</div>
 					<form onSubmit={onSubmit}>
 						<textarea
@@ -93,12 +80,17 @@ const TaskData = () => {
 							placeholder='Description'
 							disabled={patchDescription}
 						/>
-						<button className='save' disabled={patchDescription}>
-							Save
-						</button>
+						<div className='optionsButtons'>
+							<button className='deleteButton' onClick={() => deleteTask()}>
+								Delete<div className='trashIcon'></div>
+							</button>
+							<button className='saveButton' disabled={patchDescription}>
+								Save
+							</button>
+						</div>
 					</form>
 				</div>
-			</section>
+			</div>
 		</>
 	)
 }

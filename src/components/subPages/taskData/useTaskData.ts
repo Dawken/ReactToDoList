@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 import requestTaskApi from '../../../config/axiosConfig'
 import { ChangeEvent, useState } from 'react'
@@ -9,12 +9,13 @@ import axios from 'axios'
 const useTaskData = () => {
 	const { id } = useParams()
 	const queryClient = useQueryClient()
+	const navigate = useNavigate()
 
-	const [isEdited, setIsEdited] = useState(false)
 	const [taskData, setTaskData] = useState({
 		description: '',
 		taskStatus: '',
 		text: '',
+		date: '',
 	})
 
 	const { isLoading, data } = useQuery(
@@ -29,6 +30,9 @@ const useTaskData = () => {
 
 	const { isLoading: patchDescription, mutate: patchData } = useMutation(
 		() => {
+			if (taskData.text === '') {
+				toast.error('Text cannot be empty')
+			}
 			return requestTaskApi.patch(`/api/tasks/${id}`, {
 				description: taskData?.description,
 				text: taskData.text,
@@ -51,6 +55,22 @@ const useTaskData = () => {
 			},
 		}
 	)
+	const { mutate: deleteTask } = useMutation(
+		() => {
+			return requestTaskApi.delete(`/api/tasks/${id}`)
+		},
+		{
+			onSuccess: () => {
+				queryClient.invalidateQueries('tasks')
+				navigate('/')
+				toast.success('Task was deleted correctly!')
+			},
+			onError: () => {
+				toast.error('Error! Can\'t delete task!')
+			},
+		}
+	)
+
 	const taskStatusChange = (event: SelectChangeEvent) => {
 		setTaskData((prevState) => ({
 			...prevState,
@@ -61,7 +81,6 @@ const useTaskData = () => {
 	const onSubmit = (event: ChangeEvent<HTMLFormElement>) => {
 		event.preventDefault()
 		patchData()
-		if (isEdited) setIsEdited((prevState) => !prevState)
 	}
 
 	return {
@@ -70,10 +89,9 @@ const useTaskData = () => {
 		taskData,
 		setTaskData,
 		patchDescription,
+		deleteTask,
 		taskStatusChange,
 		onSubmit,
-		isEdited,
-		setIsEdited,
 	}
 }
 

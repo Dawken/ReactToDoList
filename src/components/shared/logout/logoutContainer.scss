@@ -1,7 +1,9 @@
 .logoutContainer {
   display: inline-flex;
-  margin: 20px;
-  float: right;
+  right: 0;
+  top:0;
+  position: absolute;
+  padding: 20px;
   .logoutIcon {
     margin-top: 5px;
     box-sizing: border-box;

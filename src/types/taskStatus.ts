@@ -1,1 +1,1 @@
-export type TaskStatus = 'todo' | 'during' | 'done'
+export type TaskStatus = 'todo' | 'during' | 'done';

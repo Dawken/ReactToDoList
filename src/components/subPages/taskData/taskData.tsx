@@ -5,7 +5,13 @@ import TaskDataError from '../../errorSubpage/taskDataError'
 import LoadingAnimation from '../../animations/loadingAnimation'
 import useTaskData from './useTaskData'
 import LogoutContainer from '../../shared/logout/logoutContainer'
-import { FormControl, MenuItem, Select, TextField } from '@mui/material'
+import {
+	FormControl,
+	InputLabel,
+	MenuItem,
+	Select,
+	TextField,
+} from '@mui/material'
 
 const TaskData = () => {
 	const {
@@ -32,9 +38,9 @@ const TaskData = () => {
 						<div className='arrowLeft'></div>
 					</Link>
 					<div className='taskInfo'>
-						{'Task name '}
 						<TextField
-							className='mui'
+							fullWidth={true}
+							label='Task name'
 							variant='outlined'
 							value={taskData.text}
 							onChange={(event) =>
@@ -46,19 +52,19 @@ const TaskData = () => {
 						/>
 					</div>
 					<div className='taskDate'>
-						{'Creation time '}
 						<TextField
+							fullWidth={true}
+							label='Creation time'
 							variant='outlined'
-							className='mui'
 							value={taskData.date}
 							disabled={true}
 						/>
 					</div>
 					<div className='taskInfo'>
-						{'Task status '}
-						<FormControl>
+						<FormControl fullWidth={true}>
+							<InputLabel>Task status</InputLabel>
 							<Select
-								className='mui'
+								label='Task status'
 								value={taskData.taskStatus}
 								onChange={taskStatusChange}
 							>
@@ -69,7 +75,11 @@ const TaskData = () => {
 						</FormControl>
 					</div>
 					<form onSubmit={onSubmit} className='descriptionForm'>
-						<textarea
+						<TextField
+							label='Description'
+							fullWidth={true}
+							multiline
+							rows={4}
 							className='description'
 							onChange={(event) =>
 								setTaskData((prevState) => ({
@@ -78,7 +88,6 @@ const TaskData = () => {
 								}))
 							}
 							value={taskData.description}
-							placeholder='Description'
 							disabled={patchDescription}
 						/>
 						<div className='optionsButtons'>

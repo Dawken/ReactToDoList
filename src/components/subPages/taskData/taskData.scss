@@ -56,22 +56,18 @@
         }
     .taskDate {
         font-size: 25px;
-        margin: 30px 20px 30px;
+        margin: 30px 20px;
         word-break: break-word;
     }
     .taskInfo{
         font-size: 25px;
-        margin: 30px 20px 30px;
+        margin: 30px 20px;
         text-align: initial;
         word-break: break-word;
         .taskStatus{
             width: 150px;
             margin-left: 30px;
             color: white;
-        }
-        
-        .mui {
-            width: 223px;
         }
 
         .taskInput {
@@ -87,25 +83,11 @@
         }
     }
     .descriptionForm {
-        display: inline-grid;
-        .description {
-            margin: 10px 30px;
-            resize: none;
-            background-color: #050505;
-            border-color: #021a96;
-            border-radius: 10px;
-            border-width: 3px;
-            height: 20vh;
-            max-width: 100%;
-            font-size: 30px;
-            outline: none;
-            color: white;
-            font-family: 'Raleway', sans-serif;
-        }
+          margin: 30px 20px;
         .optionsButtons {
             display: flex;
             justify-content: space-between;
-            margin: 20px 0 20px;
+            margin: 30px 0;
             .deleteButton {
                 color: white;
                 font-size: 17px;
@@ -115,10 +97,10 @@
                 border-radius: 8px;
                 cursor: pointer;
                 transition: 0.1s;
-                margin-bottom: 10px;
                 height: 35px;
                 display: flex;
                 align-items: center;
+                margin: 0 10px;
                     .trashIcon {
                         margin: 5px 0 0 20px;
                         box-sizing: border-box;
@@ -165,17 +147,15 @@
 
             .saveButton {
                 color: white;
-                right: 0;
-                bottom: 0;
-                font-size: 17px;
                 width: 150px;
+                font-size: 17px;
                 background: transparent;
                 border-color: #610ADA;
                 border-radius: 8px;
                 cursor: pointer;
                 transition: 0.1s;
-                margin-bottom: 10px;
                 height: 35px;
+                margin: 0 10px;
             }
 
             button:active {
@@ -186,37 +166,31 @@
     }
     }
 }
-@media (max-width: 430px) {
-    .taskInfo {
-        display: initial;
-        .mui {
-            margin-left: 18px;
-        }
-    }
-    .descriptionForm {
-        margin-top: 50px;
-    }
-}
-@media (min-width: 431px) {
-    .taskInfo {
-        .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
-             margin-left: 30px;
-             position: relative;          
-             top: 20%;
-             transform: translateY(-15%);
-        }
-        .css-1nrlq1o-MuiFormControl-root {
-            margin-left: 30px;
-            position: relative;          
-            top: 20%;                    
-            transform: translateY(-15%);
-        }
-    }
-    .taskDate {
-        .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
-             position: relative;          
-             top: 20%;                    
-             transform: translateY(-15%);
-        }
-    }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

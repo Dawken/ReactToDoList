@@ -49,6 +49,7 @@ const TaskData = () => {
 						{'Creation time '}
 						<TextField
 							variant='outlined'
+							className='mui'
 							value={taskData.date}
 							disabled={true}
 						/>
@@ -57,7 +58,7 @@ const TaskData = () => {
 						{'Task status '}
 						<FormControl>
 							<Select
-								className='taskStatus'
+								className='mui'
 								value={taskData.taskStatus}
 								onChange={taskStatusChange}
 							>

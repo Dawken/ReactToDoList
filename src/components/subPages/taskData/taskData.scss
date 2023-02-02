@@ -55,13 +55,13 @@
             background: currentColor
         }
     .taskDate {
-        font-size: 30px;
-        margin: 0 20px 40px;
+        font-size: 25px;
+        margin: 30px 20px 30px;
         word-break: break-word;
     }
     .taskInfo{
-        font-size: 30px;
-        margin: 0 20px 40px;
+        font-size: 25px;
+        margin: 30px 20px 30px;
         text-align: initial;
         word-break: break-word;
         .taskStatus{
@@ -69,8 +69,9 @@
             margin-left: 30px;
             color: white;
         }
+        
         .mui {
-            margin-left: 33px;
+            width: 223px;
         }
 
         .taskInput {
@@ -85,8 +86,6 @@
             border-color: white;
         }
     }
-
-
     form {
         display: inline-grid;
         .description {
@@ -187,11 +186,34 @@
     }
     }
 }
-@media (max-width: 449px) {
+@media (max-width: 430px) {
     .taskInfo {
         display: initial;
         .mui {
-            margin-left: 20px;
+            margin-left: 18px;
+        }
+    }
+}
+@media (min-width: 431px) {
+    .taskInfo {
+        .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+             margin-left: 30px;
+             position: relative;          
+             top: 20%;
+             transform: translateY(-15%);
+        }
+        .css-1nrlq1o-MuiFormControl-root {
+            margin-left: 30px;
+            position: relative;          
+            top: 20%;                    
+            transform: translateY(-15%);
+        }
+    }
+    .taskDate {
+        .css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+             position: relative;          
+             top: 20%;                    
+             transform: translateY(-15%);
         }
     }
 }

@@ -51,7 +51,7 @@ const TaskData = () => {
 							}
 						/>
 					</div>
-					<div className='taskDate'>
+					<div className='taskInfo'>
 						<TextField
 							fullWidth={true}
 							label='Creation time'

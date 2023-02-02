@@ -54,11 +54,6 @@
             bottom: 10px;
             background: currentColor
         }
-    .taskDate {
-        font-size: 25px;
-        margin: 30px 20px;
-        word-break: break-word;
-    }
     .taskInfo{
         font-size: 25px;
         margin: 30px 20px;
@@ -68,18 +63,6 @@
             width: 150px;
             margin-left: 30px;
             color: white;
-        }
-
-        .taskInput {
-            margin-left: 5px;
-            padding: 1rem;
-            border-radius: 1rem;
-            width: 300px;
-            font-size: 25px;
-            background-color: rgb(0, 0, 0);
-            outline: none;
-            color: white;
-            border-color: white;
         }
     }
     .descriptionForm {

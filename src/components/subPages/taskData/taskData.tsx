@@ -68,7 +68,7 @@ const TaskData = () => {
 							</Select>
 						</FormControl>
 					</div>
-					<form onSubmit={onSubmit}>
+					<form onSubmit={onSubmit} className='descriptionForm'>
 						<textarea
 							className='description'
 							onChange={(event) =>

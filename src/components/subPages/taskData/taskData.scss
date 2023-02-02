@@ -86,7 +86,7 @@
             border-color: white;
         }
     }
-    form {
+    .descriptionForm {
         display: inline-grid;
         .description {
             margin: 10px 30px;
@@ -192,6 +192,9 @@
         .mui {
             margin-left: 18px;
         }
+    }
+    .descriptionForm {
+        margin-top: 50px;
     }
 }
 @media (min-width: 431px) {

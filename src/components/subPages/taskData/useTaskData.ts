@@ -5,6 +5,7 @@ import { ChangeEvent, useState } from 'react'
 import { toast } from 'react-toastify'
 import { SelectChangeEvent } from '@mui/material'
 import axios from 'axios'
+import dayjs from 'dayjs'
 
 const useTaskData = () => {
 	const { id } = useParams()
@@ -23,7 +24,11 @@ const useTaskData = () => {
 		() => requestTaskApi.get(`/api/tasks/${id}`),
 		{
 			onSuccess: (data) => {
-				setTaskData(data.data)
+				const date = dayjs(data.data.date).format('DD/MM/YYYY HH:mm:ss')
+				setTaskData({
+					...data.data,
+					date: date,
+				})
 			},
 		}
 	)

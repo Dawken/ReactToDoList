@@ -23,12 +23,12 @@ const LogoutContainer = () => {
 	)
 
 	return (
-		<div className='logoutContainer'>
-			<div className='logoutIcon'></div>
+		<nav className='logoutContainer'>
 			<button className='logout' onClick={() => logout()}>
-				Logout
+				<div className='logoutIcon'></div>
+				<div className='logoutText'>Logout</div>
 			</button>
-		</div>
+		</nav>
 	)
 }
 

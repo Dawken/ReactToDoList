@@ -11,9 +11,9 @@
 }
 .taskInputContainer {
   text-align: center;
-  display: inline-block;
+  display: block;
+  height: 100px;
   .taskInput {
-    flex: 1 1 0%;
     padding: 1rem;
     border-radius: 1rem;
     border: solid 2px #6F00FFFF;
@@ -21,7 +21,7 @@
     background-color: rgb(0, 0, 0);
     outline: none;
     color: white;
-    margin-top: 150px;
+    margin-top: 50px;
   }
 
   .submit {

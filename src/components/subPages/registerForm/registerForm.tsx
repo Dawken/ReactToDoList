@@ -3,7 +3,7 @@ import './registerForm.scss'
 import useRegisterForm from './useRegisterForm'
 import { Controller, FormProvider } from 'react-hook-form'
 import FormInput from '../formInput/formInput'
-import { MenuItem, Select } from '@mui/material'
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material'
 import { Link } from 'react-router-dom'
 
 const RegisterForm = () => {
@@ -46,21 +46,27 @@ const RegisterForm = () => {
 						label='repeat password'
 						type='password'
 					/>
-					<Controller
-						control={methods.control}
-						name='gender'
-						render={({ field }) => (
-							<Select
-								{...field}
-								className='registerLabel'
-								value={field.value || ''}
-							>
-								<MenuItem value='Male'>Male</MenuItem>
-								<MenuItem value='Female'>Female</MenuItem>
-								<MenuItem value='Other'>Other</MenuItem>
-							</Select>
-						)}
-					/>
+					<FormControl fullWidth={true}>
+						<Controller
+							control={methods.control}
+							name='gender'
+							render={({ field }) => (
+								<>
+									<InputLabel>gender</InputLabel>
+									<Select
+										{...field}
+										className='registerLabel'
+										label='gender'
+										value={field.value}
+									>
+										<MenuItem value='Male'>Male</MenuItem>
+										<MenuItem value='Female'>Female</MenuItem>
+										<MenuItem value='Other'>Other</MenuItem>
+									</Select>
+								</>
+							)}
+						/>
+					</FormControl>
 					<div>
 						<button className='registerButton'>Register</button>
 					</div>

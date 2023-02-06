@@ -24,11 +24,13 @@ const TaskContainer = ({ text, id, taskStatus }: PropsTaskContainer) => {
 	return (
 		<div className='taskContainer' ref={containerReference}>
 			<div className='taskBody'>
-				<Link to={id}>
-					<button className='eye'>
-						<div className='eyeButton'></div>
-					</button>
-				</Link>
+				<div className='taskDetailsButton'>
+					<Link to={id}>
+						<button className='eye'>
+							<div className='eyeButton'></div>
+						</button>
+					</Link>
+				</div>
 				{text}
 				<button className='statusContainer' onClick={changeOptionsVisible}>
 					<div className='status'></div>

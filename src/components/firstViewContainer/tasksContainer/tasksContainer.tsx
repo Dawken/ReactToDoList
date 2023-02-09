@@ -1,6 +1,6 @@
 import * as React from 'react'
 import TaskContainer from './taskContainer/taskContainer'
-import './tasksContainer.scss'
+import styles from './tasksContainer.module.scss'
 import { useQuery } from 'react-query'
 import LoadingAnimation from '../../animations/loadingAnimation'
 import TaskDataError from '../../errorSubpage/taskDataError'
@@ -24,10 +24,10 @@ const TasksContainer = () => {
 	if (!data) return <TaskDataError />
 
 	return (
-		<div className='container'>
-			<div className='tasksContainer'>
-				<div className='top'>
-					<h1 className='topTodo'>To do</h1>
+		<div className={styles.container}>
+			<div className={styles.tasksContainer}>
+				<div className={styles.top}>
+					<h1 className={styles.topTodo}>To do</h1>
 				</div>
 				{data?.data.map(
 					(todo: PropsUserData) =>
@@ -44,9 +44,9 @@ const TasksContainer = () => {
 				)}
 			</div>
 
-			<div className='tasksContainer'>
-				<div className='top'>
-					<h1 className='topDuring'>During</h1>
+			<div className={styles.tasksContainer}>
+				<div className={styles.top}>
+					<h1 className={styles.topDuring}>During</h1>
 				</div>
 				{data?.data.map(
 					(during: PropsUserData) =>
@@ -63,9 +63,9 @@ const TasksContainer = () => {
 				)}
 			</div>
 
-			<div className='tasksContainer'>
-				<div className='top'>
-					<h1 className='topDone'>Done</h1>
+			<div className={styles.tasksContainer}>
+				<div className={styles.top}>
+					<h1 className={styles.topDone}>Done</h1>
 				</div>
 				{data?.data.map(
 					(done: PropsUserData) =>

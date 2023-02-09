@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from 'react-query'
 import { useEffect, useRef, useState } from 'react'
 import requestTaskApi from '../../../../config/axiosConfig'
+import styles from './taskContainer.module.scss'
 import { toast } from 'react-toastify'
 import { TaskStatus } from '../../../../types/taskStatus'
 
@@ -8,7 +9,9 @@ const useTaskContainer = () => {
 	const queryClient = useQueryClient()
 
 	const [isOptionsVisible, setIsOptionsVisible] = useState(false)
+
 	const containerReference = useRef<HTMLDivElement>(null)
+	const optionsReference = useRef<HTMLDivElement>(null)
 
 	const { mutate } = useMutation(
 		(id: string) => {
@@ -45,25 +48,29 @@ const useTaskContainer = () => {
 	useEffect(() => {
 		containerReference.current &&
 			setTimeout(
-				() => containerReference.current?.classList.add('animation'),
+				() => containerReference.current?.classList.add(styles.animation),
 				150
 			)
 	}, [containerReference])
 
 	const deleteAnimation = (id: string) => {
 		setTimeout(
-			() => containerReference.current?.classList.remove('animation'),
+			() => containerReference.current?.classList.remove(styles.animation),
 			100
 		)
 		setTimeout(() => mutate(id), 200)
 	}
 	const changeOptionsVisible = () => {
+		isOptionsVisible
+			? optionsReference.current?.classList.remove(styles.animation)
+			: optionsReference.current?.classList.add(styles.animation)
+
 		setIsOptionsVisible((prevState) => !prevState)
 	}
 	return {
-		isOptionsVisible,
 		changeOptionsVisible,
 		containerReference,
+		optionsReference,
 		patchTaskStatus,
 		deleteAnimation,
 	}

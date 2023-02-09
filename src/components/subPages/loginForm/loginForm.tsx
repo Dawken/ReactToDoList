@@ -1,14 +1,14 @@
 import React from 'react'
 import { TextField } from '@mui/material'
 import useLoginForm from './useLoginForm'
-import './loginForm.scss'
+import styles from './loginForm.module.scss'
 import { Link } from 'react-router-dom'
 
 const LoginForm = () => {
 	const { handleChange, loginForm, login } = useLoginForm()
 
 	return (
-		<div className='loginForm'>
+		<div className={styles.loginForm}>
 			<form noValidate autoComplete='off'>
 				<TextField
 					label='login'
@@ -31,7 +31,7 @@ const LoginForm = () => {
 			<div>
 				<button onClick={() => login()}>Login</button>
 			</div>
-			<Link to={'/register'} className='createAccount'>
+			<Link to={'/register'} className={styles.createAccount}>
 				<div>Dont have account? Register now</div>
 			</Link>
 		</div>

@@ -1,4 +1,4 @@
-.taskContainer.animation {
+.animation.animation {
   opacity: 1;
   transform: translate(0%);
   height: auto;
@@ -118,8 +118,7 @@
     }
   }
 
-
-  .options.animation {
+  .animation.animation {
     opacity: 1;
     visibility: initial;
     transform: translate(0%);
@@ -141,6 +140,7 @@
     text-align: center;
     width: 202px;
     height: 48px;
+
 
     .delete {
       border: none;

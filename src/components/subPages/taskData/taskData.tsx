@@ -1,5 +1,5 @@
 import React from 'react'
-import './taskData.scss'
+import styles from './taskData.module.scss'
 import { Link } from 'react-router-dom'
 import TaskDataError from '../../errorSubpage/taskDataError'
 import LoadingAnimation from '../../animations/loadingAnimation'
@@ -32,12 +32,12 @@ const TaskData = () => {
 	return (
 		<>
 			<LogoutContainer />
-			<div className='taskData'>
-				<div className='taskDataContainer'>
+			<div className={styles.taskData}>
+				<div className={styles.taskDataContainer}>
 					<Link to={'/'}>
-						<div className='arrowLeft'></div>
+						<div className={styles.arrowLeft}></div>
 					</Link>
-					<div className='taskInfo'>
+					<div className={styles.taskInfo}>
 						<TextField
 							fullWidth={true}
 							label='Task name'
@@ -51,7 +51,7 @@ const TaskData = () => {
 							}
 						/>
 					</div>
-					<div className='taskInfo'>
+					<div className={styles.taskInfo}>
 						<TextField
 							fullWidth={true}
 							label='Creation time'
@@ -60,7 +60,7 @@ const TaskData = () => {
 							disabled={true}
 						/>
 					</div>
-					<div className='taskInfo'>
+					<div className={styles.taskInfo}>
 						<FormControl fullWidth={true}>
 							<InputLabel>Task status</InputLabel>
 							<Select
@@ -74,13 +74,12 @@ const TaskData = () => {
 							</Select>
 						</FormControl>
 					</div>
-					<form onSubmit={onSubmit} className='descriptionForm'>
+					<form onSubmit={onSubmit} className={styles.descriptionForm}>
 						<TextField
 							label='Description'
 							fullWidth={true}
 							multiline
 							rows={4}
-							className='description'
 							onChange={(event) =>
 								setTaskData((prevState) => ({
 									...prevState,
@@ -90,11 +89,14 @@ const TaskData = () => {
 							value={taskData.description}
 							disabled={patchDescription}
 						/>
-						<div className='optionsButtons'>
-							<button className='deleteButton' onClick={() => deleteTask()}>
-								Delete<div className='trashIcon'></div>
+						<div className={styles.optionsButtons}>
+							<button
+								className={styles.deleteButton}
+								onClick={() => deleteTask()}
+							>
+								Delete<div className={styles.trashIcon}></div>
 							</button>
-							<button className='saveButton' disabled={patchDescription}>
+							<button className={styles.saveButton} disabled={patchDescription}>
 								Save
 							</button>
 						</div>

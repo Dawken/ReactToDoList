@@ -1,7 +1,7 @@
 import React from 'react'
 import { useMutation } from 'react-query'
 import requestTaskApi from '../../../config/axiosConfig'
-import './logoutContainer.scss'
+import styles from './logoutContainer.module.scss'
 import { toast } from 'react-toastify'
 import { store } from '../../../redux/store'
 import { getClientResponse } from '../../../redux/user'
@@ -23,10 +23,10 @@ const LogoutContainer = () => {
 	)
 
 	return (
-		<nav className='logoutContainer'>
-			<button className='logout' onClick={() => logout()}>
-				<div className='logoutIcon'></div>
-				<div className='logoutText'>Logout</div>
+		<nav className={styles.logoutContainer}>
+			<button className={styles.logout} onClick={() => logout()}>
+				<div className={styles.logoutIcon}></div>
+				<div className={styles.logoutText}>Logout</div>
 			</button>
 		</nav>
 	)

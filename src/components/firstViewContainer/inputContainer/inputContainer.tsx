@@ -1,5 +1,5 @@
 import React from 'react'
-import './inputContainer.scss'
+import styles from './inputContainer.module.scss'
 import useInputContainer from './useInputContainer'
 import LogoutContainer from '../../shared/logout/logoutContainer'
 
@@ -10,19 +10,19 @@ const TodoListContainer = () => {
 		<>
 			<LogoutContainer />
 			<form onSubmit={onSubmit}>
-				<div className='taskInputContainer'>
+				<div className={styles.taskInputContainer}>
 					<input
 						type='text'
-						className='taskInput'
+						className={styles.taskInput}
 						placeholder={
-							isLoading ? 'Saving your changes' : 'What are we doin today?'
+							isLoading ? 'Saving your changes' : 'What are we doing today?'
 						}
 						onChange={inputChange}
 						value={task}
 						required={true}
 						disabled={isLoading}
 					/>
-					<button className='submit' disabled={isLoading}>
+					<button className={styles.submit} disabled={isLoading}>
 						Add task
 					</button>
 				</div>

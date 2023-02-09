@@ -1,5 +1,5 @@
 import React from 'react'
-import './registerForm.scss'
+import styles from './registerForm.module.scss'
 import useRegisterForm from './useRegisterForm'
 import { Controller, FormProvider } from 'react-hook-form'
 import FormInput from '../formInput/formInput'
@@ -14,35 +14,35 @@ const RegisterForm = () => {
 			<FormProvider {...methods}>
 				<form
 					onSubmit={methods.handleSubmit((formv) => register(formv))}
-					className='registerForm'
+					className={styles.registerForm}
 				>
 					<FormInput
 						name='login'
-						className='registerLabel'
+						className={styles.registerLabel}
 						label='login'
 						helperText='Login must be at least 3 symbols long'
 					/>
 					<FormInput
 						name='name'
-						className='registerLabel'
+						className={styles.registerLabel}
 						label='name'
 						helperText='Name must be at least 3 symbols long'
 					/>
 					<FormInput
 						name='lastName'
-						className='registerLabel'
+						className={styles.registerLabel}
 						label='last name'
 						helperText='Last name must be at least 3 symbols long'
 					/>
 					<FormInput
 						name='password'
-						className='registerLabel'
+						className={styles.registerLabel}
 						label='password'
 						type='password'
 					/>
 					<FormInput
 						name='repeatPassword'
-						className='registerLabel'
+						className={styles.registerLabel}
 						label='repeat password'
 						type='password'
 					/>
@@ -55,7 +55,7 @@ const RegisterForm = () => {
 									<InputLabel>gender</InputLabel>
 									<Select
 										{...field}
-										className='registerLabel'
+										className={styles.registerLabel}
 										label='gender'
 										value={field.value}
 									>
@@ -68,10 +68,10 @@ const RegisterForm = () => {
 						/>
 					</FormControl>
 					<div>
-						<button className='registerButton'>Register</button>
+						<button className={styles.registerButton}>Register</button>
 					</div>
-					<Link to={'/login'} className='login'>
-						<div className='createAccount'>
+					<Link to={'/login'} className={styles.login}>
+						<div className={styles.createAccount}>
 							Do you already have an account? Login now
 						</div>
 					</Link>

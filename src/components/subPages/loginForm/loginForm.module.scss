@@ -1,30 +1,56 @@
 .loginForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  display: block;
+.loginBackground {
+  border-radius: 17px;
+  height: 500px;
+  width: 500px;
+  margin-top: 20vh;
+  margin-right: 20px;
+  margin-left: 20px;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.59);
   form {
-    margin-top: 250px;
+    margin-top: 50px;
     display: inline-grid;
+    .loginLabel {
+      margin: 25px 20px;
+      max-width: 250px;
+      height: 50px;
+    }
   }
-  button {
+
+  .register {
     margin-top: 40px;
     height: 50px;
     width: 220px;
     border-radius: 20px;
-    transition: 0.2s;
-    background-color: transparent;
-    border-color: black;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 220% auto;
     color: white;
-    font-size: 18px;
+    font-weight: bold;
+    background-image: linear-gradient(to right, #b00fb6 0%, #1100ff 51%, #ab51e8 100%);
   }
+  .register:hover {
+    background-position: right center; /* change the direction of the change here */
+  }
+
   button:active {
     transform: scale(1.05);
   }
-  .createAccount {
-    margin-top: 30px;
+
+  .createAccountLink {
     text-decoration: none;
-    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    color: #ffffff;
+    .createAccount {
+      margin-top: 40px;
+    }
   }
 }
-.loginForm * {
-  margin-top: 40px;
 }

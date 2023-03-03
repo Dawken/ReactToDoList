@@ -7,9 +7,7 @@
   border-radius: 17px;
   height: 500px;
   width: 500px;
-  margin-top: 20vh;
-  margin-right: 20px;
-  margin-left: 20px;
+  margin: 20vh 20px;
   padding: 20px;
   background-color: rgba(0, 0, 0, 0.59);
   form {
@@ -36,7 +34,7 @@
     background-image: linear-gradient(to right, #b00fb6 0%, #1100ff 51%, #ab51e8 100%);
   }
   .register:hover {
-    background-position: right center; /* change the direction of the change here */
+    background-position: right center;
   }
 
   button:active {

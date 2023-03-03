@@ -5,7 +5,12 @@ import TaskDataError from '../../errorSubpage/taskDataError'
 import LoadingAnimation from '../../animations/loadingAnimation'
 import useTaskData from './useTaskData'
 import LogoutContainer from '../../shared/logout/logoutContainer'
+import DeleteIcon from '@mui/icons-material/Delete'
+import LoadingButton from '@mui/lab/LoadingButton'
+import SaveIcon from '@mui/icons-material/Save'
+
 import {
+	Button,
 	FormControl,
 	InputLabel,
 	MenuItem,
@@ -20,6 +25,7 @@ const TaskData = () => {
 		taskData,
 		setTaskData,
 		patchDescription,
+		isLoadingIcon,
 		deleteTask,
 		taskStatusChange,
 		onSubmit,
@@ -74,7 +80,7 @@ const TaskData = () => {
 							</Select>
 						</FormControl>
 					</div>
-					<form onSubmit={onSubmit} className={styles.descriptionForm}>
+					<div className={styles.description}>
 						<TextField
 							label='Description'
 							fullWidth={true}
@@ -89,18 +95,37 @@ const TaskData = () => {
 							value={taskData.description}
 							disabled={patchDescription}
 						/>
-						<div className={styles.optionsButtons}>
-							<button
-								className={styles.deleteButton}
-								onClick={() => deleteTask()}
+					</div>
+					<div className={styles.optionsButtons}>
+						<Button
+							variant='outlined'
+							className={styles.deleteButton}
+							onClick={() => deleteTask()}
+							startIcon={<DeleteIcon />}
+						>
+							Delete
+						</Button>
+						{isLoadingIcon ? (
+							<LoadingButton
+								loading
+								className={styles.saveButton}
+								loadingPosition='start'
+								startIcon={<SaveIcon />}
+								variant='outlined'
 							>
-								Delete<div className={styles.trashIcon}></div>
-							</button>
-							<button className={styles.saveButton} disabled={patchDescription}>
 								Save
-							</button>
-						</div>
-					</form>
+							</LoadingButton>
+						) : (
+							<Button
+								variant='outlined'
+								onClick={onSubmit}
+								className={styles.saveButton}
+								disabled={patchDescription}
+							>
+								Save
+							</Button>
+						)}
+					</div>
 				</div>
 			</div>
 		</>

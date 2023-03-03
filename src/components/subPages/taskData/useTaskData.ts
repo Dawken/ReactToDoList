@@ -18,6 +18,7 @@ const useTaskData = () => {
 		text: '',
 		date: '',
 	})
+	const [isLoadingIcon, setIsLoadingIcon] = useState(false)
 
 	const { isLoading, data } = useQuery(
 		['task', `${id}`],
@@ -83,9 +84,13 @@ const useTaskData = () => {
 		}))
 	}
 
-	const onSubmit = (event: ChangeEvent<HTMLFormElement>) => {
+	const onSubmit = (event: any) => {
+		setIsLoadingIcon(true)
 		event.preventDefault()
 		patchData()
+		setTimeout(() => {
+			setIsLoadingIcon(false)
+		}, 2000)
 	}
 
 	return {
@@ -95,6 +100,7 @@ const useTaskData = () => {
 		setTaskData,
 		patchDescription,
 		deleteTask,
+		isLoadingIcon,
 		taskStatusChange,
 		onSubmit,
 	}

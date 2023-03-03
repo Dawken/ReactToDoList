@@ -86,7 +86,7 @@ const LoginForm = () => {
 					</FormControl>
 				</form>
 				<div>
-					<button className={styles.register} onClick={() => login()}>
+					<button className={styles.login} onClick={() => login()}>
 						Login
 					</button>
 				</div>

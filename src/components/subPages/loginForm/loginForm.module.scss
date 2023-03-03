@@ -20,11 +20,12 @@
     }
   }
 
-  .register {
+  .login {
     margin-top: 40px;
     height: 50px;
     width: 220px;
     border-radius: 20px;
+    border: none;
     text-align: center;
     text-transform: uppercase;
     transition: 0.5s;
@@ -33,7 +34,7 @@
     font-weight: bold;
     background-image: linear-gradient(to right, #b00fb6 0%, #1100ff 51%, #ab51e8 100%);
   }
-  .register:hover {
+  .login:hover {
     background-position: right center;
   }
 

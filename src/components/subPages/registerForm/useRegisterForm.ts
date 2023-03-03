@@ -6,6 +6,7 @@ import { object, string, TypeOf } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import React from 'react'
 
 const registerSchema = object({
 	login: string()
@@ -41,6 +42,17 @@ type RegisterInput = TypeOf<typeof registerSchema>;
 
 const useRegisterForm = () => {
 	const navigate = useNavigate()
+
+	const [showPassword, setShowPassword] = React.useState(false)
+
+	const handleClickShowPassword = () => setShowPassword((show) => !show)
+
+	const handleMouseDownPassword = (
+		event: React.MouseEvent<HTMLButtonElement>
+	) => {
+		event.preventDefault()
+	}
+
 	const { mutate: register } = useMutation(
 		(values: RegisterInput) => {
 			const { login, name, lastName, password, gender } = values
@@ -76,6 +88,9 @@ const useRegisterForm = () => {
 	return {
 		register,
 		methods,
+		showPassword,
+		handleClickShowPassword,
+		handleMouseDownPassword,
 	}
 }
 

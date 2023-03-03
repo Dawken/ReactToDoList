@@ -1,31 +1,90 @@
-main {
-  text-align: center;
-  display: block;
-
-  .registerForm {
-    margin: 100px 20px;
-    display: inline-grid;
-    .registerLabel {
-      margin: 0 0 40px;
+.background {
+  background-image: url(../../../assets/registerBackground.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow-x: hidden;
+  height: 100vh;
+  background-position: bottom;
+  .joinUsContainer {
+    font-size: 70px;
+    text-align: center;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @keyframes moveInFromLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-100px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
+
+    .joinUs {
+      animation-name: moveInFromLeft;
+      animation-duration: 1s;
+      background-image: linear-gradient(to right, #f50adf, #010df6);
+      -webkit-background-clip: text;
+      color: transparent;
+      font-weight: bold;
+    }
+  }
+
+
+  main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    .registerForm {
+      margin: 20px 20px;
+      display: inline-grid;
+      background-color: rgba(0, 0, 0, 0.59);
+      border-radius: 17px;
+      width: 450px;
+
+      .registerLabel {
+        margin: 20px 40px;
+        height: 60px;
+      }
+    }
+
+    .registerButton {
+      margin-top: 20px;
+      height: 50px;
+      border: none;
+      width: 220px;
+      border-radius: 20px;
+      text-align: center;
+      text-transform: uppercase;
+      transition: 0.5s;
+      background-size: 220% auto;
+      color: white;
+      font-weight: bold;
+      background-image: linear-gradient(to right, #b00fb6 0%, #1100ff 51%, #ab51e8 100%);
+    }
+
+    .registerButton:hover {
+      background-position: right center;
+    }
+
+    .registerButton:active {
+      transform: scale(1.05);
+    }
+
+    button:active {
+      transform: scale(1.05);
+    }
+
     .login {
       text-decoration: none;
       color: white;
-      margin: 20px 0 20px;
+      font-size: 15px;
+      margin: 30px 0 20px;
     }
   }
-  .registerButton {
-    height: 50px;
-    width: 220px;
-    border-radius: 10px;
-    transition: 0.2s;
-    background-color: transparent;
-    border-color: black;
-    color: white;
-    font-size: 18px;
-  }
-  button:active {
-    transform: scale(1.05);
-  }
 }
-

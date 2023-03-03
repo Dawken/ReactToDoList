@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 import requestTaskApi from '../../../config/axiosConfig'
-import { ChangeEvent, useState } from 'react'
+import React, { useState } from 'react'
 import { toast } from 'react-toastify'
 import { SelectChangeEvent } from '@mui/material'
 import axios from 'axios'
@@ -84,7 +84,7 @@ const useTaskData = () => {
 		}))
 	}
 
-	const onSubmit = (event: any) => {
+	const onSubmit = (event: React.FormEvent<HTMLButtonElement>) => {
 		setIsLoadingIcon(true)
 		event.preventDefault()
 		patchData()

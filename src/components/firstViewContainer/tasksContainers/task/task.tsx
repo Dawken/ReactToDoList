@@ -3,6 +3,8 @@ import styles from './task.module.scss'
 import { TaskStatus } from '../../../../types/taskStatus'
 import { Link } from 'react-router-dom'
 import useTask from './useTask'
+import VisibilityIcon from '@mui/icons-material/Visibility'
+import RateReviewIcon from '@mui/icons-material/RateReview'
 
 type PropsTaskContainer = {
 	text: string;
@@ -27,7 +29,7 @@ const Task = ({ text, id, taskStatus }: PropsTaskContainer) => {
 				<div className={styles.taskDetailsButton}>
 					<Link to={id}>
 						<button className={styles.eye}>
-							<div className={styles.eyeButton}></div>
+							<VisibilityIcon />
 						</button>
 					</Link>
 				</div>
@@ -36,7 +38,7 @@ const Task = ({ text, id, taskStatus }: PropsTaskContainer) => {
 					className={styles.statusContainer}
 					onClick={changeOptionsVisible}
 				>
-					<div className={styles.status}></div>
+					<RateReviewIcon />
 				</button>
 			</div>
 			<div className={styles.options} ref={optionsReference}>

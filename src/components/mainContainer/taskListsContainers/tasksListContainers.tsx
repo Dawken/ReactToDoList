@@ -1,6 +1,6 @@
 import * as React from 'react'
 import Task from './task/task'
-import styles from './tasksContainers.module.scss'
+import styles from './tasksListContainers.module.scss'
 import { useQuery } from 'react-query'
 import LoadingAnimation from '../../animations/loadingAnimation'
 import TaskDataError from '../../errorSubpages/taskDataError'
@@ -14,7 +14,7 @@ type PropsUserData = {
 	taskStatus: string;
 };
 
-const TasksContainers = () => {
+const TasksListContainers = () => {
 	const { isLoading, data } = useQuery('tasks', () =>
 		requestTaskApi.get('/api/tasks')
 	)
@@ -85,4 +85,4 @@ const TasksContainers = () => {
 	)
 }
 
-export default TasksContainers
+export default TasksListContainers

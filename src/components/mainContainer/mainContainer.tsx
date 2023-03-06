@@ -1,12 +1,12 @@
 import React from 'react'
 import TaskInput from './taskInput/taskInput'
-import TasksContainers from './tasksContainers/tasksContainers'
+import TasksListContainers from './taskListsContainers/tasksListContainers'
 
 const FirstPageView = () => {
 	return (
 		<>
 			<TaskInput />
-			<TasksContainers />
+			<TasksListContainers />
 		</>
 	)
 }

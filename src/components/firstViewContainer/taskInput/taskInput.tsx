@@ -1,10 +1,10 @@
 import React from 'react'
-import styles from './inputContainer.module.scss'
-import useInputContainer from './useInputContainer'
+import styles from './taskInput.module.scss'
+import useTaskInput from './useTaskInput'
 import LogoutContainer from '../../shared/logout/logoutContainer'
 
-const TodoListContainer = () => {
-	const { task, isLoading, inputChange, onSubmit } = useInputContainer()
+const TaskInput = () => {
+	const { task, isLoading, inputChange, onSubmit } = useTaskInput()
 
 	return (
 		<>
@@ -31,4 +31,4 @@ const TodoListContainer = () => {
 	)
 }
 
-export default TodoListContainer
+export default TaskInput

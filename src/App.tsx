@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import TaskData from './components/subPages/taskData/taskData'
-import TaskDataError from './components/errorSubpage/taskDataError'
+import TaskDataError from './components/errorSubpages/taskDataError'
 import FirstPageView from './components/firstViewContainer/firstPageView'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ToastContainer } from 'react-toastify'

@@ -1,9 +1,9 @@
 import * as React from 'react'
-import TaskContainer from './taskContainer/taskContainer'
-import styles from './tasksContainer.module.scss'
+import Task from './task/task'
+import styles from './tasksContainers.module.scss'
 import { useQuery } from 'react-query'
 import LoadingAnimation from '../../animations/loadingAnimation'
-import TaskDataError from '../../errorSubpage/taskDataError'
+import TaskDataError from '../../errorSubpages/taskDataError'
 import requestTaskApi from '../../../config/axiosConfig'
 
 type PropsUserData = {
@@ -14,7 +14,7 @@ type PropsUserData = {
 	taskStatus: string;
 };
 
-const TasksContainer = () => {
+const TasksContainers = () => {
 	const { isLoading, data } = useQuery('tasks', () =>
 		requestTaskApi.get('/api/tasks')
 	)
@@ -32,7 +32,7 @@ const TasksContainer = () => {
 				{data?.data.map(
 					(todo: PropsUserData) =>
 						todo.taskStatus === 'todo' && (
-							<TaskContainer
+							<Task
 								text={todo.text}
 								id={todo._id}
 								key={todo._id}
@@ -51,7 +51,7 @@ const TasksContainer = () => {
 				{data?.data.map(
 					(during: PropsUserData) =>
 						during.taskStatus === 'during' && (
-							<TaskContainer
+							<Task
 								text={during.text}
 								id={during._id}
 								key={during._id}
@@ -70,7 +70,7 @@ const TasksContainer = () => {
 				{data?.data.map(
 					(done: PropsUserData) =>
 						done.taskStatus === 'done' && (
-							<TaskContainer
+							<Task
 								text={done.text}
 								id={done._id}
 								key={done._id}
@@ -85,4 +85,4 @@ const TasksContainer = () => {
 	)
 }
 
-export default TasksContainer
+export default TasksContainers

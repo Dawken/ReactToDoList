@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './registerForm.module.scss'
 import useRegisterForm from './useRegisterForm'
 import { Controller, FormProvider } from 'react-hook-form'
-import FormInput from '../formInput/formInput'
+import FormInput from '../../shared/formInput/formInput'
 import {
 	FormControl,
 	IconButton,

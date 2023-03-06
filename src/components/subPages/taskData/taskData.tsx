@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './taskData.module.scss'
 import { Link } from 'react-router-dom'
-import TaskDataError from '../../errorSubpage/taskDataError'
+import TaskDataError from '../../errorSubpages/taskDataError'
 import LoadingAnimation from '../../animations/loadingAnimation'
 import useTaskData from './useTaskData'
 import LogoutContainer from '../../shared/logout/logoutContainer'

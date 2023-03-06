@@ -1,8 +1,8 @@
 import React from 'react'
-import styles from './taskContainer.module.scss'
+import styles from './task.module.scss'
 import { TaskStatus } from '../../../../types/taskStatus'
 import { Link } from 'react-router-dom'
-import useTaskContainer from './useTaskContainer'
+import useTask from './useTask'
 
 type PropsTaskContainer = {
 	text: string;
@@ -12,14 +12,14 @@ type PropsTaskContainer = {
 	description: string;
 };
 
-const TaskContainer = ({ text, id, taskStatus }: PropsTaskContainer) => {
+const Task = ({ text, id, taskStatus }: PropsTaskContainer) => {
 	const {
 		changeOptionsVisible,
 		containerReference,
 		optionsReference,
 		patchTaskStatus,
 		deleteAnimation,
-	} = useTaskContainer()
+	} = useTask()
 
 	return (
 		<div className={styles.taskContainer} ref={containerReference}>
@@ -72,4 +72,4 @@ const TaskContainer = ({ text, id, taskStatus }: PropsTaskContainer) => {
 	)
 }
 
-export default TaskContainer
+export default Task

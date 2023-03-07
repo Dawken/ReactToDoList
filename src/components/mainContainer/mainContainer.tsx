@@ -2,7 +2,7 @@ import React from 'react'
 import TaskInput from './taskInput/taskInput'
 import TasksListContainers from './taskListsContainers/tasksListContainers'
 
-const FirstPageView = () => {
+const MainContainer = () => {
 	return (
 		<>
 			<TaskInput />
@@ -11,4 +11,4 @@ const FirstPageView = () => {
 	)
 }
 
-export default FirstPageView
+export default MainContainer

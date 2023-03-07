@@ -1,11 +1,11 @@
 import { useMutation, useQueryClient } from 'react-query'
 import { useEffect, useRef, useState } from 'react'
 import requestTaskApi from '../../../../config/axiosConfig'
-import styles from './taskContainer.module.scss'
+import styles from './task.module.scss'
 import { toast } from 'react-toastify'
 import { TaskStatus } from '../../../../types/taskStatus'
 
-const useTaskContainer = () => {
+const useTask = () => {
 	const queryClient = useQueryClient()
 
 	const [isOptionsVisible, setIsOptionsVisible] = useState(false)
@@ -76,4 +76,4 @@ const useTaskContainer = () => {
 	}
 }
 
-export default useTaskContainer
+export default useTask

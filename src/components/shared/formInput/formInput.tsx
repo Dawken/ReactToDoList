@@ -25,6 +25,7 @@ const FormInput: FC<FormInputProps> = ({ name, ...otherProps }) => {
 					value={field.value ?? otherProps.value ?? ''}
 					error={!!errors[name]}
 					helperText={error ? error.message : ''}
+					focused
 				/>
 			)}
 		/>

@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 import requestTaskApi from '../../../config/axiosConfig'
-import { ChangeEvent, useState } from 'react'
+import React, { useState } from 'react'
 import { toast } from 'react-toastify'
 import { SelectChangeEvent } from '@mui/material'
 import axios from 'axios'
@@ -18,6 +18,7 @@ const useTaskData = () => {
 		text: '',
 		date: '',
 	})
+	const [isLoadingIcon, setIsLoadingIcon] = useState(false)
 
 	const { isLoading, data } = useQuery(
 		['task', `${id}`],
@@ -83,9 +84,13 @@ const useTaskData = () => {
 		}))
 	}
 
-	const onSubmit = (event: ChangeEvent<HTMLFormElement>) => {
+	const onSubmit = (event: React.FormEvent<HTMLButtonElement>) => {
+		setIsLoadingIcon(true)
 		event.preventDefault()
 		patchData()
+		setTimeout(() => {
+			setIsLoadingIcon(false)
+		}, 2000)
 	}
 
 	return {
@@ -95,6 +100,7 @@ const useTaskData = () => {
 		setTaskData,
 		patchDescription,
 		deleteTask,
+		isLoadingIcon,
 		taskStatusChange,
 		onSubmit,
 	}

@@ -3,7 +3,7 @@ import { ChangeEvent, useState } from 'react'
 import { toast } from 'react-toastify'
 import requestTaskApi from '../../../config/axiosConfig'
 
-const useInputContainer = () => {
+const useTaskInput = () => {
 	const queryClient = useQueryClient()
 	const [task, setTask] = useState('')
 
@@ -40,4 +40,4 @@ const useInputContainer = () => {
 	}
 }
 
-export default useInputContainer
+export default useTaskInput

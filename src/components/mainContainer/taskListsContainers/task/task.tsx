@@ -1,8 +1,10 @@
 import React from 'react'
-import styles from './taskContainer.module.scss'
+import styles from './task.module.scss'
 import { TaskStatus } from '../../../../types/taskStatus'
 import { Link } from 'react-router-dom'
-import useTaskContainer from './useTaskContainer'
+import useTask from './useTask'
+import VisibilityIcon from '@mui/icons-material/Visibility'
+import RateReviewIcon from '@mui/icons-material/RateReview'
 
 type PropsTaskContainer = {
 	text: string;
@@ -12,14 +14,14 @@ type PropsTaskContainer = {
 	description: string;
 };
 
-const TaskContainer = ({ text, id, taskStatus }: PropsTaskContainer) => {
+const Task = ({ text, id, taskStatus }: PropsTaskContainer) => {
 	const {
 		changeOptionsVisible,
 		containerReference,
 		optionsReference,
 		patchTaskStatus,
 		deleteAnimation,
-	} = useTaskContainer()
+	} = useTask()
 
 	return (
 		<div className={styles.taskContainer} ref={containerReference}>
@@ -27,7 +29,7 @@ const TaskContainer = ({ text, id, taskStatus }: PropsTaskContainer) => {
 				<div className={styles.taskDetailsButton}>
 					<Link to={id}>
 						<button className={styles.eye}>
-							<div className={styles.eyeButton}></div>
+							<VisibilityIcon />
 						</button>
 					</Link>
 				</div>
@@ -36,7 +38,7 @@ const TaskContainer = ({ text, id, taskStatus }: PropsTaskContainer) => {
 					className={styles.statusContainer}
 					onClick={changeOptionsVisible}
 				>
-					<div className={styles.status}></div>
+					<RateReviewIcon />
 				</button>
 			</div>
 			<div className={styles.options} ref={optionsReference}>
@@ -72,4 +74,4 @@ const TaskContainer = ({ text, id, taskStatus }: PropsTaskContainer) => {
 	)
 }
 
-export default TaskContainer
+export default Task

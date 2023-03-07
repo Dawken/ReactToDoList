@@ -1,17 +1,28 @@
 import React from 'react'
 import styles from './taskData.module.scss'
 import { Link } from 'react-router-dom'
-import TaskDataError from '../../errorSubpage/taskDataError'
+import TaskDataError from '../../errorSubpages/taskDataError'
 import LoadingAnimation from '../../animations/loadingAnimation'
 import useTaskData from './useTaskData'
 import LogoutContainer from '../../shared/logout/logoutContainer'
+import DeleteIcon from '@mui/icons-material/Delete'
+import LoadingButton from '@mui/lab/LoadingButton'
+import SaveIcon from '@mui/icons-material/Save'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import {
+	purpleTheme,
+	redTheme,
+	greenTheme,
+} from '../../themes/customMuiThemes'
+import {
+	Button,
 	FormControl,
 	InputLabel,
 	MenuItem,
 	Select,
 	TextField,
 } from '@mui/material'
+import { ThemeProvider } from '@mui/material/styles'
 
 const TaskData = () => {
 	const {
@@ -20,6 +31,7 @@ const TaskData = () => {
 		taskData,
 		setTaskData,
 		patchDescription,
+		isLoadingIcon,
 		deleteTask,
 		taskStatusChange,
 		onSubmit,
@@ -35,72 +47,99 @@ const TaskData = () => {
 			<div className={styles.taskData}>
 				<div className={styles.taskDataContainer}>
 					<Link to={'/'}>
-						<div className={styles.arrowLeft}></div>
+						<ArrowBackIcon />
 					</Link>
-					<div className={styles.taskInfo}>
-						<TextField
-							fullWidth={true}
-							label='Task name'
-							variant='outlined'
-							value={taskData.text}
-							onChange={(event) =>
-								setTaskData((prevState) => ({
-									...prevState,
-									text: event.target.value,
-								}))
-							}
-						/>
-					</div>
-					<div className={styles.taskInfo}>
-						<TextField
-							fullWidth={true}
-							label='Creation time'
-							variant='outlined'
-							value={taskData.date}
-							disabled={true}
-						/>
-					</div>
-					<div className={styles.taskInfo}>
-						<FormControl fullWidth={true}>
-							<InputLabel>Task status</InputLabel>
-							<Select
-								label='Task status'
-								value={taskData.taskStatus}
-								onChange={taskStatusChange}
-							>
-								<MenuItem value='todo'>todo</MenuItem>
-								<MenuItem value='during'>during</MenuItem>
-								<MenuItem value='done'>done</MenuItem>
-							</Select>
-						</FormControl>
-					</div>
-					<form onSubmit={onSubmit} className={styles.descriptionForm}>
-						<TextField
-							label='Description'
-							fullWidth={true}
-							multiline
-							rows={4}
-							onChange={(event) =>
-								setTaskData((prevState) => ({
-									...prevState,
-									description: event.target.value,
-								}))
-							}
-							value={taskData.description}
-							disabled={patchDescription}
-						/>
-						<div className={styles.optionsButtons}>
-							<button
+					<ThemeProvider theme={purpleTheme}>
+						<div className={styles.taskInfo}>
+							<TextField
+								fullWidth
+								label='Task name'
+								variant='outlined'
+								focused
+								value={taskData.text}
+								onChange={(event) =>
+									setTaskData((prevState) => ({
+										...prevState,
+										text: event.target.value,
+									}))
+								}
+							/>
+						</div>
+						<div className={styles.taskInfo}>
+							<TextField
+								fullWidth
+								label='Creation time'
+								variant='outlined'
+								value={taskData.date}
+								focused
+							/>
+						</div>
+						<div className={styles.taskInfo}>
+							<FormControl fullWidth={true} focused>
+								<InputLabel>Task status</InputLabel>
+								<Select
+									label='Task status'
+									value={taskData.taskStatus}
+									onChange={taskStatusChange}
+								>
+									<MenuItem value='todo'>todo</MenuItem>
+									<MenuItem value='during'>during</MenuItem>
+									<MenuItem value='done'>done</MenuItem>
+								</Select>
+							</FormControl>
+						</div>
+						<div className={styles.description}>
+							<TextField
+								label='Description'
+								fullWidth={true}
+								multiline
+								focused={true}
+								rows={4}
+								onChange={(event) =>
+									setTaskData((prevState) => ({
+										...prevState,
+										description: event.target.value,
+									}))
+								}
+								value={taskData.description}
+								disabled={patchDescription}
+							/>
+						</div>
+					</ThemeProvider>
+					<div className={styles.optionsButtons}>
+						<ThemeProvider theme={redTheme}>
+							<Button
+								variant='outlined'
 								className={styles.deleteButton}
 								onClick={() => deleteTask()}
+								startIcon={<DeleteIcon />}
 							>
-								Delete<div className={styles.trashIcon}></div>
-							</button>
-							<button className={styles.saveButton} disabled={patchDescription}>
+								Delete
+							</Button>
+						</ThemeProvider>
+						{isLoadingIcon ? (
+							<LoadingButton
+								loading
+								className={styles.saveButton}
+								loadingPosition='start'
+								startIcon={<SaveIcon />}
+								variant='outlined'
+							>
 								Save
-							</button>
-						</div>
-					</form>
+							</LoadingButton>
+						) : (
+							<ThemeProvider theme={greenTheme}>
+								<Button
+									variant='outlined'
+									onClick={onSubmit}
+									className={styles.saveButton}
+									disabled={patchDescription}
+								>
+									Save
+								</Button>
+							</ThemeProvider>
+						)}
+					</div>
 				</div>
 			</div>
 		</>

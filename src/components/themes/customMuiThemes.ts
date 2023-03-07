@@ -16,6 +16,29 @@ const purpleTheme = createTheme({
 		},
 	},
 })
+const pinkTheme = createTheme({
+	palette: {
+		primary: {
+			main: '#bf00ff',
+		},
+	},
+	components: {
+		MuiInputBase: {
+			styleOverrides: {
+				input: {
+					color: '#FFFFFF',
+				},
+			},
+		},
+		MuiSelect: {
+			styleOverrides: {
+				icon: {
+					color: '#FFFFFF',
+				},
+			},
+		},
+	},
+})
 const redTheme = createTheme({
 	palette: {
 		primary: {
@@ -30,4 +53,4 @@ const greenTheme = createTheme({
 		},
 	},
 })
-export { purpleTheme, redTheme, greenTheme }
+export { purpleTheme, redTheme, greenTheme, pinkTheme }

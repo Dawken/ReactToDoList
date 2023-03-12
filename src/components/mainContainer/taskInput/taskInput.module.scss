@@ -13,13 +13,14 @@
   text-align: center;
   display: block;
   height: 100px;
-  margin-top: 40px;
+  margin: 7vh 2vh;
   .taskInput {
     padding: 10px 28px 10px 12px;
     border-radius: 4px 0 0 4px;
-    border: 2px solid #0014ee;
+    border: 3px solid #4000ff;
     outline: none;
-    width: 320px;
+    max-width: 320px;
+    width: 85%;
     height: 60px;
     background: transparent;
     color: #fff;
@@ -36,7 +37,7 @@
     background: linear-gradient(
                     90deg,
                     rgb(83, 0, 246) 0%,
-                    rgb(1, 13, 215) 100%
+                    rgb(0, 16, 255) 100%
     );
     color: #fff;
     font-size: 17px;

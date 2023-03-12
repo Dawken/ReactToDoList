@@ -1,6 +1,7 @@
 .animation.animation {
   opacity: 1;
   transform: translate(0%);
+  text-align: center;
   height: auto;
 }
 .taskContainer {
@@ -12,9 +13,10 @@
 
   .taskBody {
     font-size: 20px;
-    margin: 5px 0 0 5px;
+    margin: 5px 5px;
     padding: 25px 0;
-    width: 285px;
+    max-width: 32vh;
+    width: 95%;
     background-color: #0000008f;
     border-radius: 10px;
     word-break: break-word;

@@ -1,4 +1,3 @@
-
 .background {
   background-image: url(../../../assets/registerBackground.png);
   background-repeat: no-repeat;
@@ -9,7 +8,7 @@
   .joinUsContainer {
     font-size: 70px;
     text-align: center;
-    margin-top: 50px;
+    margin-top: 3vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -27,7 +26,7 @@
     .joinUs {
       animation-name: moveInFromLeft;
       animation-duration: 1s;
-      background-image: linear-gradient(to right, #f50adf, #010df6);
+      background-image: linear-gradient(to right, #5e00ff, #01c9f6);
       -webkit-background-clip: text;
       color: transparent;
       font-weight: bold;
@@ -42,7 +41,7 @@
     text-align: center;
 
     .registerForm {
-      margin: 20px 20px;
+      margin: 3vh 20px;
       display: inline-grid;
       background-color: rgba(0, 0, 0, 0.59);
       border-radius: 17px;
@@ -50,7 +49,7 @@
 
       .registerLabel {
         margin: 20px 40px;
-        height: 60px;
+        height: 6vh;
       }
     }
 
@@ -89,8 +88,9 @@
     }
   }
 }
-@media only screen and (max-width: 428px) {
+
+@media only screen and (max-width: 446px) {
   .background > main .registerForm > .registerLabel {
-    margin-bottom: 15%;
+    margin-bottom: 5vh;
   }
 }

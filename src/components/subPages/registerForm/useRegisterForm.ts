@@ -24,7 +24,7 @@ const registerSchema = object({
 		// Check password includes at least 1 capital letter, 1 special symbol and has at least 8 symbols
 		.regex(
 			/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/,
-			'1 Capital letter, 1 special symbol, 1 number and be at least 8 symbols long'
+			'Password isn\'t strong enough!'
 		),
 	repeatPassword: string()
 		.nonempty('Please confirm your password')

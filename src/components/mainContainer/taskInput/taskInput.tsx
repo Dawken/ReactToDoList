@@ -1,14 +1,12 @@
 import React from 'react'
 import styles from './taskInput.module.scss'
 import useTaskInput from './useTaskInput'
-import LogoutContainer from '../../shared/logout/logoutContainer'
 
 const TaskInput = () => {
 	const { task, isLoading, inputChange, onSubmit } = useTaskInput()
 
 	return (
 		<>
-			<LogoutContainer />
 			<form onSubmit={onSubmit}>
 				<div className={styles.taskInputContainer}>
 					<input

@@ -1,10 +1,7 @@
 import * as React from 'react'
 import Task from './task/task'
 import styles from './tasksListContainers.module.scss'
-import { useQuery } from 'react-query'
 import LoadingAnimation from '../../animations/loadingAnimation'
-import TaskDataError from '../../errorSubpages/taskDataError'
-import requestTaskApi from '../../../config/axiosConfig'
 
 type PropsUserData = {
 	_id: string;
@@ -14,14 +11,15 @@ type PropsUserData = {
 	taskStatus: string;
 };
 
-const TasksListContainers = () => {
-	const { isLoading, data } = useQuery('tasks', () =>
-		requestTaskApi.get('/api/tasks')
-	)
+interface useQueryProps {
+	isLoading: boolean;
+	data: {
+		data: [];
+	};
+}
 
+const TasksListContainers = ({ data, isLoading }: useQueryProps) => {
 	if (isLoading) return <LoadingAnimation />
-
-	if (!data) return <TaskDataError />
 
 	return (
 		<div className={styles.container}>

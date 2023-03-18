@@ -12,9 +12,7 @@ const MainContainer = () => {
 		requestTaskApi.get('/api/tasks')
 	)
 
-	if (isLoading) {
-		return <LoadingAnimation />
-	}
+	if (isLoading) return <LoadingAnimation />
 
 	if (!data) return <TaskDataError />
 

@@ -1,16 +1,18 @@
 import React from 'react'
-import './loadingAnimation.scss'
+import styles from './loadingAnimation.module.scss'
 
 const LoadingAnimation = () => {
 	return (
-		<div className='building-blocks'>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
+		<div className={styles.buildingBlocksContainer}>
+			<div className={styles.buildingBlocks}>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
 		</div>
 	)
 }

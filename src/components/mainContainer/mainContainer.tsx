@@ -4,23 +4,20 @@ import TasksListContainers from './taskListsContainers/tasksListContainers'
 import LogoutContainer from '../shared/logout/logoutContainer'
 import { useQuery } from 'react-query'
 import requestTaskApi from '../../config/axiosConfig'
-import LoadingAnimation from '../animations/loadingAnimation'
-import TaskDataError from '../errorSubpages/taskDataError'
+import BookLoaderAnimation from '../animations/bookLoaderAnimation/bookLoaderAnimation'
 
 const MainContainer = () => {
 	const { isLoading, data } = useQuery('tasks', () =>
 		requestTaskApi.get('/api/tasks')
 	)
 
-	if (isLoading) return <LoadingAnimation />
-
-	if (!data) return <TaskDataError />
+	if (isLoading) return <BookLoaderAnimation />
 
 	return (
 		<>
 			<LogoutContainer />
 			<TaskInput />
-			<TasksListContainers data={data} isLoading={isLoading} />
+			<TasksListContainers data={data} />
 		</>
 	)
 }

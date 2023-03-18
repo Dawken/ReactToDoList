@@ -1,7 +1,6 @@
 import * as React from 'react'
 import Task from './task/task'
 import styles from './tasksListContainers.module.scss'
-import LoadingAnimation from '../../animations/loadingAnimation'
 
 type PropsUserData = {
 	_id: string;
@@ -10,17 +9,11 @@ type PropsUserData = {
 	description: string;
 	taskStatus: string;
 };
-
-interface useQueryProps {
-	isLoading: boolean;
-	data: {
-		data: [];
-	};
+interface PropsUseQuery {
+	data: { data: [] } | undefined;
 }
 
-const TasksListContainers = ({ data, isLoading }: useQueryProps) => {
-	if (isLoading) return <LoadingAnimation />
-
+const TasksListContainers = ({ data }: PropsUseQuery) => {
 	return (
 		<div className={styles.container}>
 			<div className={styles.tasksContainer}>

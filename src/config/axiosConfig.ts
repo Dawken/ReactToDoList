@@ -9,8 +9,8 @@ const requestTaskApi = axios.create({
 	withCredentials: true,
 })
 requestTaskApi.interceptors.response.use(undefined, (error) => {
-	if (error.response.status === 401) {
-		store.dispatch(getClientResponse({ isLogged: false }))
+	if (error.response.status !== 401) {
+		store.dispatch(getClientResponse({ isLogged: true }))
 	}
 	return Promise.reject(error)
 })

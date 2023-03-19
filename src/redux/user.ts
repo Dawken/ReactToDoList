@@ -4,7 +4,7 @@ export type StatusCode = {
 	isLoggedIn: boolean;
 };
 
-const initialState: StatusCode = { isLoggedIn: true }
+export const initialState: StatusCode = { isLoggedIn: false }
 
 export const user = createSlice({
 	name: 'clientResponse',

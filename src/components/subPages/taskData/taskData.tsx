@@ -1,8 +1,7 @@
 import React from 'react'
 import styles from './taskData.module.scss'
 import { Link } from 'react-router-dom'
-import TaskDataError from '../../errorSubpages/taskDataError'
-import LoadingAnimation from '../../animations/loadingAnimation'
+import PageNotFound from '../../errorSubpages/pageNotFound/pageNotFound'
 import useTaskData from './useTaskData'
 import LogoutContainer from '../../shared/logout/logoutContainer'
 import DeleteIcon from '@mui/icons-material/Delete'
@@ -23,6 +22,7 @@ import {
 	TextField,
 } from '@mui/material'
 import { ThemeProvider } from '@mui/material/styles'
+import BookLoaderAnimation from '../../animations/bookLoaderAnimation/bookLoaderAnimation'
 
 const TaskData = () => {
 	const {
@@ -37,9 +37,9 @@ const TaskData = () => {
 		onSubmit,
 	} = useTaskData()
 
-	if (isLoading) return <LoadingAnimation />
+	if (isLoading) return <BookLoaderAnimation />
 
-	if (!data) return <TaskDataError />
+	if (!data) return <PageNotFound />
 
 	return (
 		<>

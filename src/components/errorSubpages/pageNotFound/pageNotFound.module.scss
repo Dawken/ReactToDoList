@@ -1,0 +1,58 @@
+.errorContainer {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .yikes {
+    .errorMessage {
+      font-family: 'Galindo', cursive;
+      font-size: 5vh;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .ghostContainer {
+      color: #000000;
+      animation: ghostAnimation 3s ease-in-out 0s infinite normal none;
+      text-align: end;
+      .ghost {
+        height: 30vh;
+        width: 30vh;
+      }
+    }
+    .buttonContainer {
+      text-align: center;
+      .takeMeBackButton {
+        margin-top: 20px;
+        height: 50px;
+        border: none;
+        width: 220px;
+        border-radius: 20px;
+        text-align: center;
+        text-transform: uppercase;
+        transition: 0.5s;
+        background-size: 220% auto;
+        color: white;
+        font-weight: bold;
+        background-image: linear-gradient(to right, #0f25b6 0%, #0095ff 51%, #00ff0a 100%);
+      }
+    }
+  }
+}
+@keyframes ghostAnimation{
+  0% {
+    transform:  translate(0,0);
+  }
+  25% {
+    transform:  translate(0,-20px);
+  }
+  50% {
+    transform:  translate(0,-5px);
+  }
+  75% {
+    transform:  translate(0,-15px);
+  }
+  100% {
+    transform:  translate(0,0);
+  }
+}

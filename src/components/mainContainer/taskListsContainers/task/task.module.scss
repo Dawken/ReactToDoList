@@ -54,6 +54,9 @@
     height: 45px;
   }
   .options {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     background-color: #0000008f;
     font-size: 15px;
     margin: 5px 0 0 50px;

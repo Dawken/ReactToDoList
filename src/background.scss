@@ -1,7 +1,6 @@
 body {
     background-image: url(/assets/mainPageBackround.png);
-    background-repeat-x: no-repeat;
-    background-repeat-y: repeat;
+    -webkit-background-repeat: no-repeat;
     background-attachment: fixed;
     overflow-x: hidden;
 }

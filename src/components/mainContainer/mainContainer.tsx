@@ -5,6 +5,7 @@ import LogoutContainer from '../shared/logout/logoutContainer'
 import { useQuery } from 'react-query'
 import requestTaskApi from '../../config/axiosConfig'
 import BookLoaderAnimation from '../animations/bookLoaderAnimation/bookLoaderAnimation'
+import PageNotFound from '../errorSubpages/pageNotFound/pageNotFound'
 
 const MainContainer = () => {
 	const { isLoading, data } = useQuery('tasks', () =>
@@ -12,6 +13,8 @@ const MainContainer = () => {
 	)
 
 	if (isLoading) return <BookLoaderAnimation />
+
+	if (!data) return <PageNotFound />
 
 	return (
 		<>

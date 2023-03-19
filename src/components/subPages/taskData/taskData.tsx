@@ -1,8 +1,7 @@
 import React from 'react'
 import styles from './taskData.module.scss'
 import { Link } from 'react-router-dom'
-import TaskDataError from '../../errorSubpages/taskDataError'
-import FirstVisitAnimation from '../../animations/firstVisitAnimation/firstVisitAnimation'
+import PageNotFound from '../../errorSubpages/pageNotFound/pageNotFound'
 import useTaskData from './useTaskData'
 import LogoutContainer from '../../shared/logout/logoutContainer'
 import DeleteIcon from '@mui/icons-material/Delete'
@@ -40,7 +39,7 @@ const TaskData = () => {
 
 	if (isLoading) return <BookLoaderAnimation />
 
-	if (!data) return <TaskDataError />
+	if (!data) return <PageNotFound />
 
 	return (
 		<>

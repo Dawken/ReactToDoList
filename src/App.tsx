@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import TaskData from './components/subPages/taskData/taskData'
-import TaskDataError from './components/errorSubpages/taskDataError'
+import PageNotFound from './components/errorSubpages/pageNotFound/pageNotFound'
 import MainContainer from './components/mainContainer/mainContainer'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ToastContainer } from 'react-toastify'
@@ -38,7 +38,7 @@ const App = () => {
 							<Route path='/' element={<MainContainer />} />
 							<Route path='/:id' element={<TaskData />} />
 						</Route>
-						<Route path='*' element={<TaskDataError />} />
+						<Route path='*' element={<PageNotFound />} />
 						<Route path='/register' element={<RegisterForm />} />
 						<Route path='/login' element={<LoginForm />} />
 					</Routes>

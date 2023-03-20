@@ -48,36 +48,35 @@
 
   .animation.animation {
     opacity: 1;
-    visibility: initial;
+    visibility: visible;
     transform: translate(0%);
-    width: 202px;
+    width: 80%;
     height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .options {
     background-color: #0000008f;
     font-size: 15px;
-    margin: 5px 0 0 50px;
+    margin: auto;
     transform: translate3d(0, -70px, 0);
     transition-timing-function: ease;
     transition-duration: 0.5s;
     opacity: 0;
     visibility: hidden;
     border-radius: 10px;
-    padding-top: 18px;
-    text-align: center;
-    width: 202px;
-    height: 18px;
+    width: 80%;
+    height: 5px;
 
     .delete {
       border: none;
-      background-color: transparent;
       font-size: 17px;
       background: -webkit-linear-gradient(rgb(255, 0, 0), rgb(243, 3, 183));
       font-weight: 600;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       cursor: pointer;
-      transform: translate(0%, -25%)
     }
 
 
@@ -89,7 +88,6 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       cursor: pointer;
-      transform: translate(0%, -25%)
     }
 
     .during {
@@ -100,7 +98,6 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       cursor: pointer;
-      transform: translate(0%, -25%)
     }
 
     .done {
@@ -111,9 +108,7 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       cursor: pointer;
-      transform: translate(0%, -25%)
     }
-
   }
 }
 

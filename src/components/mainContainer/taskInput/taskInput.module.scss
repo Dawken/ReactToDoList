@@ -1,51 +1,47 @@
-.userAccount {
-  .account {
-    float: right;
-    padding: 30px;
-    margin-right: 20px;
-    appearance: none;
-    border: none;
-    outline: none;
-    color: white;
-  }
-}
-.taskInputContainer {
-  text-align: center;
-  display: block;
-  height: 100px;
-  margin: 7vh 2vh;
-  .taskInput {
-    padding: 10px 28px 10px 12px;
-    border-radius: 4px 0 0 4px;
-    border: 3px solid #4000ff;
-    outline: none;
-    max-width: 320px;
-    width: 85%;
-    height: 60px;
-    background: transparent;
-    color: #fff;
-    font-size: 17px;
-  }
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .taskInputContainer {
+    text-align: center;
+    display: inline-flex;
+    height: 100px;
+    margin: 7vh 5vh;
 
-  .submit {
-    padding: 16px;
-    border: none;
-    height: 60px;
-    border-radius: 0 4px 4px 0;
-    cursor: pointer;
-    outline: none;
-    background: linear-gradient(
-                    90deg,
-                    rgb(83, 0, 246) 0%,
-                    rgb(0, 16, 255) 100%
-    );
-    color: #fff;
-    font-size: 17px;
-    text-transform: capitalize;
-  }
+    .taskInput {
+      padding: 10px 28px 10px 12px;
+      border-radius: 4px 0 0 4px;
+      border: 3px solid #4000ff;
+      outline: none;
+      max-width: 320px;
+      width: 85%;
+      height: 60px;
+      background: transparent;
+      color: #fff;
+      font-size: 17px;
+    }
 
-  .submit:active {
-    transform: scale(1.1);
-    transition: 0.1s;
+    .submit {
+      padding: 16px;
+      border: none;
+      height: 60px;
+      width: 130px;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      outline: none;
+      background: linear-gradient(
+                      90deg,
+                      rgb(83, 0, 246) 0%,
+                      rgb(0, 16, 255) 100%
+      );
+      color: #fff;
+      font-size: 17px;
+      text-transform: capitalize;
+    }
+
+    .submit:active {
+      transform: scale(1.1);
+      transition: 0.1s;
+    }
   }
 }

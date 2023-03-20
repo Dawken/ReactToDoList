@@ -1,5 +1,6 @@
 import React from 'react'
 import {
+	CircularProgress,
 	FormControl,
 	IconButton,
 	InputAdornment,
@@ -16,12 +17,13 @@ import { purpleTheme } from '../../themes/customMuiThemes'
 
 const LoginForm = () => {
 	const {
-		handleChange,
-		loginForm,
-		login,
 		showPassword,
 		handleClickShowPassword,
 		handleMouseDownPassword,
+		handleChange,
+		loginForm,
+		isLoading,
+		login,
 		userExist,
 	} = useLoginForm()
 
@@ -93,8 +95,12 @@ const LoginForm = () => {
 					</ThemeProvider>
 				</form>
 				<div>
-					<button className={styles.login} onClick={() => login()}>
-						Login
+					<button
+						className={styles.login}
+						onClick={() => login()}
+						disabled={isLoading}
+					>
+						{isLoading ? <CircularProgress size={30} /> : 'Login'}
 					</button>
 				</div>
 				<Link to={'/register'} className={styles.createAccountLink}>

@@ -42,7 +42,7 @@ const useLoginForm = () => {
 		}))
 	}
 
-	const { mutate: login } = useMutation(
+	const { isLoading, mutate: login } = useMutation(
 		() => {
 			const { login, password } = loginForm
 			return requestTaskApi.post('/api/login', {
@@ -83,6 +83,7 @@ const useLoginForm = () => {
 		handleMouseDownPassword,
 		handleChange,
 		loginForm,
+		isLoading,
 		login,
 		userExist,
 	}

@@ -4,6 +4,8 @@ Simple To do list created with React.js, Redux, Typescript.
 
 This project is one of my training projects, but first with backend and database. It was created for the forgetful people :)
 
+Liveserver: https://dawid-dominski.pl
+
 Backend: https://github.com/Dawken/ReactToDoListBackend
 ### **Technologies**
 

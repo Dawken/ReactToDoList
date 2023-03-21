@@ -26,18 +26,18 @@ import BookLoaderAnimation from '../../animations/bookLoaderAnimation/bookLoader
 
 const TaskData = () => {
 	const {
-		isLoading,
+		isTaskLoading,
+		isLoadingComponent,
 		data,
 		taskData,
 		setTaskData,
-		patchDescription,
-		isLoadingIcon,
 		deleteTask,
+		isLoadingIcon,
 		taskStatusChange,
 		onSubmit,
 	} = useTaskData()
 
-	if (isLoading) return <BookLoaderAnimation />
+	if (isTaskLoading || isLoadingComponent) return <BookLoaderAnimation />
 
 	if (!data) return <PageNotFound />
 
@@ -102,7 +102,6 @@ const TaskData = () => {
 									}))
 								}
 								value={taskData.description}
-								disabled={patchDescription}
 							/>
 						</div>
 					</ThemeProvider>
@@ -133,7 +132,6 @@ const TaskData = () => {
 									variant='outlined'
 									onClick={onSubmit}
 									className={styles.saveButton}
-									disabled={patchDescription}
 								>
 									Save
 								</Button>

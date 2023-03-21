@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 import requestTaskApi from '../../../config/axiosConfig'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import { SelectChangeEvent } from '@mui/material'
 import axios from 'axios'
@@ -19,8 +19,9 @@ const useTaskData = () => {
 		date: '',
 	})
 	const [isLoadingIcon, setIsLoadingIcon] = useState(false)
+	const [isLoadingComponent, setIsLoadingComponent] = useState(true)
 
-	const { isLoading, data } = useQuery(
+	const { isLoading: isTaskLoading, data } = useQuery(
 		['task', `${id}`],
 		() => requestTaskApi.get(`/api/tasks/${id}`),
 		{
@@ -33,8 +34,13 @@ const useTaskData = () => {
 			},
 		}
 	)
+	useEffect(() => {
+		setTimeout(() => {
+			setIsLoadingComponent(false)
+		}, 1300)
+	}, [])
 
-	const { isLoading: patchDescription, mutate: patchData } = useMutation(
+	const { mutate: patchTask } = useMutation(
 		() => {
 			if (taskData.text === '') {
 				toast.error('Text cannot be empty')
@@ -85,20 +91,20 @@ const useTaskData = () => {
 	}
 
 	const onSubmit = (event: React.FormEvent<HTMLButtonElement>) => {
-		setIsLoadingIcon(true)
+		setIsLoadingIcon((prevState) => !prevState)
 		event.preventDefault()
-		patchData()
+		patchTask()
 		setTimeout(() => {
-			setIsLoadingIcon(false)
+			setIsLoadingIcon((prevState) => !prevState)
 		}, 2000)
 	}
 
 	return {
-		isLoading,
+		isTaskLoading,
+		isLoadingComponent,
 		data,
 		taskData,
 		setTaskData,
-		patchDescription,
 		deleteTask,
 		isLoadingIcon,
 		taskStatusChange,

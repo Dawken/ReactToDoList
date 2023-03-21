@@ -6,6 +6,7 @@ import requestTaskApi from '../../../config/axiosConfig'
 const useTaskInput = () => {
 	const queryClient = useQueryClient()
 	const [task, setTask] = useState('')
+	const [taskLoader, setTaskLoader] = useState(false)
 
 	const { isLoading, mutate } = useMutation(
 		() => {
@@ -23,6 +24,10 @@ const useTaskInput = () => {
 	)
 
 	const onSubmit = (event: ChangeEvent<HTMLFormElement>) => {
+		setTaskLoader((prevState) => !prevState)
+		setTimeout(() => {
+			setTaskLoader((prevState) => !prevState)
+		}, 2000)
 		event.preventDefault()
 		mutate()
 		setTask('')
@@ -35,6 +40,7 @@ const useTaskInput = () => {
 	return {
 		task,
 		isLoading,
+		taskLoader,
 		inputChange,
 		onSubmit,
 	}

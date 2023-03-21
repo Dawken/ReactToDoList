@@ -4,7 +4,7 @@ import useTaskInput from './useTaskInput'
 import { CircularProgress } from '@mui/material'
 
 const TaskInput = () => {
-	const { task, isLoading, inputChange, onSubmit } = useTaskInput()
+	const { task, isLoading, taskLoader, inputChange, onSubmit } = useTaskInput()
 
 	return (
 		<form onSubmit={onSubmit}>
@@ -19,7 +19,11 @@ const TaskInput = () => {
 					disabled={isLoading}
 				/>
 				<button className={styles.submit} disabled={isLoading}>
-					{isLoading ? <CircularProgress size={30} /> : 'Add task'}
+					{isLoading || taskLoader ? (
+						<CircularProgress size={30} />
+					) : (
+						'Add task'
+					)}
 				</button>
 			</div>
 		</form>

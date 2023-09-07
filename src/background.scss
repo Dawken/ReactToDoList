@@ -1,8 +1,8 @@
 body {
     background-image: url(/assets/mainPageBackround.png);
-    background-repeat-x: no-repeat;
-    background-repeat-y: repeat;
     background-attachment: fixed;
+    background-size: cover;
+    -webkit-background-attachment: fixed;
     overflow-x: hidden;
 }
 ::-webkit-scrollbar {

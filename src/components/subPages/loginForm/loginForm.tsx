@@ -108,6 +108,19 @@ const LoginForm = () => {
 						Dont have account? Register now
 					</div>
 				</Link>
+				<div className={styles.test}>
+					<div className={styles.testAccountContainer}>
+						<div className={styles.testAccount}>Test account</div>
+						<div className={styles.testAccountInformation}>
+							<AccountCircle style={{ color: '#FFFFFF' }} />
+							test
+						</div>
+						<div className={styles.testAccountInformation}>
+							<LockOutlinedIcon style={{ color: '#FFFFFF' }} />
+							Test123!
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	)
